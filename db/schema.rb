@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219055648) do
+ActiveRecord::Schema.define(:version => 20110219180351) do
 
   create_table "affiliations", :force => true do |t|
     t.string   "name",       :null => false
@@ -19,17 +19,20 @@ ActiveRecord::Schema.define(:version => 20110219055648) do
   end
 
   create_table "events", :force => true do |t|
-    t.string   "name",           :null => false
-    t.string   "description",    :null => false
-    t.string   "location",       :null => false
-    t.datetime "time",           :null => false
-    t.string   "image"
+    t.string   "name",               :null => false
+    t.string   "description",        :null => false
+    t.string   "location",           :null => false
+    t.datetime "time",               :null => false
+    t.string   "flyer"
     t.integer  "pattern"
-    t.integer  "user_id",        :null => false
+    t.integer  "user_id",            :null => false
     t.integer  "affiliation_id"
-    t.string   "categories",     :null => false
+    t.string   "categories",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "flyer_file_name"
+    t.string   "flyer_content_type"
+    t.integer  "flyer_file_size"
   end
 
   create_table "users", :force => true do |t|

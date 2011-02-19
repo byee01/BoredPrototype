@@ -39,6 +39,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    paperclip (2.3.8)
+      activerecord
+      activesupport
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -71,5 +74,6 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  paperclip (~> 2.3)
   rails (= 3.0.3)
   sqlite3-ruby

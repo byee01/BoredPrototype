@@ -22,12 +22,12 @@
 
 <p>
   <b>Image:</b>
-  <%= @event.image %>
+  <img src="<%= @event.flyer.url(:small) %>"/>
 </p>
 
 <p>
   <b>Pattern:</b>
-  <%= @event.pattern %>
+  <%= @event.pattern%>
 </p>
 
 <p>
