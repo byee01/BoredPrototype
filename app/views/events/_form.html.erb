@@ -36,12 +36,20 @@
     <%= f.text_field :pattern %>
   </div>
   <div class="field">
-    <%= f.label :owner_id %><br />
-    <%= f.text_field :owner_id %>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
   </div>
   <div class="field">
     <%= f.label :categories %><br />
-    <%= f.text_field :categories %>
+	<ul>
+    <% EventsHelper::all_categories.each do |c| %>
+		<% if @event.category_list.find{|d| d.value == c.value}%>
+			<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
+		<% else%>
+			<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+		<% end %>
+	<% end %>
+	</ul>
   </div>
   <div class="actions">
     <%= f.submit %>

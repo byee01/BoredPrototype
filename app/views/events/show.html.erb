@@ -32,12 +32,16 @@
 
 <p>
   <b>Owner:</b>
-  <%= @event.owner_id %>
+  <%= @event.user_id %>
 </p>
 
 <p>
   <b>Categories:</b>
-  <%= @event.categories %>
+  <ul>
+  <% @event.category_list.each do |c| %>
+	<li><%= c.name %> </li>
+  <% end %>
+  </ul>
 </p>
 
 
