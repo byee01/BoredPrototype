@@ -1,0 +1,21 @@
+<h1>Listing affiliations</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @affiliations.each do |affiliation| %>
+  <tr>
+    <td><%= link_to 'Show', affiliation %></td>
+    <td><%= link_to 'Edit', edit_affiliation_path(affiliation) %></td>
+    <td><%= link_to 'Destroy', affiliation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Affiliation', new_affiliation_path %>

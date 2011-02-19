@@ -1,4 +1,10 @@
 BoredPrototype::Application.routes.draw do
+  resources :affiliations
+
+  resources :users
+
+  resources :events
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
