@@ -6,8 +6,7 @@
     <th>Description</th>
     <th>Location</th>
     <th>Time</th>
-    <th>Image</th>
-    <th>Pattern</th>
+    <th>Backing</th>
     <th>Owner</th>
     <th>Categories</th>
     <th></th>
@@ -21,8 +20,11 @@
     <td><%= event.description %></td>
     <td><%= event.location %></td>
     <td><%= event.time %></td>
+	<% if !event.flyer.nil? and event.flyer.exists?%>
     <td><%= event.flyer %></td>
+	<% else %>
     <td><%= event.pattern %></td>
+	<% end %>
     <td><%= event.user_id %></td>
     <td><% event.category_list.each do |c| %> <%= c.name %><%end%></td>
     <td><%= link_to 'Show', event %></td>

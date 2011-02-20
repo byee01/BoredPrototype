@@ -1,6 +1,6 @@
 <div id="new_event">
 	<h2>New event</h2>
-	<%= form_for(@event, :remote=>true, :html=> {:multipart=>true}) do |f| %>
+	<%= form_for(@event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}) do |f| %>
 	  
 	  
 		<% if @event.errors.any? %>
@@ -49,4 +49,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+<iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
 </div>

@@ -47,7 +47,13 @@ class EventsController < ApplicationController
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
         #format.xml  { render :xml => @event, :status => :created, :location => @event }
-		format.js
+		format.js do
+			responds_to_parent do
+				render :update do |page|
+					page << "$('#new_event').fadeOut();"
+				end
+			end
+		end
       else
         format.html { render :action => "new" }
         #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
