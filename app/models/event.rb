@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 	belongs_to :user
-	has_and_belongs_to_many :affiliations
+	belongs_to :affiliations
 	
 	validates_presence_of :name, :description, :location, :time, :user_id, :categories
 	validates_size_of :name, :user_id, :maximum => 50

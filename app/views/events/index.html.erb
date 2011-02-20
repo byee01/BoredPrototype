@@ -24,7 +24,7 @@
     <td><%= event.flyer %></td>
     <td><%= event.pattern %></td>
     <td><%= event.user_id %></td>
-    <td><%= event.categories %></td>
+    <td><% event.category_list.each do |c| %> <%= c.name %><%end%></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
