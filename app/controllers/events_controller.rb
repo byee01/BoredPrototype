@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
+	@event = Event.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,10 +46,12 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        #format.xml  { render :xml => @event, :status => :created, :location => @event }
+		format.js
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+		format.js
       end
     end
   end

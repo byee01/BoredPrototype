@@ -21,7 +21,7 @@
     <td><%= event.description %></td>
     <td><%= event.location %></td>
     <td><%= event.time %></td>
-    <td><%= event.image %></td>
+    <td><%= event.flyer %></td>
     <td><%= event.pattern %></td>
     <td><%= event.user_id %></td>
     <td><%= event.categories %></td>
@@ -34,4 +34,6 @@
 
 <br />
 
-<%= link_to 'New Event', new_event_path %>
+<a href="#" id="new_event_btn">New Event</a>
+
+<%= render :partial=> 'form'%>

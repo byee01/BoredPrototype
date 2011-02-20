@@ -1,58 +1,52 @@
-<%= form_for(@event, :html=> {:multipart=>true}) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div id="new_event">
+	<h2>New event</h2>
+	<%= form_for(@event, :remote=>true, :html=> {:multipart=>true}) do |f| %>
+	  
+	  
+		<% if @event.errors.any? %>
+		<div id="error_explanation">
+		  <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br />
-    <%= f.datetime_select :time %>
-  </div>
-  <div class="field">
-    <%= f.label :flyer %><br />
-	Current: <img src="<%= @event.flyer.url(:small) %>"/> <br/>
-    <%= f.file_field :flyer %>
-  </div>
-  <div class="field">
-    <%= f.label :pattern %><br />
-    <%= f.text_field :pattern %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :categories %><br />
-	<ul>
-    <% EventsHelper::all_categories.each do |c| %>
-		<% if @event.category_list.find{|d| d.value == c.value}%>
-			<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
-		<% else%>
-			<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+		  <ul>
+		  <% @event.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
 		<% end %>
-	<% end %>
-	</ul>
+	  
+		<%= f.label :name %><br />
+		<%= f.text_field :name %><br/>
+
+		<%= f.label :description %><br />
+		<%= f.text_field :description %><br/>
+
+		<%= f.label :location %><br />
+		<%= f.text_field :location %><br/>
+		
+		<%= f.label :time %><br />
+		<%= f.datetime_select :time %><br/>
+
+		<%= f.label :flyer %><br />
+		Current: <img src="<%= @event.flyer.url(:small) %>"/> <br/>
+		<%= f.file_field :flyer %><br/>
+
+		<%= f.label :pattern %><br />
+		<%= f.hidden_field :pattern %>Where a pattern picker goes<br/>
+
+		<%= f.label :categories %> (Choose up to 2)<br />
+		<ul>
+		<% EventsHelper::all_categories.each do |c| %>
+			<% if @event.category_list.find{|d| d.value == c.value}%>
+				<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
+			<% else%>
+				<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+			<% end %>
+		<% end %>
+		</ul>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

@@ -25,6 +25,7 @@ class Event < ActiveRecord::Base
 	end
 		
 	def cons_categories
+		self.user_id = "byee"
 		self.categories = self.categories.join(",")
 	end
 	
