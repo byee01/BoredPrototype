@@ -1,41 +1,39 @@
-<h1>Listing events</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th>Time</th>
-    <th>Backing</th>
-    <th>Owner</th>
-    <th>Categories</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.description %></td>
-    <td><%= event.location %></td>
-    <td><%= event.time %></td>
-	<% if !event.flyer.nil? and event.flyer.exists?%>
-    <td><%= event.flyer %></td>
-	<% else %>
-    <td><%= event.pattern %></td>
-	<% end %>
-    <td><%= event.user_id %></td>
-    <td><% event.category_list.each do |c| %> <%= c.name %><%end%></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
 <a href="#" id="new_event_btn">New Event</a>
-
+<div id="events">
+<% @count = 1 %>
+<% @events.each do |event| %>
+	<div id="event-<%=@count%>" class="box<% event.category_list.each do |c| %> col<%= c.name%><% end %>">
+		<% if !event.flyer.nil? and event.flyer.exists?%>
+		<img src="<%= event.flyer.url(:small) %>"/>
+		<% else %>
+		<img src="<%= event.pattern %>"/>
+		<% end %>
+		<h3><%= event.name %></h3>
+		<p><%= event.location %></p>
+	</div>
+	<div id="event-<%=@count%>-desc" class="reveal-modal">
+		<h3><%= event.name %></h3>
+		<p><%= event.description %></p>
+		<p><%= event.location %></p>
+		<p><%= event.time %></p>
+		<% if !event.flyer.nil? and event.flyer.exists?%>
+		<img src="<%= event.flyer.url(:small) %>"/>
+		<% else %>
+		<img src="<%= event.pattern %>"/>
+		<% end %>
+		<p><%= event.user_id %></p>
+		<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>
+		<p><%= link_to 'Show', event %></p>
+		<p><%= link_to 'Edit', edit_event_path(event) %></p>
+		<p><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>
+		<a class="close-reveal-modal">&#215;</a>
+	</div>
+  <% @count = @count + 1%>
+<% end %>
+</div>
+<div class="pop_container"> 
+		<div class="pop_desc"><p>This is the event description.</p></div> 
+</div>
+<br/>
+<br/>
 <%= render :partial=> 'form'%>

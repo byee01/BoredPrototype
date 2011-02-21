@@ -1,0 +1,51 @@
+@import url("reset.css");
+@import url("reveal.css");
+/* COLOR PALETTE
+
+************************/
+/* For IE and HTML5 */
+header, footer, article, section, nav, menu { display: block;}
+/*********/
+
+body {
+	background: #333 url('../img/bg-a.png') repeat top left;
+	color: #111;
+	font-family: Georgia, serif;
+	font-size: 1em;
+	line-height: 1.5;
+    vertical-align: baseline;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+.header {
+	background: #ccd;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 10;
+}
+
+.nav li {
+	display: inline;
+}
+
+.container {
+	margin-top: 80px;
+}
+
+.box {
+	background: #eee;
+	margin: 10px;
+	padding: 10px;
+	width: 200px;
+	cursor: pointer;
+}
+
+a {
+	color: #111;
+	text-decoration: none;
+	font-decoration: none;	
+}

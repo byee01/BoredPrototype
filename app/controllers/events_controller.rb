@@ -57,7 +57,13 @@ class EventsController < ApplicationController
       else
         format.html { render :action => "new" }
         #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
-		format.js
+		format.js do 
+			responds_to_parent do
+				render :update do |page|
+					#validation jazz
+				end
+			end
+		end
       end
     end
   end

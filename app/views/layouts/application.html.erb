@@ -1,14 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-	  <title>BoredPrototype</title>
-	  <%= stylesheet_link_tag :all %>
-	  <%= javascript_include_tag :defaults %>
-	  <%= csrf_meta_tag %>
+		<title>BoredPrototype</title>
+		<%= stylesheet_link_tag :all %>
+		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
 	</head>
 	<body>
-
-	<%= yield %>
-
+		<div class="header"> 
+			<h1>Boredcast - Event Planning for CMU</h1> 
+			<!--<ul class="nav" id="filtering-nav"> 
+				<li><a class="col1" href="#col1">Category 1</a></li> 
+				<li><a class="col2" href="#col2">Category 2</a></li> 
+				<li><a class="col3" href="#col3">Category 3</a></li> 
+				<li><a class="all" href="#all">All</a></li> 
+			</ul> -->
+			<ul class="nav" id="filtering-nav">
+			<% EventsHelper::all_categories.each do |c| %>
+				<li><a class="col<%= c.name%>" href="#col<%= c.name%>"><%= c.name%></a></li>
+			<% end %>
+				<li><a class="all" href="#all">All</a></li
+			</ul>
+		</div>
+		<div class="container">
+		<%= yield %>
+		</div>
 	</body>
+	<%= javascript_include_tag "jquery", "jquery.masonry", "jquery.reveal", "app" %>
 </html>
