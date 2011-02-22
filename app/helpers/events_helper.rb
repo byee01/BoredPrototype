@@ -8,7 +8,20 @@ module EventsHelper
 		end
 	end
 	
-	@@category_hash = {"Arts" => 1, "Sports" =>2, "Gaming" => 3}
+	@@category_hash = {
+	"Arts" => 1, 
+	"Sports" =>2, 
+	"Gaming" => 3,
+	"Professional" => 4,
+	"Greek" => 5,
+	"Cultural" => 6,
+	"Music" => 7,
+	"Movies" => 8,
+	"Academic" => 9,
+	"Social" => 10,
+	"Service" => 11
+	}
+	
 	@@category_hash_rev = @@category_hash.invert
 	
 	def self.all_categories

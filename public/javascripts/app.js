@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+	$('#new_event').hide();
 	$('#new_event_btn').click(function(){
 		$('#new_event').fadeIn();
 		clear_form_elements('#new_event form');
