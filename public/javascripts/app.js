@@ -105,8 +105,7 @@ $('#events').imagesLoaded( function(){
 	  return false;
 	});
 	
-	$("#new_event").validate({
-		debug: true,
+		$("#new_event").validate({
 		rules: {
 			"event[name]": {required:true},
 			"event[description]": {required:true},
@@ -115,4 +114,5 @@ $('#events').imagesLoaded( function(){
 		}
 		
 	});
+	
 });

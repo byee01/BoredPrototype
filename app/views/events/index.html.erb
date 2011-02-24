@@ -9,7 +9,7 @@
 		<img src="<%= event.pattern %>"/>
 		<% end %>
 		<h3><%= event.name %></h3>
-		<p><%= event.location %></p>
+		<p><%= event.time.strftime("%A, %b. %d") %></p>
 	</div>
 	<div id="event-<%=@count%>-desc" class="reveal-modal">
 		<h3><%= event.name %></h3>
@@ -32,7 +32,7 @@
 <% end %>
 </div>
 <div class="pop_container"> 
-		<div class="pop_desc"><p>This is the event description.</p></div> 
+		<div class="pop_desc"></div> 
 </div>
 <br/>
 <br/>
