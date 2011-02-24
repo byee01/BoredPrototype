@@ -2,33 +2,8 @@
 <div id="events">
 <% @count = 1 %>
 <% @events.each do |event| %>
-	<div id="event-<%=@count%>" class="box<% event.category_list.each do |c| %> col<%= c.name%><% end %>">
-		<% if !event.flyer.nil? and event.flyer.exists?%>
-		<img src="<%= event.flyer.url(:small) %>"/>
-		<% else %>
-		<img src="<%= event.pattern %>"/>
-		<% end %>
-		<h3><%= event.name %></h3>
-		<p><%= event.time.strftime("%A, %b. %d") %></p>
-	</div>
-	<div id="event-<%=@count%>-desc" class="reveal-modal">
-		<h3><%= event.name %></h3>
-		<p><%= event.description %></p>
-		<p><%= event.location %></p>
-		<p><%= event.time %></p>
-		<% if !event.flyer.nil? and event.flyer.exists?%>
-		<img src="<%= event.flyer.url(:small) %>"/>
-		<% else %>
-		<img src="<%= event.pattern %>"/>
-		<% end %>
-		<p><%= event.user_id %></p>
-		<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>
-		<p><%= link_to 'Show', event %></p>
-		<p><%= link_to 'Edit', edit_event_path(event) %></p>
-		<p><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
-  <% @count = @count + 1%>
+	<%= render 'event' %>
+	<% @count = @count + 1%>
 <% end %>
 </div>
 <div class="pop_container"> 
