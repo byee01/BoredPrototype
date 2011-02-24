@@ -26,6 +26,7 @@
 		
 		<%= f.label :time %><br />
 		<%= f.datetime_select :time %><br/>
+		<%#= f.calendar_date_select :time%><br/>
 
 		<%= f.label :flyer %><br />
 		Current: <img src="<%= @event.flyer.url(:small) %>"/> <br/>

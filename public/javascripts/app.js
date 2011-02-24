@@ -27,8 +27,8 @@ var possibleEvents = [
 	{url:'apple.jpg', title: 'Magical, Revolutionary, Unbelievably Priced Pt. 2', date:'Wednesday, Mar. 2'}
 	];
 
-$.shuffle(possibleEvents); // More randomness
-
+//$.shuffle(possibleEvents); // More randomness
+/*
 for(i=1; i<=numEvents; i++) {
 	var category = Math.ceil(Math.random()*10); // Pick category between one and three
 
@@ -53,7 +53,7 @@ for(i=1; i<=numEvents; i++) {
 
 	//a.appendTo('#events');
 	$('#events').append(eventBox, eventDesc);
-}
+}*/
 
 /*---------------------------
  Scroll function
@@ -103,5 +103,8 @@ $('#events').imagesLoaded( function(){
 	  $wall.masonry();
 
 	  return false;
+	});
+	
+		
 	});
 });
