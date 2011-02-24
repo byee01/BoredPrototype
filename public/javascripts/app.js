@@ -105,6 +105,14 @@ $('#events').imagesLoaded( function(){
 	  return false;
 	});
 	
+	$("#new_event").validate({
+		debug: true,
+		rules: {
+			"event[name]": {required:true},
+			"event[description]": {required:true},
+			"event[location]": {required:true},
+			"event[categories][]":{required: true, maxlength: 2}
+		}
 		
 	});
 });
