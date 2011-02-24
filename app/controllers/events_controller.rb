@@ -48,11 +48,12 @@ class EventsController < ApplicationController
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
         #format.xml  { render :xml => @event, :status => :created, :location => @event }
 		format.js do
-			responds_to_parent do
-				render :update do |page|
-					page << "$('#new_event').fadeOut();"
-				end
-			end
+			responds_to_parent {render}
+			#responds_to_parent do
+				#render :update do |page|
+				#	page << "$('#new_event').fadeOut();"
+				#end
+			#end
 		end
       else
         format.html { render :action => "new" }

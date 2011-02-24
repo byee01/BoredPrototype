@@ -3,7 +3,7 @@
 	-------------------------------------------------- */
 		
 	.reveal-modal-bg { 
-		position: absolute; 
+		position: fixed; 
 		height: 100%;
 		width: 100%;
 		background: #000;
@@ -18,9 +18,7 @@
 		visibility: hidden;
 		top: 100px; 
 		/* left: 50% */
-		left: 100%;
-		/*margin-left: -300px;*/
-		width: 520px;
+		margin: 0 200px;
 		background: #eee url('../img/modal-gloss.png') no-repeat -200px -80px;
 		position: absolute;
 		z-index: 101;

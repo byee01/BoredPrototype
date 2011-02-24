@@ -17,10 +17,11 @@
  Listener for data-reveal-id attributes
 ----------------------------*/
 
-	$('a[data-reveal-id]').live('click', function(e) {
+	//$('a[data-reveal-id]').live('click', function(e) {
+	$('div.box').live('click', function(e) {
 		e.preventDefault();
-		var modalLocation = $(this).attr('data-reveal-id');
-		$('#'+modalLocation).reveal($(this).data());
+		var modalLocation = $(this).attr('id');
+		$('#'+modalLocation+"-desc").reveal($(this));
 	});
 
 /*---------------------------
@@ -49,6 +50,7 @@
           		locked = false,
 				modalBG = $('.reveal-modal-bg');
 
+				console.log(modal);
 /*---------------------------
  Create Modal BG
 ----------------------------*/
@@ -78,7 +80,8 @@
 				$('.' + options.dismissmodalclass).unbind('click.modalEvent');
 				if(!locked) {
 					lockModal();
-					modal.css({'top': $(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
+					//modal.css({'top': $(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
+					modal.css({'top': 0, 'opacity' : 0, 'visibility' : 'visible'});
 					modalBG.fadeIn(options.animationspeed/2);
 					modal.delay(options.animationspeed/2).animate({
 						"top": $(document).scrollTop()+topMeasure,

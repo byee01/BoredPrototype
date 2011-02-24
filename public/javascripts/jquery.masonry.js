@@ -269,7 +269,7 @@
       // call masonry layout
       msnry.setup($wall, opts, props);
       msnry.arrange($wall, opts, props);
-    
+
       // binding window resizing
       if ( !resizeOn && opts.resizeable ) {
         $(window).bind('smartresize.masonry', function() { msnry.resize($wall, opts, props); } );
@@ -277,7 +277,6 @@
       if ( resizeOn && !opts.resizeable ) { 
         $(window).unbind('smartresize.masonry'); 
       }
-       
 
     });    //    /return this.each(function()
   };      //    /$.fn.masonry = function(options)
