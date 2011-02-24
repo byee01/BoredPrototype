@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
 	before_validation :cons_categories
 	
 	has_attached_file :flyer,
+		:default_url   => "/system/:attachment/:style/missing.png",
 		:styles =>{ :small => "200x309"}
 		
 	def category_list

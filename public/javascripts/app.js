@@ -65,6 +65,27 @@ $('#scrollDownBtn').live('click', function(e) {
 });
 
 /*---------------------------
+ Cycle functions
+----------------------------*/
+
+currentPage = 4;
+
+function decreaseCategory(){
+	if (currentPage > 1)
+		currentPage--;
+	$('.col' + currentPage).click();
+}
+
+function increaseCategory(){
+	if (currentPage < 4)
+		currentPage++;
+	if(currentPage == 4)
+		$('.all').click();
+	else
+		$('.col' +currentPage).click();
+}
+
+/*---------------------------
  Masonry
 ----------------------------*/
 
