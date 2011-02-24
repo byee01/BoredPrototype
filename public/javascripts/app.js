@@ -2,7 +2,7 @@
 Modal Dialogues
 ----------------------------*/
 $(document).ready(function() {
-     $('#newEventBtn').click(function(e) {
+     $('#new_event_btn').click(function(e) {
           e.preventDefault();
 	  $('#create_event').reveal();
      });
