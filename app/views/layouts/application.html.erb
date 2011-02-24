@@ -8,12 +8,9 @@
 	<body>
 		<div class="header"> 
 			<h1>Boredcast - Event Planning for CMU</h1> 
-			<!--<ul class="nav" id="filtering-nav"> 
-				<li><a class="col1" href="#col1">Category 1</a></li> 
-				<li><a class="col2" href="#col2">Category 2</a></li> 
-				<li><a class="col3" href="#col3">Category 3</a></li> 
-				<li><a class="all" href="#all">All</a></li> 
-			</ul> -->
+			
+			<a style="float: right;" id="newEventBtn" href="#">Create an Event</a>
+
 			<ul class="nav" id="filtering-nav">
 			<% EventsHelper::all_categories.each do |c| %>
 				<li><a class="col<%= c.name%>" href="#col<%= c.name%>"><%= c.name%></a></li>
