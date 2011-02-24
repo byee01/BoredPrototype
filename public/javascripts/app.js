@@ -64,16 +64,15 @@ $('#events').imagesLoaded( function(){
 	$('#filtering-nav a').click(function(){
 	  var colorClass = '.' + $(this).attr('class');
 
-	  console.log($('body').scrollTop()+$(window).height());
 
 	  if(colorClass=='.all') {
 		// show all hidden boxes
-		$wall.children('.invis').toggleClass('invis').fadeIn(speed);
+		$wall.children('.invis').toggleClass('invis').stop().fadeIn(speed);
 	  } else {  
 		// hide visible boxes 
-		$wall.children().not(colorClass).not('.invis').toggleClass('invis').fadeOut(speed);
+		$wall.children().not(colorClass).not('.invis').toggleClass('invis').stop().fadeOut(speed);
 		// show hidden boxes
-		$wall.children(colorClass+'.invis').toggleClass('invis').fadeIn(speed);
+		$wall.children(colorClass+'.invis').toggleClass('invis').stop().fadeIn(speed);
 	  }
 	  $wall.masonry();
 
