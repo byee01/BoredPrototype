@@ -85,8 +85,10 @@ $('#events').imagesLoaded( function(){
 			"event[description]": {required:true},
 			"event[location]": {required:true},
 			"event[categories][]":{required: true, maxlength: 2}
-		}
+			}
+		});
 		
-	});
+		//$("#event_time").val("lol");
+		//$("#event_time").datetimepicker();
 	
 });

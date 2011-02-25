@@ -1,4 +1,4 @@
-<div id="event-<%=@count%>" class="box<% event.category_list.each do |c| %> col<%= c.name%><% end %>">
+<div id="event-<%=@count%>" class="box<% event.category_list.each do |c| %> col<%= c.value%><% end %>">
 	<% if !event.flyer.nil? and event.flyer.exists?%>
 	<img src="<%= event.flyer.url(:small) %>"/>
 	<% else %>

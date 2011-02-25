@@ -42,22 +42,16 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-
+puts params[:event]
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        #format.xml  { render :xml => @event, :status => :created, :location => @event }
 		format.js do
 			responds_to_parent {render}
-			#responds_to_parent do
-				#render :update do |page|
-				#	page << "$('#new_event').fadeOut();"
-				#end
-			#end
 		end
       else
+	  puts @event.errors
         format.html { render :action => "new" }
-        #format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
 		format.js do 
 			responds_to_parent do
 				render :update do |page|

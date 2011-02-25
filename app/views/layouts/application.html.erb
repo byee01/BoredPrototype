@@ -3,6 +3,7 @@
 	<head>
 		<title>BoredPrototype</title>
 		<%= stylesheet_link_tag "screen" %>
+
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -13,7 +14,7 @@
 
 			<ul class="nav" id="filtering-nav">
 			<% EventsHelper::all_categories.each do |c| %>
-				<li><a class="col<%= c.name%>" href="#col<%= c.name%>"><%= c.name%></a></li>
+				<li><a class="col<%= c.value%>" href="#col<%= c.value%>"><%= c.name%></a></li>
 			<% end %>
 				<li><a class="all" href="#all">All</a></li
 			</ul>
@@ -22,5 +23,5 @@
 		<%= yield %>
 		</div>
 	</body>
-	<%= javascript_include_tag "jquery",  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins","app" %>
+	<%= javascript_include_tag "jquery",  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins","jquery-ui-1.8.10.custom.min", "jquery-ui-timepicker-addon", "app" %>
 </html>

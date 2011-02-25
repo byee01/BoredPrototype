@@ -24,6 +24,14 @@ module EventsHelper
 	
 	@@category_hash_rev = @@category_hash.invert
 	
+	def self.from_category(val)
+		if @@category_hash.key? val
+		return @@category_hash.fetch(val)
+		else
+		return -1
+		end
+	end
+	
 	def self.all_categories
 		categories = []
 		@@category_hash.each do |c|
