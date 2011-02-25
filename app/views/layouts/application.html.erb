@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>BoredPrototype</title>
+	<meta charset="utf-8" />
+		<title>BoredCast</title>
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin"/>
 		<%= stylesheet_link_tag "screen" %>
 
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
 		<div class="header"> 
-			<h1>Boredcast - Event Planning for CMU</h1> 
-			
-			<a style="float: right;" id="new_event_btn" href="#">Create an Event</a>
-
+			<input id="topSearch" type="text" value="Search this board..."></input> 
+			<span id="login"><strong>Log in</strong>&nbsp;&nbsp;&middot;&nbsp;&nbsp;Sign up with AndrewID</span> 
+			<img id="logo" src="img/logo.png" alt="Boredcast: Event Discovery!"> 
+			<button id="create_event_btn" href="#">+ Add an Event</button> 
 			<ul class="nav" id="filtering-nav">
+				<li><a class="all" href="#all">All</a></li
 			<% EventsHelper::all_categories.each do |c| %>
 				<li><a class="col<%= c.value%>" href="#col<%= c.value%>"><%= c.name%></a></li>
 			<% end %>
-				<li><a class="all" href="#all">All</a></li
 			</ul>
 		</div>
 		<div class="container">
 		<%= yield %>
 		</div>
 	</body>
-	<%= javascript_include_tag "jquery",  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins","jquery-ui-1.8.10.custom.min", "jquery-ui-timepicker-addon", "app" %>
+	<%= javascript_include_tag "jquery",  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins","jquery-ui-1.8.10.custom.min", "jquery-ui-timepicker-addon", "app", "ui" %>
 </html>

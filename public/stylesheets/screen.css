@@ -8,9 +8,9 @@ header, footer, article, section, nav, menu { display: block;}
 /*********/
 
 body {
-	background: #333 url('../img/bg-a.png') repeat top left;
+	background: #333 url('../img/bg-noise.png') repeat top left;
 	color: #111;
-	font-family: Georgia, serif;
+	font-family: 'Cabin', Arial, Georgia, serif;
 	font-size: 1em;
 	line-height: 1.5;
     vertical-align: baseline;
@@ -21,38 +21,146 @@ h1 {
 }
 
 .header {
-	background: #ccd;
+	background: url('../img/header-bg.png');
 	width: 100%;
 	position: fixed;
 	top: 0;
 	z-index: 10;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	float: left;
 }
 
-.nav li {
-	display: inline;
+#logo {
+	padding: 14px;
+	float: left;
 }
+
+.nav {
+	background-color: #777;
+	margin-top: 61px;
+	border-top: 1px solid #444;
+	border-bottom: 1px solid #444;
+	
+	/* CSS 3 */
+	-moz-box-shadow: 0px 8px 20px #555;
+	-webkit-box-shadow: 0px 8px 20px #555;
+	box-shadow: 0px 8px 20px #555;
+}
+
+.nav a {
+	color: #fff;
+	padding: 2px 10px;
+}
+
+.nav li:nth-child(1)	{ 
+	margin-left: 10px; 
+}
+
+.nav li  {
+	display: inline-block;
+	margin: 3px 0px;
+	color: #fff;
+	font-size: 0.8em;
+	font-weight: bold;
+	
+	/* CSS 3*/
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+ 
+.nav li:hover, .nav li.select {
+	
+	/* CSS 3 */
+	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#222), to(#555)); 
+	background: -moz-linear-gradient(0% 90% 90deg,#555, #222);
+}
+
+#topSearch {
+	float: right; padding: 5px 10px;
+	margin: 18px; width: 200px;
+	font-size: 12px;
+	font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #888;
+	border: 1px solid #333;
+	
+	/* CSS 3 */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#login {
+	float: right;
+	margin-top:23px;
+	color: white;
+	font-size: 0.7em;
+}
+
+#create_event_btn {
+	float: left;
+	border: 1px solid #444;
+	padding: 4px 8px;
+	margin-top: 19px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	text-shadow: rgba(255,255,255,0.5) 0em 1px;
+	color:black;
+	cursor: pointer;
+	
+	/* CSS 3 */
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	background: -webkit-gradient(linear, 0% 0%, 0% 70%, from(#EEE), to(#999)); 
+	background: -moz-linear-gradient(0% 70% 90deg,#999, #EEE);
+}
+
+#create_event_btn:hover {
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999), to(#EEE)); 
+	background: -moz-linear-gradient(0% 100% 90deg,#EEE, #999);
+}
+
+
+/*	==============================================
+	MAIN BODY
+	============================================== */
 
 .container {
-	margin-top: 80px;
+	margin-top: 95px;
+	margin-left: 15px;
 }
 
 .box {
-	background: #eee;
-	margin: 10px;
-	padding: 10px;
+	background: #111;
+	margin: 10px 0px;
+	border: 1px solid black;
 	width: 200px;
+	color: white;
 	cursor: pointer;
+	
+	/* CSS 3 */
+	-moz-box-shadow: 4px 4px #777;
+	-webkit-box-shadow: 4px 4px #777;
+	box-shadow: 4px 4px #777;
 }
+
+.overlay {
+	position: absolute;
+	z-index: 6;
+}
+
+.box p, .box h3		{ padding: 10px; font-weight: normal; margin: 0; }
+.box p				{ color: #ccc; font-size: 0.7em; padding-top: 2px; }
+.box h3				{ padding-bottom: 0px; font-size: 0.9em; }
+
+.box				{ -webkit-transition: all 0.2s; }
+.box:hover			{ z-index: 100; -webkit-transform: scale(1.22); }
 
 a {
 	color: #111;
 	text-decoration: none;
 	font-decoration: none;	
 }
-
-/* css for timepicker */
-.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
-.ui-timepicker-div dl{ text-align: left; }
-.ui-timepicker-div dl dt{ height: 25px; }
-.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
