@@ -1,7 +1,7 @@
 /*---------------------------
  Bogus data generation
 ----------------------------*/
-
+/*
 var numEvents = 50;
 var possibleEvents = [
 	{url:'axo.jpg', title:'Alpha Chi Omega Vera Bradley Sale', date:'Wednesday, Feb. 9'},
@@ -28,7 +28,7 @@ var possibleEvents = [
 	];
 
 $.shuffle(possibleEvents); // More randomness
-/*
+
 for(i=1; i<=numEvents; i++) {
 	var category = Math.ceil(Math.random()*10); // Pick category between one and three
 
@@ -36,26 +36,46 @@ for(i=1; i<=numEvents; i++) {
 
 	var eventData = possibleEvents[i%possibleEvents.length];
 	var eventBox = $("<div />", { id: "event-" + i, "class": "box col" + category});
+	var overlay = $('<img class="overlay" src="img/gradient-overlay.png">');
 	var b = $("<img />", { src: "img/events/" + eventData.url, alt: eventData.title});
 	var c = $("<h3 />", { text: eventData.title });
 	var d = $("<p />", { text: eventData.date });
 
-	eventBox.append(b, c, d);
+	eventBox.append(overlay, b, c, d);
 
 	var eventDesc = $("<div />", {id: "event-" + i + "-desc", "class": "reveal-modal event-desc"});
-	var e = $("<h4 />", { text: eventData.title});
-	eventDesc.append(e);
-
+	
+	var boxBody = $('<div class="m-topbar">Viewing Event' +
+		'<span class="m-helptext">Click anywhere outside of this box to close.</span></div>' +
+		'<div class="m-title"><h1>' + eventData.title + '</h1>' +
+		'<h2>Organized by Dean Putney – Carnegie Mellon Information Systems Program</h2></div>' +
+		'<div class="m-flyer"><img class="overlay" src="img/gradient-overlay.png">' +
+		'<img src="img/events/' + eventData.url + '"></div>' +
+		'<div class="m-details"><div><h3>Time</h3><p>' + eventData.date + ' &middot; 7:30pm - 9:30pm</p></div>' +
+		'<div><h3>Location</h3><p>Gates-Hillman Center 5222</p></div>' +
+		'<div><h3>Description</h3><p>' +
+			'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales cursus' +
+			'pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, ' +
+			'per inceptos himenaeos. Suspendisse sodales ultrices ipsum quis dictum. Vivamus ' +
+			'turpis lorem, cursus sollicitudin volutpat non, ornare sed eros. Pellentesque ' +
+			'faucibus mi id est dictum feugiat. Donec nibh leo, dapibus non vulputate molestie, ' +
+			'pretium varius orci. Vivamus vitae sagittis lorem.</div>' +
+		'</div>');
+		
+	eventDesc.append(boxBody);
+	
+	
 	for(var j = 0; j<category+3; j++) {
 		eventDesc.append($('<p>This is an event description.  Useful information goes here!</p>'));
-	}*/
-/*
+	}
+	
+
 	//a.appendTo('#events');
 	$('#events').append(eventBox, eventDesc);
-}*/
-
+}
+*/
 /*---------------------------
- Scroll function
+ Scroll function (only for Kinect!)
 ----------------------------*/
 
 $('#scrollDownBtn').live('click', function(e) {
@@ -63,26 +83,14 @@ $('#scrollDownBtn').live('click', function(e) {
 	$('html, body').animate({"scrollTop": $('body').scrollTop() + 0.5*$(window).height()});
 });
 
+
 /*---------------------------
- Cycle functions
+ Create Event function
 ----------------------------*/
-
-currentPage = 4;
-
-function decreaseCategory(){
-	if (currentPage > 1)
-		currentPage--;
-	$('.col' + currentPage).click();
-}
-
-function increaseCategory(){
-	if (currentPage < 4)
-		currentPage++;
-	if(currentPage == 4)
-		$('.all').click();
-	else
-		$('.col' +currentPage).click();
-}
+$('#create_event_btn').click( function(e) {
+	e.preventDefault();
+	$('#create_event').reveal();
+});
 
 /*---------------------------
  Masonry
@@ -96,7 +104,7 @@ $('#events').imagesLoaded( function(){
 	;
 	
 	$('#events').masonry({
-	  columnWidth: 240, 
+	  columnWidth: 220, 
 	  // only apply masonry layout to visible elements
 	  itemSelector: '.box:not(.invis)',
 	  animate: true,
@@ -107,17 +115,30 @@ $('#events').imagesLoaded( function(){
 	});
 	// This is an on-click hander for all the links in the menu bar.
 	$('#filtering-nav a').click(function(){
-		var colorClass = '.' + $(this).attr('class');
+	  var colorClass = '.' + $(this).attr('class');
+		$(this).toggleClass('active');
 
-		if(colorClass=='.all') {
-			// show all hidden boxes
-			$wall.children('.invis').toggleClass('invis').stop().fadeIn(speed);
-			} else {  
-			// hide visible boxes 
-			$wall.children().not(colorClass).not('.invis').toggleClass('invis').stop().fadeOut(speed);
-			// show hidden boxes
-			$wall.children(colorClass+'.invis').toggleClass('invis').stop().fadeIn(speed);
-		}
-		$wall.masonry();
+	  if(colorClass=='.all') {
+		// show all hidden boxes
+		$wall.children('.invis').toggleClass('invis').fadeIn(speed);
+	  } else {  
+		// hide visible boxes 
+		$wall.children().not(colorClass).not('.invis').toggleClass('invis').fadeOut(speed);
+		// show hidden boxes
+		$wall.children(colorClass+'.invis').toggleClass('invis').fadeIn(speed);
+	  }
+	  $wall.masonry();
+
+	  return false;
 	});
+	
+	$("#new_event").validate({
+		rules: {
+			"event[name]": {required:true},
+			"event[description]": {required:true},
+			"event[location]": {required:true},
+			"event[categories][]":{required: true, maxlength: 2}
+			}
+		});
+	
 });

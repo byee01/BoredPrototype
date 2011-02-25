@@ -55,6 +55,10 @@
 		background: -moz-linear-gradient(0% 100% 90deg,#680000, #a20000);
 	}
 	
+	#create_event .m-topbar {
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#14ac00), to(#086d00)); 
+	}
+	
 	.reveal-modal .m-flyer, .reveal-modal .m-flyer-default {
 		position: absolute;
 		top: 50px; left: -40px;
@@ -68,12 +72,11 @@
 		background: url('../img/default-flyer.png');
 	}
 	
-	.reveal-modal .m-flyer-overlay {
-		position: relative;
-		top: 80px; padding: 20px;
-		background: black;
-		opacity: 0.7;
+	.reveal-modal #m-flyer-overlay {
 		display: block;
+		background: rgba(0,0,0,0.5); color: white;
+		margin-top: 170px; padding: 10px;
+		min-height: 40px;
 	}
 	
 	.reveal-modal .m-title {
@@ -97,6 +100,10 @@
 		color: #444;
 		margin-left: 185px;
 		padding-bottom: 25px;
+	}
+	
+	.reveal-modal #event_submit {
+		float: right;
 	}
 	
 	.reveal-modal h1, .reveal-modal h2, .reveal-modal h3,

@@ -1,7 +1,8 @@
 <div id="create_event" class="reveal-modal">
-	<h2>New event</h2>
 	<%= form_for(@event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}) do |f| %>
-	  
+	  <div class="m-topbar">Creating a New Event
+				<%= f.submit %> 
+			</div>
 	  
 		<% if @event.errors.any? %>
 		<div id="error_explanation">
@@ -15,39 +16,44 @@
 		</div>
 		<% end %>
 	  
-		<%= f.label :name %><br />
-		<%= f.text_field :name %><br/>
-
-		<%= f.label :description %><br />
-		<%= f.text_field :description %><br/>
-
-		<%= f.label :location %><br />
-		<%= f.text_field :location %><br/>
+		<div class="m-title">
+			<%= f.label :name %><br />
+			<%= f.text_field :name %><br/>
+		</div>
 		
-		<%= f.label :time %><br />
-		<%= f.datetime_select :time %>
-		<%#= f.text_field :time%><br/>
+		<div class="m-flyer-default">
+				<img class="preview-indicator" src="img/preview-indicator.png">
+				<div id="m-flyer-overlay"></div>
+		</div>
+					
+		<div class="m-details">
+			<%= f.label :description %><br />
+			<%= f.text_field :description %><br/>
 
-		<%= f.label :flyer %><br />
-		Current: <img src="<%= @event.flyer.url(:small) %>"/> <br/>
-		<%= f.file_field :flyer %><br/>
+			<%= f.label :location %><br />
+			<%= f.text_field :location %><br/>
+			
+			<%= f.label :time %><br />
+			<%= f.datetime_select :time %>
+			<%#= f.text_field :time%><br/>
+		
+			<%= f.label :flyer %><br />
+			<!--<img src="<%= @event.flyer.url(:small) %>"/> <br/>-->
+			<%= f.file_field :flyer %>
 
-		<%= f.label :pattern %><br />
-		<%= f.hidden_field :pattern %>Where a pattern picker goes<br/>
+			<%#= f.label :pattern %><br />
+			<%#= f.hidden_field :pattern %><!--Where a pattern picker goes--><br/>
 
-		<%= f.label :categories %> (Choose up to 2)<br />
-		<ul>
-		<% EventsHelper::all_categories.each do |c| %>
-			<% if @event.category_list.find{|d| d.value == c.value}%>
-				<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
-			<% else%>
-				<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+			<%= f.label :categories %> (Choose up to 2)<br />
+			<ul>
+			<% EventsHelper::all_categories.each do |c| %>
+				<% if @event.category_list.find{|d| d.value == c.value}%>
+					<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
+				<% else%>
+					<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+				<% end %>
 			<% end %>
-		<% end %>
-		</ul>
-
-		<div class="actions">
-    		<%= f.submit %>
+			</ul>
 		</div>
   </div>
 

@@ -159,6 +159,8 @@ h1 {
 .box				{ -webkit-transition: all 0.2s; }
 .box:hover			{ z-index: 100; -webkit-transform: scale(1.22); }
 
+.preview-indicator	{ position: absolute; margin: 10px; }
+
 a {
 	color: #111;
 	text-decoration: none;

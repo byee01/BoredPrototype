@@ -7,20 +7,40 @@
 	<h3><%= event.name %></h3>
 	<p><%= event.time.strftime("%A, %b. %d") %></p>
 </div>
-<div id="event-<%=@count%>-desc" class="reveal-modal">
-	<h3><%= event.name %></h3>
-	<p><%= event.description %></p>
-	<p><%= event.location %></p>
-	<p><%= event.time %></p>
-	<% if !event.flyer.nil? and event.flyer.exists?%>
-	<img src="<%= event.flyer.url(:small) %>"/>
-	<% else %>
-	<img src="<%= event.pattern %>"/>
-	<% end %>
-	<p><%= event.user_id %></p>
-	<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>
-	<p><%= link_to 'Show', event %></p>
-	<p><%= link_to 'Edit', edit_event_path(event) %></p>
-	<p><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>
-	<a class="close-reveal-modal">&#215;</a>
+<div id="event-<%=@count%>-desc" class="reveal-modal event-desc">
+	<div class="m-topbar">"Viewing Event"
+		<span class="m-helptext">Click anywhere outside of this box to close.</span>
+	</div>
+	<div class="m-title">
+		<h1><%= event.name %></h1>
+		<h2>Organized by byee</h2>
+	</div>
+	<div class="m-flyer">
+		<% if !event.flyer.nil? and event.flyer.exists?%>
+		<img class="overlay" src="img/gradient-overlay.png">
+		<img src="<%= event.flyer.url(:small) %>"/>
+		<% else %>
+		<img src="<%= event.pattern %>"/>
+		<% end %>
+	</div>
+	<div class="m-details">
+		<div>
+			<h3>Time</h3>
+			<p><%= event.time.strftime("%A, %b. %d - %I:%M%p") %></p>
+		</div>
+		<div>
+			<h3>Location</h3>
+			<p><%= event.location %></p>
+		</div>
+		<div>
+			<h3>Description</h3>
+			<p><%= event.description %></p>
+		</div>
+	</div>
+
+	<!--<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>-->
+	<!--<p><%= link_to 'Show', event %></p>-->
+	<!--<p><%= link_to 'Edit', edit_event_path(event) %></p>-->
+	<!--<p><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>-->
+	<!--<a class="close-reveal-modal">&#215;</a>-->
 </div>
