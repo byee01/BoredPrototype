@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
+	@my_events = Event.where(:user_id => 'byee')
 	@event = Event.new
 
     respond_to do |format|
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
   end
-
+  
   # POST /events
   # POST /events.xml
   def create

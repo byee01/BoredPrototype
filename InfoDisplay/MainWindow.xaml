@@ -1,0 +1,94 @@
+﻿<Window x:Class="KinectSpaceToWindowCoords.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" 
+        Height="550" 
+        Width="900"
+        WindowState="Maximized" WindowStyle="None">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+       <!-- <Ellipse 
+                MouseEnter="EllipseMouseEnter"
+                MouseLeave="EllipseMouseLeave"
+                Fill="#FF33CC99"
+                Width="400"
+                Height="400"
+                Stroke="Black"
+                StrokeThickness="2"
+                />
+        <Ellipse 
+                MouseEnter="EllipseMouseEnter"
+                MouseLeave="EllipseMouseLeave"
+                Fill="#FF99CC33"
+                Width="400"
+                Height="400"
+                Stroke="Black"
+                StrokeThickness="2"
+                Grid.Column="1"
+                />-->
+        
+           <Grid Name="browserContainer" Loaded="browserContainer_Loaded" Grid.ColumnSpan="2">
+            
+        </Grid>
+        <MediaElement Name="player" Source="swipe.mp3" Visibility="Hidden"/>
+        <MediaElement Name="player2" Source="page.mp3" Visibility="Hidden"/>
+        <MediaElement Name="player3" Source="push.mp3" Visibility="Hidden"/>
+        <!--  
+         <TextBlock
+        Text="{Binding TraceListener.Trace}"
+        />
+            <TextBlock Style="{StaticResource InstructionsTextBlock}" Text="{Binding Instructions}" />
+       
+
+-->
+
+        
+        
+       
+            
+        
+           
+           
+        
+        
+       <!-- <Canvas 
+            Margin="10"
+            VerticalAlignment="Bottom"
+            Height="100"
+            >
+            <Canvas.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="White"/>
+                    <GradientStop Offset="1" Color="#00FFFFFF"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <Grid Canvas.Left="6" Canvas.Top="6" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="168" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="Sensor X:" Style="{StaticResource PositionTextBlock}" />
+                <TextBlock Grid.Column="0" Grid.Row="1" Text="Sensor Y:" Style="{StaticResource PositionTextBlock}" />
+                <TextBlock Grid.Column="0" Grid.Row="2" Text="Cursor X:" Style="{StaticResource PositionTextBlock}" />
+                <TextBlock Grid.Column="0" Grid.Row="3" Text="Cursor Y:" Style="{StaticResource PositionTextBlock}" />
+                <TextBlock Grid.Column="1" Text="{Binding SensorX}" FontSize="20" Grid.ColumnSpan="2" />
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding SensorY}" FontSize="20" Grid.ColumnSpan="2" />
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="{Binding CursorX}" FontSize="20" Grid.ColumnSpan="2" />
+                <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding CursorY}" FontSize="20" Grid.ColumnSpan="2" />
+                
+            </Grid>
+            
+        </Canvas>-->
+    </Grid>
+</Window>

@@ -16,6 +16,10 @@ $('#create_event_btn').click( function(e) {
 	$('#create_event').reveal();
 });
 
+$('#my_events_btn').click(function(e){
+	e.preventDefault();
+	$('#my_events').reveal();
+});
 /*---------------------------
  Masonry
 ----------------------------*/
@@ -57,6 +61,7 @@ $('#events').imagesLoaded( function(){
 	});
 	
 	$("#new_event").validate({
+		onclick: true,
 		rules: {
 			"event[name]": {required:true},
 			"event[description]": {required:true},
