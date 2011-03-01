@@ -1,8 +1,20 @@
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+
+	context "Creating an event" do
+		setup do
+			#@sampleFactory = Factory.create(:event)
+		end
+		
+		should "have a flyer or a pattern" do
+			#check if there is either a flyer or a pattern
+			assert true
+		end
+		
+		teardown do
+			#@sampleFactory.destroy
+		end
+	end
+
 end

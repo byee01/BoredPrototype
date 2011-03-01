@@ -162,6 +162,11 @@ namespace KinectSpaceToWindowCoords
             Trace.Write("Kinect device starting...");
         }
 
+        /// <summary>
+        /// Rapidly changes the mouse cursor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void cursorTimer_Tick(object sender, EventArgs e)
         {
             System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.ScrollWE;

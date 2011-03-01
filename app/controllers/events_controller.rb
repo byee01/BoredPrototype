@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-puts params[:event]
+	#puts params[:event]
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
@@ -54,11 +54,7 @@ puts params[:event]
 	  puts @event.errors
         format.html { render :action => "new" }
 		format.js do 
-			responds_to_parent do
-				render :update do |page|
-					#validation jazz
-				end
-			end
+			#do something?
 		end
       end
     end

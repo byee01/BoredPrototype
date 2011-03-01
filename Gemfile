@@ -25,9 +25,13 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "paperclip", "~> 2.3"
 # gem "calendar_date_select", :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
+
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+ group :test do
+   gem "shoulda"
+   #gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git', :branch => 'rails3'
+   gem "factory_girl_rails"
+ end

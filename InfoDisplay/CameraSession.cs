@@ -92,7 +92,7 @@ namespace KinectSpaceToWindowCoords
             pointFilter.PointCreate += new EventHandler<PointBasedEventArgs>(control_PointCreate);
 
             XnMSwipeDetector swipeDetector = new XnMSwipeDetector(true);
-            swipeDetector.MotionSpeedThreshold = 0.6f;
+            swipeDetector.MotionSpeedThreshold = 1f;
             swipeDetector.MotionTime = 350;
             swipeDetector.SteadyDuration = 300;
 

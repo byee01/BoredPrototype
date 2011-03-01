@@ -30,4 +30,8 @@ class Event < ActiveRecord::Base
 		self.categories = self.categories.join(",")
 	end
 	
+	def validate
+		errors.add_to_base "You must either upload a flyer or choose a pattern" if self.flyer.blank? and self.pattern.blank?
+	end
+	
 end
