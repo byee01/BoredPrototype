@@ -1,0 +1,3 @@
+$('.reveal-modal-bg').click();
+$('#edit_event > div:last').html("<%= escape_javascript( render(:partial => "form", :locals=>{:up=>true}) ) %>");
+$('#edit_event').reveal();

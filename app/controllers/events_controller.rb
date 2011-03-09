@@ -37,6 +37,13 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+	
+	respond_to do |format|
+		format.html
+		format.js do
+			
+		end
+	end
   end
   
   # POST /events
@@ -68,10 +75,14 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-        format.xml  { head :ok }
+        format.js do
+			responds_to_parent {render}
+		end
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.js do
+			#something
+		end
       end
     end
   end
@@ -80,11 +91,15 @@ class EventsController < ApplicationController
   # DELETE /events/1.xml
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
-
+	
     respond_to do |format|
+	  if @event.destroy
+		@my_events = Event.where(:user_id => 'byee')
       format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
+      format.js do
+		#responds_to_parent{render}
+	  end
+	  end
     end
   end
 end

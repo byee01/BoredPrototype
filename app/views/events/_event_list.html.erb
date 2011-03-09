@@ -1,0 +1,5 @@
+<ul>
+		<% @my_events.each do |e| %>
+		<li><%= e.name %> <%= link_to "Edit", edit_event_path(e), :remote => true %> <%= link_to "Destroy", e, :remote=>true, :confirm=>'Are you sure?', :method => :delete %></li>
+		<% end %>
+	</ul>

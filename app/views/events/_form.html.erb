@@ -1,9 +1,12 @@
-<div id="create_event" class="reveal-modal">
-	<%= form_for(@event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}) do |f| %>
-	  <div class="m-topbar">Creating a New Event
-				<%= f.submit %> 
-			</div>
-	  
+<%#= form_for(@event, :url=>{:action=>'update', :id=>@event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}) do |f|%>
+<!--form_for(@event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'})-->
+<% if up %>
+	<% *test = {:url=>{:action=>'update', :id=>@event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}} %>
+<% else %>
+	<% *test = {:url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}} %>
+<% end %>
+<%=  form_for(@event, *test)  do |f|%>
+	  <%= f.submit %> 
 		<% if @event.errors.any? %>
 		<div id="error_explanation">
 		  <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
@@ -22,7 +25,7 @@
 		</div>
 		
 		<div class="m-flyer-default">
-				<img class="preview-indicator" src="img/preview-indicator.png">
+				<img class="preview-indicator" src="/img/preview-indicator.png">
 				<div id="m-flyer-overlay"></div>
 		</div>
 					
@@ -55,8 +58,5 @@
 			<% end %>
 			</ul>
 		</div>
-  </div>
-
 <% end %>
 <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
-</div>

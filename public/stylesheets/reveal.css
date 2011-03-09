@@ -15,7 +15,7 @@
 		position: absolute;
 		top: 90px; left: 22%;
 		width: 700px;
-		background: #CCC url('../img/bg-noise.png');
+		background: #CCC url('/img/bg-noise.png');
 		border: 1px solid black;
 		color: white;
 		z-index: 101;
@@ -69,7 +69,7 @@
 	
 	.reveal-modal .m-flyer-default {
 		height: 300px;
-		background: url('../img/default-flyer.png');
+		background: url('/img/default-flyer.png');
 	}
 	
 	.reveal-modal #m-flyer-overlay {

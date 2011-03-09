@@ -10,5 +10,14 @@
 </div>
 <br/>
 <br/>
-<%= render :partial=> 'form'%>
+<div id="create_event" class="reveal-modal">
+	<div class="m-topbar">Creating a New Event</div>
+<%= render :partial=> 'form', :locals=>{:up=>false}%>
+</div>
+<div id="edit_event" class="reveal-modal">
+	<div class="m-topbar">Editing an Event</div>
+	<div>
+		
+	</div>
+</div>
 <%= render :partial=> 'my'%>

@@ -2,10 +2,7 @@
 	<div class="m-topbar">My Events
 			
 	</div>
-	<ul>
-		<% @my_events.each do |e| %>
-		<li><%= e.name %></li>
-		<% end %>
-	</ul>
-	
+	<div>
+	<%= render :partial=>'event_list' %>
+	</div>
 </div>

@@ -17,7 +17,7 @@
 	</div>
 	<div class="m-flyer">
 		<% if !event.flyer.nil? and event.flyer.exists?%>
-		<img class="overlay" src="img/gradient-overlay.png">
+		<img class="overlay" src="/img/gradient-overlay.png">
 		<img src="<%= event.flyer.url(:small) %>"/>
 		<% else %>
 		<img src="<%= event.pattern %>"/>
