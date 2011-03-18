@@ -30,11 +30,14 @@ namespace KinectSpaceToWindowCoords
         DispatcherTimer cameraTimer;
         Rectangle workingArea;
 
+        private System.Windows.Input.Cursor gripCursor;
+
         System.Windows.Forms.Timer cursorTimer;
 
         public MainWindowViewModel()
         {
             this.Initialize();
+            gripCursor = new System.Windows.Input.Cursor(Application.StartupPath + "\\fist.cur");
         }
 
         public BindableTraceListener TraceListener
@@ -169,7 +172,8 @@ namespace KinectSpaceToWindowCoords
         /// <param name="e"></param>
         void cursorTimer_Tick(object sender, EventArgs e)
         {
-            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.ScrollWE;
+            //System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.ScrollWE;
+            System.Windows.Input.Mouse.OverrideCursor = gripCursor;
             Trace.WriteLine("is no");
         }
 
@@ -202,7 +206,7 @@ namespace KinectSpaceToWindowCoords
                     else if (!CameraSession.HorSwipeStarted && !CameraSession.VertSwipeStarted)
                         cursorTimer.Stop();
 
-                    if (CameraSession.SwipeRight)
+                    if (CameraSession.SwipeLeft)
                     {
                         if (currentPage < 10)
                         {
@@ -214,7 +218,7 @@ namespace KinectSpaceToWindowCoords
                         CameraSession.SwipeRight = CameraSession.SwipeLeft = false;
                         
                     }
-                    if (CameraSession.SwipeLeft)
+                    if (CameraSession.SwipeRight)
                     {
                         if (currentPage > 0)
                         {
@@ -230,14 +234,14 @@ namespace KinectSpaceToWindowCoords
                         CameraSession.SwipeLeft = CameraSession.SwipeRight = false;
 
                     }
-                    if (CameraSession.SwipeDown)
+                    if (CameraSession.SwipeUp)
                     {
                         this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
                         CameraSession.SwipeDown = CameraSession.SwipeUp = false;
                         dummyVariable = (dummyVariable + 1)% 2;
                         
                     }
-                    if (CameraSession.SwipeUp)
+                    if (CameraSession.SwipeDown)
                     {
                         this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
                         CameraSession.SwipeUp = CameraSession.SwipeDown = false;

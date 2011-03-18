@@ -25,6 +25,11 @@ class Event < ActiveRecord::Base
 		return list
 	end
 		
+	def get_similar
+		num_events = 3
+		
+	end	
+		
 	def cons_categories
 		self.user_id = "byee"
 		self.categories = self.categories.join(",")
@@ -33,5 +38,6 @@ class Event < ActiveRecord::Base
 	def validate
 		errors.add_to_base "You must either upload a flyer or choose a pattern" if self.flyer.blank? and self.pattern.blank?
 	end
+	
 	
 end
