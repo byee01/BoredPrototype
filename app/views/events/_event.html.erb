@@ -13,7 +13,7 @@
 	</div>
 	<div class="m-title">
 		<h1><%= event.name %></h1>
-		<h2>Organized by byee</h2>
+		<h2>Organized by <%= event.user.andrew_id %></h2>
 	</div>
 	<div class="m-flyer">
 		<% if !event.flyer.nil? and event.flyer.exists?%>

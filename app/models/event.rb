@@ -34,8 +34,8 @@ class Event < ActiveRecord::Base
 	end	
 		
 	def cons_categories
-		self.user_id = "byee"
-		self.categories = self.categories.join(",")
+		#self.user_id = "byee"
+		self.categories = self.categories.join(",") if not self.categories.kind_of? String
 	end
 	
 	def validate

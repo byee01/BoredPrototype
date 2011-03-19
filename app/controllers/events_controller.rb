@@ -3,8 +3,10 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
-	@my_events = Event.where(:user_id => 'byee')
+	@my_events = Event.where(:user_id => 1)
 	@event = Event.new
+	
+	@logged_in_user = 1
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +29,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-
+	
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -50,6 +52,8 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+	@logged_in_user = 1
+	@event.user_id = @logged_in_user	
 	#puts params[:event]
     respond_to do |format|
       if @event.save
@@ -94,7 +98,7 @@ class EventsController < ApplicationController
 	
     respond_to do |format|
 	  if @event.destroy
-		@my_events = Event.where(:user_id => 'byee')
+		@my_events = Event.where(:user_id => 1)
       format.html { redirect_to(events_url) }
       format.js do
 		#responds_to_parent{render}
