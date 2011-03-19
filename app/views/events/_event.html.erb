@@ -37,7 +37,10 @@
 			<p><%= event.description %></p>
 		</div>
 	</div>
-
+	<% similar = event.get_similar %>
+	<% similar.each do |e| %>
+		<p><%= e.name %> | <%= e.description %></p>
+	<% end %>
 	<!--<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>-->
 	<!--<p><%= link_to 'Show', event %></p>-->
 	<!--<p><%= link_to 'Edit', edit_event_path(event) %></p>-->

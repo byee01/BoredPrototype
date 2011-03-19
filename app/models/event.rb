@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 	has_attached_file :flyer,
 		:default_url   => "/system/:attachment/:style/default-flyer.png",
 		:styles =>{ :small => "200x309"}
-		
+
 	def category_list
 	
 		list = []
@@ -27,7 +27,10 @@ class Event < ActiveRecord::Base
 		
 	def get_similar
 		num_events = 3
+		query = self.name
+		similar = Event.description_like(query).limit(3)
 		
+		return similar
 	end	
 		
 	def cons_categories
