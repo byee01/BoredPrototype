@@ -3,10 +3,12 @@ class Event < ActiveRecord::Base
 	belongs_to :affiliations
 	
 	validates_presence_of :name, :description, :location, :time, :user_id, :categories
-	validates_size_of :name, :user_id, :maximum => 100
+	validates_size_of :name, :maximum => 100
 	validates_size_of :location, :maximum => 100
-	#validates_size_of :categories, :maximum => 2, :message => "You may select at most two categories"
+	validates_format_of :categories, :with => /^[1-9](,[1-9])?$/, :message => "You may select at most two categories"
+	validates_numericality_of :user_id
 	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*@:"$\-\?\\\/']*$/
+	validates_uniqueness_of :name
 	
 	before_validation :cons_categories
 	
@@ -15,7 +17,6 @@ class Event < ActiveRecord::Base
 		:styles =>{ :small => "200x309"}
 
 	def category_list
-	
 		list = []
 		if !self.categories.nil?
 			self.categories.split(",").each do |val|
@@ -27,15 +28,14 @@ class Event < ActiveRecord::Base
 		
 	def get_similar
 		num_events = 3
-		query = self.name
-		similar = Event.description_like(query).limit(3)
+		query = self.name #consider creating an array of words
+		similar = Event.description_like(query).limit(num_events)
 		
 		return similar
 	end	
 		
 	def cons_categories
-		#self.user_id = "byee"
-		self.categories = self.categories.join(",") if not self.categories.kind_of? String
+		self.categories = self.categories.join(",") if not self.categories.nil? and not self.categories.kind_of? String
 	end
 	
 	def validate
