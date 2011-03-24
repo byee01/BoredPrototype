@@ -85,7 +85,7 @@ class EventsController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.js do
-			#something
+			puts "#{@event.errors}"
 		end
       end
     end
