@@ -65,7 +65,7 @@ class EventsController < ApplicationController
 	  puts @event.errors
         format.html { render :action => "new" }
 		format.js do 
-			#do something?
+			# do something
 		end
       end
     end

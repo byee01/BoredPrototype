@@ -40,6 +40,9 @@ class Event < ActiveRecord::Base
 	
 	def validate
 		errors.add_to_base "You must either upload a flyer or choose a pattern" if self.flyer.blank? and self.pattern.blank?
+		#self.errors.add :time, "Must specify a date in the future" unless ((self.end_time.nil? or self.end_time.future?) and self.time.future?)
+		self.errors.add :time, "Must specify a date in the future" unless self.time.future?
+		self.errors.add :time,  "Event can't end if it hasn't started" unless (self.end_time.nil? or self.end_time > self.time)
 	end
 	
 	

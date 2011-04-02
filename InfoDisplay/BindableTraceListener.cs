@@ -21,12 +21,16 @@ namespace KinectSpaceToWindowCoords
 
         public override void Write(string message)
         {
+            #if (DEBUG)
             this.WriteMessage(message);
+            #endif
         }
 
         public override void WriteLine(string message)
         {
+            #if (DEBUG)
             this.WriteMessage(message);
+            #endif
         }
 
         void WriteMessage(string message)

@@ -24,7 +24,6 @@ namespace KinectSpaceToWindowCoords
 
         double cursorX;
         double cursorY;
-        string instructions;
         string uri;
         double scale;
         DispatcherTimer cameraTimer;
@@ -40,11 +39,19 @@ namespace KinectSpaceToWindowCoords
             gripCursor = new System.Windows.Input.Cursor(Application.StartupPath + "\\fist.cur");
         }
 
+        #region Properties
+
+        /// <summary>
+        /// Acts as a logger for application
+        /// </summary>
         public BindableTraceListener TraceListener
         {
             get { return App.TraceListener; }
         }
 
+        /// <summary>
+        /// Sets and gets the scale factor for real world coordinates to cursor coordinates
+        /// </summary>
         public double Scale
         {
             get { return this.scale; }
@@ -55,19 +62,9 @@ namespace KinectSpaceToWindowCoords
             }
         }
 
-        public string Instructions
-        {
-            get { return this.instructions; }
-            set
-            {
-                if (this.instructions != value)
-                {
-                    this.instructions = value;
-                    this.OnPropertyChanged("Instructions");
-                }
-            }
-        }
-
+        /// <summary>
+        /// Gets or sets the browser URI
+        /// </summary>
         public string URI
         {
             get { return this.uri; }
@@ -81,6 +78,9 @@ namespace KinectSpaceToWindowCoords
             }
         }
 
+        /// <summary>
+        /// Sets mouse cursor x position
+        /// </summary>
         public double CursorX
         {
             get { return this.cursorX; }
@@ -91,6 +91,9 @@ namespace KinectSpaceToWindowCoords
             }
         }
 
+        /// <summary>
+        /// Sets mouse cursor y position
+        /// </summary>
         public double CursorY
         {
             get { return this.cursorY; }
@@ -101,35 +104,56 @@ namespace KinectSpaceToWindowCoords
             }
         }
 
+        /// <summary>
+        /// Gets hand coordinate x
+        /// </summary>
         public double SensorX
         {
             get { return CameraSession.PositionX; }
         }
 
+        /// <summary>
+        /// Gets hand coordinate y
+        /// </summary>
         public double SensorY
         {
             get { return CameraSession.PositionY; }
         }
 
+        #endregion
+
+        #region Public Interface Methods
+        /// <summary>
+        /// Increments cursor movement scale factor
+        /// </summary>
         public void IncrementScale()
         {
             if (this.Scale < 10)
                 this.Scale++;
         }
 
+        /// <summary>
+        /// Decrements cursor movement scale factor
+        /// </summary>
         public void DecrementScale()
         {
             if (this.Scale > 1)
                 this.Scale--;
         }
+        #endregion
 
+        /// <summary>
+        /// Sends a mouse click to interface
+        /// </summary>
         public static void SendMouseClick()
         {
             mouse_event(MouseEventLeftDown, 0, 0, 0, new System.IntPtr());
             mouse_event(MouseEventLeftUp, 0, 0, 0, new System.IntPtr());
         }
 
-
+        /// <summary>
+        /// Initialization routine for main functionality
+        /// </summary>
         void Initialize()
         {
             Trace.Listeners.Add(App.TraceListener);
@@ -147,19 +171,11 @@ namespace KinectSpaceToWindowCoords
             var screen = Screen.AllScreens[0];
             this.workingArea = screen.WorkingArea;
 
-            this.cameraTimer = new DispatcherTimer()
-            {
-                Interval = TimeSpan.FromMilliseconds(10)
-            };
-
+            this.cameraTimer = new DispatcherTimer(){ Interval = TimeSpan.FromMilliseconds(10) };
             this.cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
             this.cameraTimer.Start();
 
-            this.cursorTimer = new System.Windows.Forms.Timer()
-            {
-                Interval = 1
-            };
-
+            this.cursorTimer = new System.Windows.Forms.Timer() { Interval = 1 };
             this.cursorTimer.Tick += new EventHandler(cursorTimer_Tick);
 
             Trace.Write("Kinect device starting...");
@@ -168,20 +184,21 @@ namespace KinectSpaceToWindowCoords
         /// <summary>
         /// Rapidly changes the mouse cursor
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void cursorTimer_Tick(object sender, EventArgs e)
         {
-            //System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.ScrollWE;
             System.Windows.Input.Mouse.OverrideCursor = gripCursor;
-            Trace.WriteLine("is no");
         }
 
+        /// <summary>
+        /// Updates working state with Kinect state data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void cameraTimer_Tick(object sender, EventArgs e)
         {
             if (CameraSession.KinectFail)
             {
-                this.Instructions = "No Kinect device was found. Sorry.";
+                Trace.WriteLine("No Kinect device was found. Sorry.");
                 this.cameraTimer.Stop();
                 return;
             }
@@ -190,8 +207,6 @@ namespace KinectSpaceToWindowCoords
             {
                 if (CameraSession.Active)
                 {
-                    this.Instructions = "Move your hand as the mouse pointer.";
-
                     this.CursorX = this.workingArea.Width / 2 + CameraSession.PositionX * this.Scale;
                     this.CursorY = this.workingArea.Height / 2 - CameraSession.PositionY * this.Scale;
                     this.OnPropertyChanged("SensorX");
@@ -207,61 +222,92 @@ namespace KinectSpaceToWindowCoords
                         cursorTimer.Stop();
 
                     if (CameraSession.SwipeLeft)
-                    {
-                        if (currentPage < 10)
-                        {
-                            currentPage++;
-                            this.URI = "$('a.col" + currentPage + "').click()";
-                            this.URI = "$('a.col" + currentPage + "').click()";
-
-                        }
-                        CameraSession.SwipeRight = CameraSession.SwipeLeft = false;
-                        
-                    }
+                        SwipedLeft();
                     if (CameraSession.SwipeRight)
-                    {
-                        if (currentPage > 0)
-                        {
-                            currentPage--;
-                            if (currentPage == 0)
-                                this.URI = "$('a.all').click()";
-                            else
-                            {
-                                this.URI = "$('a.col" + currentPage + "').click()";
-                                this.URI = "$('a.col" + currentPage + "').click()";
-                            }
-                        }
-                        CameraSession.SwipeLeft = CameraSession.SwipeRight = false;
-
-                    }
+                        SwipedRight();
                     if (CameraSession.SwipeUp)
-                    {
-                        this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
-                        CameraSession.SwipeDown = CameraSession.SwipeUp = false;
-                        dummyVariable = (dummyVariable + 1)% 2;
-                        
-                    }
+                        SwipedUp();
                     if (CameraSession.SwipeDown)
-                    {
-                        this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
-                        CameraSession.SwipeUp = CameraSession.SwipeDown = false;
-                        dummyVariable = (dummyVariable + 1) % 2;
-                    }
+                        SwipedDown();
                     if (CameraSession.Push)
-                    {
-                        SendMouseClick();
-                        CameraSession.Push = false;
-                    }
+                        Pushed();
                 }
                 else
                 {
-                    this.Instructions = "Wave at the Kinect to begin.";
+                    //TODO: Some sort of notification/overlay
                 }
             }
             else
             {
-                this.Instructions = "Please wait while your Kinect sensor is found...";
+                //TODO: Some sort of notification/overlay
             }
         }
+
+        #region Gesture Handlers
+
+        /// <summary>
+        /// Handles Left Swipe
+        /// </summary>
+        public void SwipedLeft()
+        {
+            if (currentPage < 10)
+            {
+                currentPage++;
+                this.URI = "$('a.col" + currentPage + "').click()";
+                this.URI = "$('a.col" + currentPage + "').click()";
+
+            }
+            CameraSession.SwipeRight = CameraSession.SwipeLeft = false;
+        }
+
+        /// <summary>
+        /// Handles Right Swipe
+        /// </summary>
+        public void SwipedRight()
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+                if (currentPage == 0)
+                    this.URI = "$('a.all').click()";
+                else
+                {
+                    this.URI = "$('a.col" + currentPage + "').click()";
+                    this.URI = "$('a.col" + currentPage + "').click()";
+                }
+            }
+            CameraSession.SwipeLeft = CameraSession.SwipeRight = false;
+        }
+
+        /// <summary>
+        /// Handles Up Swipe
+        /// </summary>
+        public void SwipedUp()
+        {
+            this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            CameraSession.SwipeDown = CameraSession.SwipeUp = false;
+            dummyVariable = (dummyVariable + 1) % 2;
+        }
+
+        /// <summary>
+        /// Handles Down Swipe
+        /// </summary>
+        public void SwipedDown()
+        {
+            this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            CameraSession.SwipeUp = CameraSession.SwipeDown = false;
+            dummyVariable = (dummyVariable + 1) % 2;
+        }
+
+        /// <summary>
+        /// Handles Push
+        /// </summary>
+        public void Pushed()
+        {
+            SendMouseClick();
+            CameraSession.Push = false;
+        }
+
+        #endregion
     }
 }

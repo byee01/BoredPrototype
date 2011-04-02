@@ -24,9 +24,9 @@ namespace KinectSpaceToWindowCoords
         public static bool VertSwipeStarted { get; private set; }
         public static bool Steady { get; private set; }
 
-        private static double leftBoundary = -(double)4*(300.00/(double)7); // Left treshold needed for swipe
+        private static double leftBoundary = -(double)5*(300.00/(double)7); // Left treshold needed for swipe
         private static double rightBoundary = -leftBoundary; // Right treshold needed for swipe
-        private static double topBoundary = (double)4*(200.00 / (double)7); //Top treshold
+        private static double topBoundary = (double)6*(200.00 / (double)7); //Top treshold
         private static double botBoundary = -topBoundary; //Bottom treshold
 
 
@@ -109,8 +109,8 @@ namespace KinectSpaceToWindowCoords
             pushDetector.Push += new EventHandler<PushDetectorEventArgs>(pushDetector_Push);
 
             XnMBroadcaster broadcaster = new XnMBroadcaster();
-            broadcaster.AddListener(pointFilter);
             pointFilter.AddListener(pointControl);
+            broadcaster.AddListener(pointFilter);
             broadcaster.AddListener(swipeDetector);
             broadcaster.AddListener(pushDetector);
             broadcaster.AddListener(steadyDetector);
@@ -134,8 +134,6 @@ namespace KinectSpaceToWindowCoords
 
             if (PositionY >= topBoundary || PositionY <= botBoundary)
             {
-                Trace.WriteLine("Steady at velocity: " + e.Velocity);
-                Trace.WriteLine("At top boundary: " + topBoundary + " Bottom is " + botBoundary);
                 VertSwipeStarted = true;
             }
             else
@@ -143,8 +141,6 @@ namespace KinectSpaceToWindowCoords
 
             if (PositionX <= leftBoundary || PositionX >= rightBoundary)
             {
-                Trace.WriteLine("Steady at velocity: " + e.Velocity);
-                Trace.WriteLine("Left boundary is" + leftBoundary + " Right is " + rightBoundary);
                 HorSwipeStarted = true;
             }
             else
@@ -155,7 +151,6 @@ namespace KinectSpaceToWindowCoords
         {
             PositionX = e.Position.X;
             PositionY = e.Position.Y;
-            Trace.WriteLine("At y: " + e.Position.Y);
         }
 
         static void control_PointCreate(object sender, PointBasedEventArgs e)
