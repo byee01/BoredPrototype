@@ -1,0 +1,8 @@
+{
+	"events":{
+<% @search_results.each do |result| %>
+	"event":[ { "name" : "<%=result.name %>" }],
+<% end %>
+	"event":[{"name" : "lol"}]
+}
+}

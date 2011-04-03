@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+
+respond_to :html, :js, :json
   # GET /events
   # GET /events.xml
   def index
@@ -105,5 +107,16 @@ class EventsController < ApplicationController
 	  end
 	  end
     end
+  end
+  
+  def search
+	num_events = 20
+	query = params[:search]
+	
+	@search_results =  Event.description_like("").limit(num_events)
+	puts @search_results
+	respond_with @search_results
+	#render :json =>search_results
+	#render :json =>Event.find(63)
   end
 end

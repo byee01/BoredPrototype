@@ -12,8 +12,16 @@ $(function() {
 	
 	/* FAUX SEARCH FUNCTIONALITY */
 	$('#topSearch').keyup(function(e) {
-		$('.box:nth-child(5n)').fadeOut();
-		$('.box:nth-child(5n)').remove();
+		//$('.box:nth-child(5n)').fadeOut();
+		//$('.box:nth-child(5n)').remove();
+		$.ajax({
+			type: "GET",
+			url: "/events/search.json",
+			dataType: 'json',
+			data: "search=gg",
+			success: function(data){console.log("Success!"); console.log(data); },
+			error: function(data){alert('json failed'); console.log(data);}
+		});
 	});
 	
 	/* CHANGES ACTIVE STATE */

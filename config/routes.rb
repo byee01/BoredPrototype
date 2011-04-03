@@ -3,7 +3,9 @@ BoredPrototype::Application.routes.draw do
 
   resources :users
 
-  resources :events
+  resources :events do
+  get 'search', :on => :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -36,7 +38,7 @@ BoredPrototype::Application.routes.draw do
   #     resources :comments, :sales
   #     resource :seller
   #   end
-
+  
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
