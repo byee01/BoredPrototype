@@ -1,8 +1,10 @@
 {
 	"events":{
-<% @search_results.each do |result| %>
-	"event":[ { "name" : "<%=result.name %>" }],
-<% end %>
-	"event":[{"name" : "lol"}]
-}
+	<% i = 1 %>
+	<% n = @search_results.count %>
+	<% @search_results.each do |result| %>
+		"event<%=i%>":{ "id": "<%=result.id%>","name" : "<%=result.name %>", "description" : "<%=result.description%>" }<%="," unless i == n%>
+		<% i=i+1%>
+	<% end %>
+	}
 }

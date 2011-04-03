@@ -20,7 +20,7 @@ $(function() {
 			dataType: 'json',
 			data: "search=gg",
 			success: function(data){console.log("Success!"); console.log(data); },
-			error: function(data){alert('json failed'); console.log(data);}
+			error: function(data){alert('json failed'); console.log(data.responseText);}
 		});
 	});
 	
