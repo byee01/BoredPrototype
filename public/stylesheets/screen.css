@@ -35,6 +35,10 @@ h1 {
 	float: left;
 }
 
+#events {
+	margin-top: 120px;
+}
+
 .nav {
 	background-color: #777;
 	margin-top: 61px;
