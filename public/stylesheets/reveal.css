@@ -14,8 +14,8 @@
 		visibility: hidden;
 		position: absolute;
 		top: 90px; left: 22%;
-		width: 700px;
-		background: #CCC url('/img/bg-noise.png');
+		min-height: 460px; width: 700px;
+		background: #CCC url('../img/bg-noise.png');
 		border: 1px solid black;
 		color: white;
 		z-index: 101;
@@ -41,6 +41,9 @@
 		font-weight: bold;
 		cursor: pointer;
 		} 
+		.reveal-modal label{
+			display: none;
+		}
 		
 	/*	=============================================
 		CUSTOM VARIATION - Harold Kim
@@ -59,24 +62,47 @@
 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#14ac00), to(#086d00)); 
 	}
 	
-	.reveal-modal .m-flyer, .reveal-modal .m-flyer-default {
+	/* defines the sidebar in the modal */
+	.reveal-modal .m-sidebar {
 		position: absolute;
 		top: 50px; left: -40px;
 		width: 200px;
-		background: black;
-		border: 1px solid black;
 	}
 	
-	.reveal-modal .m-flyer-default {
-		height: 300px;
-		background: url('/img/default-flyer.png');
+	/* Flyers in the Reveal Modal */
+	.reveal-modal .m-flyer, .reveal-modal .m-flyer-preview {
+		width: 200px;
+		margin-bottom: 20px;
+		border: 1px solid black;
+		background: black;
+	}
+	
+	/* Flyer PREVIEWS in the Reveal Modal (when EDITING) */
+	.reveal-modal .m-flyer-preview {
+		min-height: 300px;
+		background: url('../img/default-flyer.png');
+	}
+	
+	/* Buttons in the Reveal Modal Sidebar */
+	.reveal-modal .m-sidebar button {
+		float: right; clear: both;
+		text-align: left;
+		width: 120px; height: 25px;
+		margin-bottom: 7px;
 	}
 	
 	.reveal-modal #m-flyer-overlay {
 		display: block;
 		background: rgba(0,0,0,0.5); color: white;
+		font-size: 1.1em;
 		margin-top: 170px; padding: 10px;
 		min-height: 40px;
+	}
+	
+	/* The Change/Remove Flyer Buttons */
+	.reveal-modal .m-flyer-buttons {
+		margin-top: 250px;
+		width: 150px; float: left;
 	}
 	
 	.reveal-modal .m-title {
@@ -88,6 +114,15 @@
 		margin-bottom: 20px;
 	}
 	
+	.reveal-modal .m-title input[type="text"] {
+		width: 450px;
+		border: 1px solid #AAA; color: #888;
+		padding: 7px; margin-top: 8px; margin-bottom: 8px;
+		font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCC), to(#FFF)); 
+		font-size: 16px; 
+	}
+	
 	.reveal-modal .m-helptext {
 		text-shadow: none;
 		font-size: 11px;
@@ -95,11 +130,19 @@
 		font-weight: normal;
 	}
 	
+	/* Details, like Time/Location/Description */
 	.reveal-modal .m-details {
+		position: relative; left: 185px;
+		width: 515px;
 		font-size: 0.8em;
 		color: #444;
-		margin-left: 185px;
 		padding-bottom: 25px;
+	}
+	
+	.reveal-modal .m-details input, .reveal-modal .m-details textarea {
+		width: 100%; padding: 6px;
+		border: 1px solid #777;
+		color: #444;
 	}
 	
 	.reveal-modal #event_submit {
@@ -115,7 +158,16 @@
 	.reveal-modal h2 				{ font-size: 0.9em; color: #bbb; }
 	.reveal-modal h3 				{ width: 100px; float: left; font-weight: bold; }
 	.reveal-modal .m-details p 		{ margin-left: 100px; }
-	.reveal-modal .m-details div	{ margin-bottom: 8px; padding-right: 25px; }
+	.reveal-modal .m-details div	{ margin-bottom: 8px; padding-right: 35px; }
+	
+	.reveal-modal #e-cats	{
+		margin-left: 100px;
+	}
+	
+	.reveal-modal #e-cats li {
+		display: inline-block; float:left;
+		margin-right: 30px;
+	}
 	
 	
 	/*

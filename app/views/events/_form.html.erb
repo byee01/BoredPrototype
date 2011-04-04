@@ -6,7 +6,9 @@
 	<% *test = {:url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}} %>
 <% end %>
 <%=  form_for(@event, *test)  do |f|%>
+		<div class="m-topbar">Creating a New Event
 	  <%= f.submit %> 
+	  </div>
 		<% if @event.errors.any? %>
 		<div id="error_explanation">
 		  <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
@@ -18,49 +20,70 @@
 		  </ul>
 		</div>
 		<% end %>
-	  
-		<div class="m-title">
-			<%= f.label :name %><br />
-			<%= f.text_field :name %><br/>
+	  	<div class="m-title">
+				<%= f.label :name %><br />
+				<%= f.text_field :name, :value=>"Type event name here..." %><br/>
+				<h2>Organized by byee</h2>
 		</div>
-		
-		<div class="m-flyer-default">
+		<!--<div class="m-flyer-default">
 				<img class="preview-indicator" src="/img/preview-indicator.png">
 				<div id="m-flyer-overlay"></div>
+		</div>-->
+		
+		
+		
+		<div class="m-sidebar">
+				<div class="m-flyer-preview">
+					<img class="preview-indicator" src="img/preview-indicator.png">
+					<div id="m-flyer-overlay"></div>
+					<%= f.label :flyer %><br />
+					<!--<img src="<%= @event.flyer.url(:small) %>"/> <br/>-->
+					<%= f.file_field :flyer %>
+				</div>
+				<button id="b-edit">Change Flyer</button>
+				<button id="b-new">Delete Flyer</button>
 		</div>
 					
 		<div class="m-details">
-			<%= f.label :description %><br />
-			<%= f.text_field :description, :value=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales cursuspulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse sodales ultrices ipsum quis dictum. Vivamus turpis lorem, cursus sollicitudin volutpat non, ornare sed eros. Pellentesque faucibus mi id est dictum feugiat. Donec nibh leo, dapibus non vulputate molestie, pretium varius orci. Vivamus vitae sagittis lorem."%><br/>
-
-			<%= f.label :location %><br />
-			<%= f.text_field :location, :value=>"GHC 5222" %><br/>
 			
-			<%= f.label :time %><br />
-			<%= f.datetime_select :time %>
-			<%#= f.text_field :time%><br/>
-		
+			<div>
+				<h3>Time</h3>
+				<%= f.label :time %>
+				<p><%= f.datetime_select :time, :value=>"8:00am Feb 22" %></p>
+			</div>
+			
 			<!--<%#= f.label :end_time %><br />
 			<%#= f.datetime_select :end_time %>
-			<%#= f.text_field :end_time%><br/>
-		-->
-			<%= f.label :flyer %><br />
-			<!--<img src="<%= @event.flyer.url(:small) %>"/> <br/>-->
-			<%= f.file_field :flyer %>
+			<%#= f.text_field :end_time%><br/>-->
+			
 
-			<%#= f.label :pattern %><br />
-			<%#= f.hidden_field :pattern %><!--Where a pattern picker goes--><br/>
+		<!--	<%#= f.label :pattern %><br />
+			<%#= f.hidden_field :pattern %><!--Where a pattern picker goes--><br/>-->
+			<div>
+				<h3>Location</h3>
+				<%= f.label :location %>
+				<p><%= f.text_field :location, :value=>"Doherty 2111" %></p>
+			</div>
+			
+			<div>
+				<h3>Description</h3>
+				<%= f.label :description %>
+				<p><%= f.text_field :description, :value=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales cursuspulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse sodales ultrices ipsum quis dictum. Vivamus turpis lorem, cursus sollicitudin volutpat non, ornare sed eros. Pellentesque faucibus mi id est dictum feugiat. Donec nibh leo, dapibus non vulputate molestie, pretium varius orci. Vivamus vitae sagittis lorem."%></p>
+			</div>
 
-			<%= f.label :categories %> (Choose up to 2)<br />
-			<ul>
-			<% EventsHelper::all_categories.each do |c| %>
-				<% if @event.category_list.find{|d| d.value == c.value}%>
-					<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
-				<% else%>
-					<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+			<div>
+				<h3>Categories</h3>
+				<%= f.label :categories %> (Choose up to 2)<br/>
+				<ul id="e-cats">
+				<% EventsHelper::all_categories.each do |c| %>
+					<% if @event.category_list.find{|d| d.value == c.value}%>
+						<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
+					<% else%>
+						<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+					<% end %>
 				<% end %>
-			<% end %>
-			</ul>
+				</ul>
+			</div>
 		</div>
 <% end %>
 <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
