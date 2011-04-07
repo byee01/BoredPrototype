@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using System.Configuration;
 
 namespace KinectSpaceToWindowCoords
 {
@@ -157,8 +158,9 @@ namespace KinectSpaceToWindowCoords
         void Initialize()
         {
             Trace.Listeners.Add(App.TraceListener);
-
-            this.Scale = 2d;
+            double cScale = 2; 
+            Double.TryParse(ConfigurationManager.AppSettings["curScale"], out cScale);
+            this.Scale = cScale;
             this.Scale++;
             var start = new ThreadStart(CameraSession.Run);
             var cameraThread = new Thread(start);

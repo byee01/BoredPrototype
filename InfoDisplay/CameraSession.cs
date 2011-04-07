@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using ManagedNite;
+using System.Configuration;
 
 namespace KinectSpaceToWindowCoords
 {
@@ -86,6 +87,17 @@ namespace KinectSpaceToWindowCoords
 
         static void RegisterGestures()
         {
+            double hBound = 5;
+            double vBound = 6;
+
+            Double.TryParse(ConfigurationManager.AppSettings["horBound"], out hBound);
+            Double.TryParse(ConfigurationManager.AppSettings["verBound"], out vBound);
+
+            leftBoundary = -(double)hBound*(300.00/(double)7); // Left treshold needed for swipe
+            rightBoundary = -leftBoundary; // Right treshold needed for swipe
+            topBoundary = (double)vBound*(200.00 / (double)7); //Top treshold
+            botBoundary = -topBoundary; //Bottom treshold
+
             XnMPointDenoiser pointFilter = new XnMPointDenoiser();
             XnMPointControl pointControl = new XnMPointControl();
             pointControl.PointUpdate += new EventHandler<PointBasedEventArgs>(control_PointUpdate);
