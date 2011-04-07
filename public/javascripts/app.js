@@ -99,6 +99,7 @@ $('#date_input_form').keyup(function () {
 
 		// fire an ajax request in 1/5 of a second
 		this.timer = setTimeout(function () {
+			/*
 			$.ajax({
 				url: 'ajax-validation.php',
 				data: 'action=check_username&username=' + t.value,
@@ -108,6 +109,8 @@ $('#date_input_form').keyup(function () {
 					parseDate.html(j.msg);
 				}
 			});
+			*/
+			console.log("Send AJAX request...");
 		}, 200);
 
 		// copy the latest value to avoid sending requests when we don't need to
