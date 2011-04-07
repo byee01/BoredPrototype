@@ -25,6 +25,10 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 
 gem "paperclip", "~> 2.3"
 gem "rd_searchlogic", :require => 'searchlogic', :git => 'git://github.com/railsdog/searchlogic.git'
+
+# Chronic
+gem 'aaronh-chronic'
+
 #gem "acts_as_ferret", '>= 0.5'
 # gem "calendar_date_select", :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
 

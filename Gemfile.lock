@@ -8,6 +8,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -86,6 +87,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  aaronh-chronic
   factory_girl_rails
   paperclip (~> 2.3)
   rails (= 3.0.3)
