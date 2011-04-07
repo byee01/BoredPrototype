@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110404004746) do
+ActiveRecord::Schema.define(:version => 20110406034517) do
 
   create_table "affiliations", :force => true do |t|
     t.string   "name",       :null => false
@@ -34,12 +34,14 @@ ActiveRecord::Schema.define(:version => 20110404004746) do
     t.string   "flyer_content_type"
     t.integer  "flyer_file_size"
     t.datetime "end_time"
+    t.boolean  "active"
   end
 
   create_table "users", :force => true do |t|
     t.string   "andrew_id",  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
   end
 
 end

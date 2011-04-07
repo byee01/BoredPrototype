@@ -38,10 +38,10 @@
 					<div id="m-flyer-overlay"></div>
 					<%= f.label :flyer %><br />
 					<!--<img src="<%= @event.flyer.url(:small) %>"/> <br/>-->
-					<%= f.file_field :flyer %>
 				</div>
-				<button id="b-edit">Change Flyer</button>
-				<button id="b-new">Delete Flyer</button>
+				<%= f.file_field :flyer, :id=>"b-new" %>
+				<!--<button id="b-edit">Change Flyer</button>
+				<button id="b-new">Delete Flyer</button>-->
 		</div>
 					
 		<div class="m-details">
@@ -49,7 +49,7 @@
 			<div>
 				<h3>Time</h3>
 				<%= f.label :time %>
-				<p><%= f.datetime_select :time, :value=>"8:00am Feb 22" %></p>
+				<p><%= f.text_field :time, :value=>"8:00am Feb 22" %></p>
 			</div>
 			
 			<!--<%#= f.label :end_time %><br />
@@ -58,7 +58,7 @@
 			
 
 		<!--	<%#= f.label :pattern %><br />
-			<%#= f.hidden_field :pattern %><!--Where a pattern picker goes--><br/>-->
+			<%#= f.hidden_field :pattern %><br/>-->
 			<div>
 				<h3>Location</h3>
 				<%= f.label :location %>
