@@ -84,7 +84,7 @@ $('#my_events_btn').click(function(e){
 // Username validation logic
 var parseDate = $('#date_input');
 
-$('#date_input_form').keyup(function () {
+$('#event_time').keyup(function () {
 	// cache the 'this' instance as we need access to it within a setTimeout, where 'this' is set to 'window'
 	var t = this; 
 
@@ -99,19 +99,17 @@ $('#date_input_form').keyup(function () {
 
 		// fire an ajax request in 1/5 of a second
 		this.timer = setTimeout(function () {
-			/*
+			console.log('Sending request...' + t.value);
 			$.ajax({
-				url: 'ajax-validation.php',
-				data: 'action=check_username&username=' + t.value,
+				url: '/date_validations',
+				data: 'action=parse_date&data=' + t.value,
 				dataType: 'json',
 				type: 'post',
 				success: function (j) {
 					parseDate.html(j.msg);
 				}
 			});
-			*/
-			console.log("Send AJAX request...");
-		}, 200);
+		}, 500);
 
 		// copy the latest value to avoid sending requests when we don't need to
 		this.lastValue = this.value;

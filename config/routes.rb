@@ -4,7 +4,8 @@ BoredPrototype::Application.routes.draw do
   resources :users
 
   resources :events do
-  get 'search', :on => :collection
+    get 'search', :on => :collection
+    get 'date_parse'
   end
   
   match '/auth/:provider/callback', :to => 'sessions#create'
