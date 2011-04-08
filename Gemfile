@@ -29,6 +29,7 @@ gem "rd_searchlogic", :require => 'searchlogic', :git => 'git://github.com/rails
 # Chronic
 gem 'aaronh-chronic'
 gem "omniauth"
+gem "oa-pubcookie", :git => 'git://github.com/alexcrichton/oa-pubcookie.git'
 
 
 # Bundle gems for the local environment. Make sure to

@@ -188,7 +188,8 @@ namespace KinectSpaceToWindowCoords
         /// </summary>
         void cursorTimer_Tick(object sender, EventArgs e)
         {
-            System.Windows.Input.Mouse.OverrideCursor = gripCursor;
+            //System.Windows.Input.Mouse.OverrideCursor = gripCursor;
+            System.Windows.Input.Mouse.OverrideCursor = System.Windows.Input.Cursors.Help;
         }
 
         /// <summary>
@@ -218,7 +219,7 @@ namespace KinectSpaceToWindowCoords
                     if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
                     {
                         cursorTimer.Start();
-                        Trace.WriteLine("swipe started");
+                        //Trace.WriteLine("swipe started");
                     }
                     else if (!CameraSession.HorSwipeStarted && !CameraSession.VertSwipeStarted)
                         cursorTimer.Stop();
@@ -289,6 +290,7 @@ namespace KinectSpaceToWindowCoords
             this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
             CameraSession.SwipeDown = CameraSession.SwipeUp = false;
             dummyVariable = (dummyVariable + 1) % 2;
+            Trace.WriteLine("Moving up!");
         }
 
         /// <summary>

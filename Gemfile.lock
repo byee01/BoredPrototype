@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/alexcrichton/oa-pubcookie.git
+  revision: 8adc72eb6ebf4fc09e3a96b8adc9fe4debd7c954
+  specs:
+    oa-pubcookie (0.0.2)
+      net-ldap
+      oa-core
+      rack-pubcookie (>= 0.0.3)
+
+GIT
   remote: git://github.com/railsdog/searchlogic.git
   revision: 92487f9773b01d27a350c71d0e12fc0124b866b2
   specs:
@@ -109,6 +118,8 @@ GEM
     rack-openid (1.2.0)
       rack (>= 1.1.0)
       ruby-openid (>= 2.1.8)
+    rack-pubcookie (0.0.3)
+      rack
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (3.0.3)
@@ -146,6 +157,7 @@ PLATFORMS
 DEPENDENCIES
   aaronh-chronic
   factory_girl_rails
+  oa-pubcookie!
   omniauth
   paperclip (~> 2.3)
   rails (= 3.0.3)

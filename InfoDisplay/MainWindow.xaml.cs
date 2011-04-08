@@ -36,7 +36,7 @@ namespace KinectSpaceToWindowCoords
 
         public void PostInitialize()
         {
-            MakeJSCall("$('body, container').css('overflow','hidden');");
+            //MakeJSCall("$('body, container').css('overflow','hidden');");
         }
 
         public void MakeJSCall(string js)

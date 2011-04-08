@@ -104,7 +104,7 @@ namespace KinectSpaceToWindowCoords
             pointFilter.PointCreate += new EventHandler<PointBasedEventArgs>(control_PointCreate);
 
             XnMSwipeDetector swipeDetector = new XnMSwipeDetector(true);
-            swipeDetector.MotionSpeedThreshold = 1f;
+            swipeDetector.MotionSpeedThreshold = 0.8f;
             swipeDetector.MotionTime = 350;
             swipeDetector.SteadyDuration = 300;
 
@@ -114,7 +114,7 @@ namespace KinectSpaceToWindowCoords
             swipeDetector.SwipeUp += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeUp);
 
             XnMSteadyDetector steadyDetector = new XnMSteadyDetector();
-            steadyDetector.DetectionDuration = 300;
+            steadyDetector.DetectionDuration = 200;
             steadyDetector.Steady += new EventHandler<SteadyEventArgs>(steadyDetector_Steady);
 
             XnMPushDetector pushDetector = new XnMPushDetector();
@@ -163,6 +163,7 @@ namespace KinectSpaceToWindowCoords
         {
             PositionX = e.Position.X;
             PositionY = e.Position.Y;
+            Trace.WriteLine("xpos " + PositionX + " ypos " + PositionY + "\n");
         }
 
         static void control_PointCreate(object sender, PointBasedEventArgs e)

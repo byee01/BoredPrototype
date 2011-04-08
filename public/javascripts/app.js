@@ -49,13 +49,24 @@ $('#events').imagesLoaded( function(){
 	
 	$("#new_event").validate({
 		onclick: true,
+		errorPlacement: function(error, element){
+			error.insertAfter(element.parent());
+		},
 		rules: {
 			"event[name]": {required:true},
+			"event[time]" : {required:true},
 			"event[description]": {required:true},
 			"event[location]": {required:true},
-			"event[categories][]":{required: true, maxlength: 2}
+			//"event[categories][]":{required: true, maxlength: 2}
+			"event[categories][]" :{
+				required: {
+					depends: function(element) {
+						return $('.check2').size() > 1;
+					}
+				}
 			}
-		});
+		}
+	});
 	
 });
 
