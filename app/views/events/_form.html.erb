@@ -22,7 +22,7 @@
 		<% end %>
 	  	<div class="m-title">
 				<%= f.label :name %><br />
-				<%= f.text_field :name, :value=>"Type event name here..." %><br/>
+				<%= f.text_field :name%><br/>
 				<h2>Organized by byee</h2>
 		</div>
 		<!--<div class="m-flyer-default">
@@ -34,10 +34,10 @@
 		
 		<div class="m-sidebar">
 				<div class="m-flyer-preview">
-					<img class="preview-indicator" src="img/preview-indicator.png">
+					<img class="preview-indicator" src="/img/preview-indicator.png">
 					<div id="m-flyer-overlay"></div>
 					<%= f.label :flyer %><br />
-					<!--<img src="<%= @event.flyer.url(:small) %>"/> <br/>-->
+					<img src="<%= @event.flyer.url(:small) %>"/>
 				</div>
 				<%= f.file_field :flyer, :id=>"b-new" %>
 				<!--<button id="b-edit">Change Flyer</button>
@@ -49,7 +49,7 @@
 			<div>
 				<h3>Start Time</h3>
 				<%= f.label :time %>
-				<p><%= f.text_field :time, :value=>"Event starts at..." %></p>
+				<p><%= f.text_field :time%></p>
 			</div>
 			
 			<!--<%#= f.label :end_time %><br />
@@ -62,13 +62,13 @@
 			<div>
 				<h3>Location</h3>
 				<%= f.label :location %>
-				<p><%= f.text_field :location, :value=>"Doherty 2111" %></p>
+				<p><%= f.text_field :location%></p>
 			</div>
 			
 			<div>
 				<h3>Description</h3>
 				<%= f.label :description %>
-				<p><%= f.text_field :description, :value=>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales cursuspulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse sodales ultrices ipsum quis dictum. Vivamus turpis lorem, cursus sollicitudin volutpat non, ornare sed eros. Pellentesque faucibus mi id est dictum feugiat. Donec nibh leo, dapibus non vulputate molestie, pretium varius orci. Vivamus vitae sagittis lorem."%></p>
+				<p><%= f.text_field :description%></p>
 			</div>
 
 			<div>
@@ -77,9 +77,9 @@
 				<ul id="e-cats">
 				<% EventsHelper::all_categories.each do |c| %>
 					<% if @event.category_list.find{|d| d.value == c.value}%>
-						<li><%= check_box_tag "event[categories][]", c.value, true%> <%= c.name %></li>
+						<li><%= check_box_tag "event[categories][]", c.value, true, {:class=>'check2'}%> <%= c.name %></li>
 					<% else%>
-						<li><%= check_box_tag "event[categories][]", c.value%> <%= c.name %></li>
+						<li><%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2'}%> <%= c.name %></li>
 					<% end %>
 				<% end %>
 				</ul>

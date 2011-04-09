@@ -1,6 +1,6 @@
 <h1>Editing event</h1>
 
-<%= render 'form' %>
+<%= render :partial=>'form', :locals=>{:up=>true} %>
 
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>

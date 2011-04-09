@@ -1,10 +1,12 @@
+<br/><br/>
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @event.name %>
+  <h2><%= @event.name %></h2>
 </p>
-
+<p>
+  <img src="<%= @event.flyer.url(:small) %>"/>
+</p>
 <p>
   <b>Description:</b>
   <%= @event.description %>
@@ -17,22 +19,12 @@
 
 <p>
   <b>Time:</b>
-  <%= @event.time %>
-</p>
-
-<p>
-  <b>Image:</b>
-  <img src="<%= @event.flyer.url(:small) %>"/>
-</p>
-
-<p>
-  <b>Pattern:</b>
-  <%= @event.pattern%>
+  <%= @event.time.strftime("%A, %b. %d - %I:%M%p") %>
 </p>
 
 <p>
   <b>Owner:</b>
-  <%= @event.user_id %>
+  <%= @event.user.andrew_id%>
 </p>
 
 <p>
