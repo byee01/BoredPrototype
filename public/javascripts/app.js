@@ -101,13 +101,12 @@ $('#event_time').keyup(function () {
 		this.timer = setTimeout(function () {
 			console.log('Sending request...' + t.value);
 			$.ajax({
-				url: '/date_validations',
-				data: 'action=parse_date&data=' + t.value,
+				type: "GET",
+				url: "/events/date_input.json",
 				dataType: 'json',
-				type: 'post',
-				success: function (j) {
-					parseDate.html(j.msg);
-				}
+				data: "date=" + t.value,
+				success: function(data){console.log("Success!"); console.log(data); },
+				error: function(data){alert('json failed'); console.log(data.responseText);}
 			});
 		}, 500);
 
