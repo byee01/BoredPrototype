@@ -120,7 +120,8 @@ respond_to :html, :js, :json
   end
 
   def date_input
-    @time = parse_date(params[:date])
-    respond_with @time
+    time = params[:date]
+    Chronic.parse(time, :context => :future).to_s
+    render :json => time
   end
 end
