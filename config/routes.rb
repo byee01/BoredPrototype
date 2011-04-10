@@ -9,9 +9,9 @@ BoredPrototype::Application.routes.draw do
     get 'search', :on => :collection
   end
 
-  #match '/events/date_input', :to => 'events#date_input'
-  
   match '/auth/:provider/callback', :to => 'sessions#create'
+
+  match '/date_parse', :to => 'events#date_input'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

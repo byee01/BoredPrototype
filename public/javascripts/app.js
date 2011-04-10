@@ -113,13 +113,15 @@ $('#event_time').keyup(function () {
 			console.log('Sending request...' + t.value);
 			$.ajax({
 				type: "GET",
-				url: "/events/date_input.json",
+				url: "/date_parse",
 				dataType: 'json',
-				data: "id=1&date=" + t.value,
-				success: function(data){ console.log(data); },
-				error: function(data){ console.log(data.responseText);}
+				data: "date=" + t.value,
+				success: 	function(data){  
+								console.log(data);
+							},
+				error: function(data){ console.log("E\n" + data);}
 			});
-		}, 500);
+		}, 2000);
 
 		// copy the latest value to avoid sending requests when we don't need to
 		this.lastValue = this.value;

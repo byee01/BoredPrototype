@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-include DateParser
+
 respond_to :html, :js, :json
   # GET /events
   # GET /events.xml
@@ -120,8 +120,8 @@ respond_to :html, :js, :json
   end
 
   def date_input
-    time = params[:date]
-    Chronic.parse(time, :context => :future).to_s
-    render :json => time
+    require 'chronic'
+    j = ActiveSupport::JSON
+    j.encode({:date => "Chronic.parse(params[:date], :context => :future)", :date_s => Time.now})
   end
 end
