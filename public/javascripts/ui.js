@@ -1,8 +1,3 @@
-/*		BOREDCAST UI FUNCTIONS
-		Harold Kim
-		Last Updated: February 25th, 2011
-*/
-
 $(function() {
 	
 	/* CLEARS SEARCH ON CLICK */
@@ -10,10 +5,8 @@ $(function() {
 		this.value = '';
 	});
 	
-	/* FAUX SEARCH FUNCTIONALITY */
+	/* SEARCH FUNCTIONALITY */
 	$('#topSearch').keyup(function(e) {
-		//$('.box:nth-child(5n)').fadeOut();
-		//$('.box:nth-child(5n)').remove();
 		$.ajax({
 			type: "GET",
 			url: "/events/search.json",

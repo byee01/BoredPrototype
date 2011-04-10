@@ -115,9 +115,9 @@ $('#event_time').keyup(function () {
 				type: "GET",
 				url: "/events/date_input.json",
 				dataType: 'json',
-				data: "date=" + t.value,
-				success: function(data){console.log("Success!"); console.log(data); },
-				error: function(data){alert('json failed'); console.log(data.responseText);}
+				data: "id=1&date=" + t.value,
+				success: function(data){ console.log(data); },
+				error: function(data){ console.log(data.responseText);}
 			});
 		}, 500);
 

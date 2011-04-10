@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-
+include DateParser
 respond_to :html, :js, :json
   # GET /events
   # GET /events.xml
@@ -118,8 +118,9 @@ respond_to :html, :js, :json
 	#render :json =>search_results
 	#render :json =>Event.find(63)
   end
-    def parse_date
-      time = Chronic.parse(params[:date], :context => :future).to_s
-      respond_with @time
+
+  def date_input
+    @time = parse_date(params[:date])
+    respond_with @time
   end
 end

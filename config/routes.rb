@@ -3,10 +3,13 @@ BoredPrototype::Application.routes.draw do
 
   resources :users
 
+  resources :date_validations
+
   resources :events do
     get 'search', :on => :collection
-    get 'date_parse'
   end
+
+  match '/events/date_input', :to => 'events#date_input'
   
   match '/auth/:provider/callback', :to => 'sessions#create'
 
