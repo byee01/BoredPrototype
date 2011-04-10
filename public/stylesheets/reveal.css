@@ -52,7 +52,7 @@
 	.reveal-modal .m-topbar {
 		font-size: 0.8em; font-weight: bold;
 		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-		padding: 5px 8px;
+		padding: 8px;
 		text-shadow: rgba(0,0,0,0.5) 0em 2px;
 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a20000), to(#680000)); 
 		background: -moz-linear-gradient(0% 100% 90deg,#680000, #a20000);

@@ -121,11 +121,8 @@ respond_to :html, :js, :json
 
   def date_input
     require 'chronic'
-   # j = ActiveSupport::JSON
-    #parsed_date = Chronic.parse(params[:date], :context => :future)
-   # j.encode({:date => parsed_date, :date_s => parsed_date})
-  #  render :json => { parsed_date, parsed_date.strftime('%B %d, %Y at %I:%M %P') }
     @date_input  = Chronic.parse(params[:date], :context => :future)
-     respond_with @date_input
+    puts @date_input
+    respond_with @date_input
   end
 end

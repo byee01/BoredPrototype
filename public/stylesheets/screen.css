@@ -31,13 +31,13 @@ h1 {
 }
 
 #logo {
-	padding: 14px;
+	padding: 14px 14px 0 14px;
 	float: left;
 }
 
 .nav {
 	background-color: #222;
-	margin-top: 35px;
+	margin-top: 58px;
 	border-top: 1px solid #444;
 	border-bottom: 1px solid #444;
 }
@@ -101,7 +101,7 @@ h1 {
 	font-size: 0.7em;
 }
 
-#create_event_btn {
+button, input[type="submit"] {
 	float: left;
 	border: 1px solid #444;
 	padding: 4px 8px;
@@ -122,9 +122,13 @@ h1 {
 	background: -moz-linear-gradient(0% 70% 90deg,#999, #EEE);
 }
 
-#create_event_btn:hover {
+button:hover, input[type="submit"]:hover {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999), to(#EEE)); 
 	background: -moz-linear-gradient(0% 100% 90deg,#EEE, #999);
+}
+
+#event_submit {
+	margin-top: -2px;
 }
 
 
