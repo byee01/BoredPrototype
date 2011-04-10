@@ -95,9 +95,9 @@ $('#my_events_btn').click(function(e){
  Date Parsing
 ----------------------------*/
 // Username validation logic
-var parseDate = $('#date_input');
+//var parseDate = $('#date_input');
 
-$('#event_time').keyup(function () {
+$('#date_input').keyup(function () {
 	// cache the 'this' instance as we need access to it within a setTimeout, where 'this' is set to 'window'
 	var t = this; 
 
@@ -108,7 +108,7 @@ $('#event_time').keyup(function () {
 		if (this.timer) clearTimeout(this.timer);
 
 		// show our holding text in the validation message space
-		parseDate.removeClass('error').html('<img src="images/ajax-loader.gif" height="16" width="16" /> gears turning...');
+		//parseDate.removeClass('error').html('<img src="images/ajax-loader.gif" height="16" width="16" /> gears turning...');
 
 		// fire an ajax request in 1/5 of a second
 		this.timer = setTimeout(function () {
@@ -120,9 +120,13 @@ $('#event_time').keyup(function () {
 				data: "date=" + t.value,
 				success: 	function(data){  
 								console.log(data);
-								$('#time_output').text(data.time_s)
+								$('#date_output').text(data.time_s);
+								$('#hidden_date_input').val(data.time)
 							},
-				error: function(data){ console.log("E\n" + data);}
+				error: 		function(data){ 
+								console.log("E\n" + data);
+								$('#date_output').text("Oops! Don't understand that!");
+							}
 			});
 		}, 200);
 

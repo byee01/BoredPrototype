@@ -131,6 +131,9 @@ button:hover, input[type="submit"]:hover {
 	margin-top: -2px;
 }
 
+#date_input {
+	width: 50%;
+}
 
 /*	==============================================
 	MAIN BODY

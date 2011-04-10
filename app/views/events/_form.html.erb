@@ -49,8 +49,8 @@
 			<div>
 				<h3>Start Time</h3>
 				<%= f.label :time %>
-				<p><%= f.text_field :time%></p>
-				<p id="time_output"></p>
+				<p><input id="date_input" type="text" /><span id="date_output"/></p>
+				<p><%= f.hidden_field :time, :id => 'hidden_date_input', :value => Time.now %></p>
 			</div>
 			
 			<!--<%#= f.label :end_time %><br />
