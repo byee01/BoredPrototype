@@ -55,8 +55,7 @@ respond_to :html, :js, :json
   def create
     @event = Event.new(params[:event])
 	@logged_in_user = 1
-	@event.user_id = @logged_in_user	
-	puts params[:time]
+	@event.user_id = @logged_in_user
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
