@@ -133,6 +133,7 @@ button:hover, input[type="submit"]:hover {
 
 #date_input {
 	width: 50%;
+	margin-right: 1em;
 }
 
 /*	==============================================

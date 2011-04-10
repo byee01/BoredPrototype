@@ -49,7 +49,7 @@
 			<div>
 				<h3>Start Time</h3>
 				<%= f.label :time %>
-				<p><input id="date_input" type="text" /><span id="date_output"/></p>
+				<p><input id="date_input" type="text" placeholder="Tomorrow at 3p..." /><span id="date_output">When is your event?</span></p>
 				<p><%= f.hidden_field :time, :id => 'hidden_date_input', :value => Time.now %></p>
 			</div>
 			
