@@ -124,7 +124,7 @@ $('#event_time').keyup(function () {
 							},
 				error: function(data){ console.log("E\n" + data);}
 			});
-		}, 500);
+		}, 200);
 
 		// copy the latest value to avoid sending requests when we don't need to
 		this.lastValue = this.value;
