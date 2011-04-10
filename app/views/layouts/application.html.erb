@@ -16,7 +16,7 @@
 			<button id="create_event_btn" href="#">+ Add an Event</button> 
 			<button id="my_events_btn" href="#"> + My Events</button>
 			<ul class="nav" id="filtering-nav">
-				<li><a class="all" href="#all">All</a></li
+				<li><a class="all" href="#all">All</a></li>
 			<% EventsHelper::all_categories.each do |c| %>
 				<li><a class="col<%= c.value%>" href="#col<%= c.value%>"><%= c.name%></a></li>
 			<% end %>

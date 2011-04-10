@@ -3,8 +3,6 @@ BoredPrototype::Application.routes.draw do
 
   resources :users
 
-  resources :date_validations
-
   resources :events do
     get 'search', :on => :collection
   end

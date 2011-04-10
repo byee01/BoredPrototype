@@ -118,10 +118,11 @@ $('#event_time').keyup(function () {
 				data: "date=" + t.value,
 				success: 	function(data){  
 								console.log(data);
+								$('#time_output').text(data.time_s)
 							},
 				error: function(data){ console.log("E\n" + data);}
 			});
-		}, 2000);
+		}, 500);
 
 		// copy the latest value to avoid sending requests when we don't need to
 		this.lastValue = this.value;
