@@ -1,11 +1,9 @@
 <div id="event-<%=@count%>" class="box<% event.category_list.each do |c| %> col<%= c.value%><% end %>">
 	<% if !event.flyer.nil? and event.flyer.exists?%>
-	<img class="overlay" src="/img/gradient-overlay.png">
-	<img src="<%= event.flyer.url(:small) %>"/>
+		<img src="<%= event.flyer.url(:small) %>"/>
 	<% else %>
-	<img class="overlay" src="/img/gradient-overlay.png">
-	<!--<img src="<%= event.pattern %>"/>-->
-	<img src="/img/default-flyer.png"/>
+		<!--<img src="<%= event.pattern %>"/>-->
+		<img src="/img/default-flyer.png"/>
 	<% end %>
 	<h3><%= event.name %></h3>
 	<p><%= event.time.strftime("%A, %b. %d") %></p>

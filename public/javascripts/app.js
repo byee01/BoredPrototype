@@ -30,21 +30,24 @@ $('#events').imagesLoaded( function(){
 	});
 	// This is an on-click hander for all the links in the menu bar.
 	$('#filtering-nav a').click(function(){
-	  var colorClass = '.' + $(this).attr('class');
-		$(this).toggleClass('active');
+		var colorClass = '.' + $(this).attr('class');
 
-	  if(colorClass=='.all') {
-		// show all hidden boxes
-		$wall.children('.invis').toggleClass('invis').fadeIn(speed);
-	  } else {  
-		// hide visible boxes 
-		$wall.children().not(colorClass).not('.invis').toggleClass('invis').fadeOut(speed);
-		// show hidden boxes
-		$wall.children(colorClass+'.invis').toggleClass('invis').fadeIn(speed);
-	  }
-	  $wall.masonry();
+		$(original).toggleClass('select');
+		$(this).parent().toggleClass('select');
+		original = $(this).parent();
 
-	  return false;
+		if(colorClass=='.all') {
+			// show all hidden boxes
+			$wall.children('.invis').toggleClass('invis').fadeIn(speed);
+		} else {  
+			// hide visible boxes 
+			$wall.children().not(colorClass).not('.invis').toggleClass('invis').fadeOut(speed);
+			// show hidden boxes
+			$wall.children(colorClass+'.invis').toggleClass('invis').fadeIn(speed);
+		}
+		$wall.masonry();
+
+		return false;
 	});
 	
 	$("#new_event").validate({
@@ -66,8 +69,7 @@ $('#events').imagesLoaded( function(){
 				}
 			}
 		}
-	});
-	
+	});	
 });
 
 
