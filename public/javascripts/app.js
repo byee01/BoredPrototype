@@ -91,6 +91,9 @@ $('#my_events_btn').click(function(e){
 ----------------------------*/
 
 
+$(".cat-radio input:checkbox").checkbox();
+
+
 /*---------------------------
  Date Parsing
 ----------------------------*/

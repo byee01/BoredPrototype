@@ -47,7 +47,7 @@
 		<div class="m-details">
 			
 			<div>
-				<h3><%= label_tag :time, 'Start Time' %></h3>
+				<h3><%= label_tag 'date_input', 'Start Time' %></h3>
 				
 				<p><input id="date_input" type="text" placeholder="Tomorrow at 3p..." /><span id="date_output">When is your event?</span></p>
 				<p><%= f.hidden_field :time, :id => 'hidden_date_input', :value => Time.now %></p>
@@ -61,15 +61,13 @@
 		<!--	<%#= f.label :pattern %><br />
 			<%#= f.hidden_field :pattern %><br/>-->
 			<div>
-				<h3>Location</h3>
-				<%= f.label :location %>
-				<p><%= f.text_field :location%></p>
+				<h3><%= label_tag 'location_input', 'Location' %></h3>
+				<p><%= f.text_field :location, :placeholder => "Where is your event?" %></p>
 			</div>
 			
 			<div>
-				<h3>Description</h3>
-				<%= f.label :description %>
-				<p><%= f.text_field :description%></p>
+				<h3><%= label_tag 'description_input', 'Description' %></h3>
+				<p><%= f.text_field :description, :placeholder => "A few words about your event..." %></p>
 			</div>
 
 			<div>
@@ -84,9 +82,7 @@
 						<% else%>
 							<%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2', :id => check_id }%>
 						<% end %>
-						<span class="cat-radio-label">
-							<%= label_tag check_id, c.name %>
-						</span>
+						<%= label_tag check_id, c.name %>
 					</li>
 				<% end %>
 				</ul>
