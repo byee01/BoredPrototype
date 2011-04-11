@@ -47,8 +47,8 @@
 		<div class="m-details">
 			
 			<div>
-				<h3>Start Time</h3>
-				<%= f.label :time %>
+				<h3><%= label_tag :time, 'Start Time' %></h3>
+				
 				<p><input id="date_input" type="text" placeholder="Tomorrow at 3p..." /><span id="date_output">When is your event?</span></p>
 				<p><%= f.hidden_field :time, :id => 'hidden_date_input', :value => Time.now %></p>
 			</div>
@@ -77,13 +77,16 @@
 				<%= f.label :categories %> (Choose up to 2)<br/>
 				<ul id="e-cats">
 				<% EventsHelper::all_categories.each do |c| %>
-					<li>
-					<% if @event.category_list.find{|d| d.value == c.value}%>
-						<%= check_box_tag "event[categories][]", c.value, true, {:class=>'check2'}%>
-					<% else%>
-						<%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2'}%>
-					<% end %>
-	
+					<% check_id = get_check_id(c.name) %>
+					<li class="cat-radio">
+						<% if @event.category_list.find{|d| d.value == c.value}%>
+							<%= check_box_tag "event[categories][]", c.value, true, {:class=>'check2', :id => check_id }%>
+						<% else%>
+							<%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2', :id => check_id }%>
+						<% end %>
+						<span class="cat-radio-label">
+							<%= label_tag check_id, c.name %>
+						</span>
 					</li>
 				<% end %>
 				</ul>
