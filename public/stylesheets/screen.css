@@ -174,9 +174,9 @@ a {
 }
 
 
-	/*	=============================================
-		REVEAL DROPDOWN
-		============================================= */
+/*	=============================================
+	REVEAL DROPDOWN
+	============================================= */
 	
 	.reveal-modal .m-topbar {
 		font-size: 0.8em; font-weight: bold;
@@ -201,7 +201,7 @@ a {
 		top: 50px; left: -40px;
 		width: 200px;
 	}
-	
+
 	/* Flyers in the Reveal Modal */
 	.reveal-modal .m-flyer, .reveal-modal .m-flyer-preview {
 		width: 200px;
@@ -209,7 +209,7 @@ a {
 		border: 1px solid black;
 		background: black;
 	}
-	
+
 	/* Flyer PREVIEWS in the Reveal Modal (when EDITING) */
 	.reveal-modal .m-flyer-preview {
 		min-height: 300px;
@@ -332,7 +332,7 @@ a {
 .jquery-safari-checkbox .mark {display: inline;}
 
 .jquery-safari-checkbox img {vertical-align: middle; width: 16px; height: 16px;}
-.jquery-safari-checkbox img{background: transparent url(../images/safari-checkbox.png) no-repeat;}
+.jquery-safari-checkbox img{background: transparent url('../images/safari-checkbox.png' ) no-repeat;}
 
 .jquery-safari-checkbox img{
 	background-position: 0px 0px;

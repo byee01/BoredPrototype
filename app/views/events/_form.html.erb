@@ -11,13 +11,13 @@
 	  </div>
 		<% if @event.errors.any? %>
 		<div id="error_explanation">
-		  <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
+			<%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
 
-		  <ul>
-		  <% @event.errors.full_messages.each do |msg| %>
+			<ul>
+			<% @event.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
-		  <% end %>
-		  </ul>
+			<% end %>
+			</ul>
 		</div>
 		<% end %>
 	  	<div class="m-title">
@@ -29,9 +29,9 @@
 				<img class="preview-indicator" src="/images/preview-indicator.png">
 				<div id="m-flyer-overlay"></div>
 		</div>-->
-		
-		
-		
+
+
+
 		<div class="m-sidebar">
 				<div class="m-flyer-preview">
 					<img class="preview-indicator" src="/images/preview-indicator.png">
