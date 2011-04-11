@@ -26,7 +26,7 @@
 				<h2>Organized by byee</h2>
 		</div>
 		<!--<div class="m-flyer-default">
-				<img class="preview-indicator" src="/img/preview-indicator.png">
+				<img class="preview-indicator" src="/images/preview-indicator.png">
 				<div id="m-flyer-overlay"></div>
 		</div>-->
 		
@@ -34,7 +34,7 @@
 		
 		<div class="m-sidebar">
 				<div class="m-flyer-preview">
-					<img class="preview-indicator" src="/img/preview-indicator.png">
+					<img class="preview-indicator" src="/images/preview-indicator.png">
 					<div id="m-flyer-overlay"></div>
 					<%= f.label :flyer %><br />
 					<img src="<%= @event.flyer.url(:small) %>"/>
@@ -77,12 +77,12 @@
 				<% EventsHelper::all_categories.each do |c| %>
 					<% check_id = get_check_id(c.name) %>
 					<li class="cat-radio">
+						<%= label_tag check_id, c.name %>
 						<% if @event.category_list.find{|d| d.value == c.value}%>
 							<%= check_box_tag "event[categories][]", c.value, true, {:class=>'check2', :id => check_id }%>
 						<% else%>
 							<%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2', :id => check_id }%>
 						<% end %>
-						<%= label_tag check_id, c.name %>
 					</li>
 				<% end %>
 				</ul>

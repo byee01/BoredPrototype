@@ -91,7 +91,7 @@ $('#my_events_btn').click(function(e){
 ----------------------------*/
 
 
-$(".cat-radio input:checkbox").checkbox();
+$(".cat-radio input:checkbox").checkbox({cls:'jquery-safari-checkbox'});
 
 
 /*---------------------------

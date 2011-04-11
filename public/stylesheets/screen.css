@@ -175,7 +175,7 @@ a {
 
 
 	/*	=============================================
-		REVEAL DROPDOWN - Harold Kim
+		REVEAL DROPDOWN
 		============================================= */
 	
 	.reveal-modal .m-topbar {
@@ -185,6 +185,10 @@ a {
 		text-shadow: rgba(0,0,0,0.5) 0em 2px;
 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a20000), to(#680000)); 
 		background: -moz-linear-gradient(0% 100% 90deg,#680000, #a20000);
+	}
+
+	#create_event {
+		padding-bottom: 40px;
 	}
 	
 	#create_event .m-topbar {
@@ -296,31 +300,50 @@ a {
 	.reveal-modal #e-cats li {
 		display: inline-block; float:left;
 		margin-right: 30px;
+		position:relative;
 	}
 
 	.cat-radio label {
-		display: block;
-		width: 150px;
+		display: inline-block;
+		width: 125px;
+		margin: 5px 0;
+		padding: 10px;
+		cursor: pointer;
+		background: #aaa;
+
+		/* CSS 3 */
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
 	}
 
-	.cat-radio input {
-		background: red;
-	}
-	
-	
-	/*
-		
-	NOTES
-	
-	Close button entity is &#215;
-	
-	Example markup
-	
-	<div id="myModal" class="reveal-modal">
-		<h2>Awesome. I have it.</h2>
-		<p class="lead">Your couch.  I it's mine.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultrices aliquet placerat. Duis pulvinar orci et nisi euismod vitae tempus lorem consectetur. Duis at magna quis turpis mattis venenatis eget id diam. </p>
-		<a class="close-reveal-modal">&#215;</a>
-	</div>
-	
-	*/
+/*	==============================================
+	Checkbox
+	============================================== */
+
+
+.jquery-safari-checkbox {display: inline;cursor: pointer; position:absolute;right:12px; top:30%;}
+.jquery-safari-checkbox .mark {display: inline;}
+
+.jquery-safari-checkbox img {vertical-align: middle; width: 16px; height: 16px;}
+.jquery-safari-checkbox img{background: transparent url(../images/safari-checkbox.png) no-repeat;}
+
+.jquery-safari-checkbox img{
+	background-position: 0px 0px;
+}
+.jquery-safari-checkbox-hover img{
+	background-position: -16px 0px;
+}
+.jquery-safari-checkbox-checked img{
+	background-position: 0px -16px;
+}
+.jquery-safari-checkbox-checked .jquery-safari-checkbox-hover img {
+	background-position: -16px -16px;
+}
+
+.jquery-safari-checkbox-disabled img{
+	background-position: 0px -32px;
+}
+.jquery-safari-checkbox-checked .jquery-safari-checkbox-disabled img{
+	background-position: 0px -48px;
+}
