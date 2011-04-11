@@ -15,7 +15,7 @@
 		position: absolute;
 		top: 90px; left: 22%;
 		min-height: 460px; width: 700px;
-		background: #CCC url('../img/bg-noise.png');
+		background: #CCC url('../imgages/bg-noise.png');
 		border: 1px solid black;
 		color: white;
 		z-index: 101;

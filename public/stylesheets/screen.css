@@ -8,7 +8,7 @@ header, footer, article, section, nav, menu { display: block;}
 /*********/
 
 body {
-	background: #333 url('../img/bg-noise.png') repeat top left;
+	background: #333 url('../images/bg-noise.png') repeat top left;
 	color: #111;
 	font-family: 'Cabin', Arial, Georgia, serif;
 	font-size: 1em;
@@ -209,7 +209,7 @@ a {
 	/* Flyer PREVIEWS in the Reveal Modal (when EDITING) */
 	.reveal-modal .m-flyer-preview {
 		min-height: 300px;
-		background: url('../img/default-flyer.png');
+		background: url('../images/default-flyer.png');
 	}
 	
 	/* Buttons in the Reveal Modal Sidebar */
