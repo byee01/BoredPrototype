@@ -46,4 +46,8 @@ module EventsHelper
 		end
 		return nil
 	end
+
+	def get_check_id(name)
+		'check_' + name.downcase
+	end
 end
