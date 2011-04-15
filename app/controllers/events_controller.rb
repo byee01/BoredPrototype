@@ -100,12 +100,44 @@ respond_to :html, :js, :json
     respond_to do |format|
 	  if @event.destroy
 		@my_events = Event.where(:user_id => 1)
-      format.html { redirect_to(events_url) }
+      format.html { redirect_to(list_events_path) }
       format.js do
-		#responds_to_parent{render}
+		responds_to_parent{render}
 	  end
 	  end
     end
+  end
+  
+  def list
+	@events = Event.all
+	
+  end
+  
+  def approve
+	@event = Event.find(params[:id])
+	@event.active = true
+	
+	respond_to do |format|
+		 if @event.save
+			format.html { redirect_to(list_events_path, :notice => 'Event was successfully approved.') }
+		 else
+			format.html { redirect_to(list_events_path, :notice => 'Event could not be approved.') }
+		end
+	end
+	
+  end
+  
+  def disapprove
+	@event = Event.find(params[:id])
+	@event.active = false
+	
+	respond_to do |format|
+		 if @event.save
+			format.html { redirect_to(list_events_path, :notice => 'Event was successfully disapproved.') }
+		 else
+			format.html { redirect_to(list_events_path, :notice => 'Event could not be disapproved.') }
+		end
+	end
   end
   
   def search

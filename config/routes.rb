@@ -5,12 +5,20 @@ BoredPrototype::Application.routes.draw do
 
   resources :events do
     get 'search', :on => :collection
+	get 'list', :on => :collection
+	put  'approve', :on =>:member
+	put 'disapprove', :on => :member
+	delete 'delete', :on => :member
   end
 
   match '/auth/:provider/callback', :to => 'sessions#create'
 
   match '/date_parse', :to => 'events#date_input'
 
+  match '/events/:id/approve', :to => 'events#approve'
+  match '/events/:id/disapprove', :to =>'events#disapprove'
+  match '/events/:id/delete', :to => 'events#destroy'
+ 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

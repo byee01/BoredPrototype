@@ -29,6 +29,8 @@ namespace KinectSpaceToWindowCoords
         private static double rightBoundary = -leftBoundary; // Right treshold needed for swipe
         private static double topBoundary = (double)6*(200.00 / (double)7); //Top treshold
         private static double botBoundary = -topBoundary; //Bottom treshold
+        private static double baseKinectHeight = 54;
+        private static double adjustedHeight = baseKinectHeight;
 
 
         public static bool ShutDown
@@ -98,6 +100,11 @@ namespace KinectSpaceToWindowCoords
             topBoundary = (double)vBound*(200.00 / (double)7); //Top treshold
             botBoundary = -topBoundary; //Bottom treshold
 
+            double actHeight = 0;
+            Double.TryParse(ConfigurationManager.AppSettings["kinectHeight"], out actHeight);
+
+            adjustedHeight = actHeight - baseKinectHeight;
+
             XnMPointDenoiser pointFilter = new XnMPointDenoiser();
             XnMPointControl pointControl = new XnMPointControl();
             pointControl.PointUpdate += new EventHandler<PointBasedEventArgs>(control_PointUpdate);
@@ -105,18 +112,18 @@ namespace KinectSpaceToWindowCoords
 
             XnMSwipeDetector swipeDetector = new XnMSwipeDetector(true);
             swipeDetector.MotionSpeedThreshold = 0.8f;
-            swipeDetector.MotionTime = 350;
-            swipeDetector.SteadyDuration = 300;
+            swipeDetector.MotionTime = 180; //350
+            swipeDetector.SteadyDuration = 150; //200
 
             swipeDetector.SwipeRight += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeRight);
             swipeDetector.SwipeLeft += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeLeft);
             swipeDetector.SwipeDown += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeDown);
             swipeDetector.SwipeUp += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeUp);
 
-            XnMSteadyDetector steadyDetector = new XnMSteadyDetector();
+          /*  XnMSteadyDetector steadyDetector = new XnMSteadyDetector();
             steadyDetector.DetectionDuration = 200;
             steadyDetector.Steady += new EventHandler<SteadyEventArgs>(steadyDetector_Steady);
-
+            */
             XnMPushDetector pushDetector = new XnMPushDetector();
             pushDetector.Push += new EventHandler<PushDetectorEventArgs>(pushDetector_Push);
 
@@ -125,8 +132,8 @@ namespace KinectSpaceToWindowCoords
             broadcaster.AddListener(pointFilter);
             broadcaster.AddListener(swipeDetector);
             broadcaster.AddListener(pushDetector);
-            broadcaster.AddListener(steadyDetector);
-
+            //broadcaster.AddListener(steadyDetector);
+            HorSwipeStarted = VertSwipeStarted = true;
             sessionManager.AddListener(broadcaster);
         }
 
@@ -136,14 +143,14 @@ namespace KinectSpaceToWindowCoords
             {
                 Trace.WriteLine("Swipe left!");
                 SwipeLeft = true;
-                HorSwipeStarted = false;
+                //HorSwipeStarted = false;
             }
         }
 
         static void steadyDetector_Steady(object sender, SteadyEventArgs e)
         {
             Steady = true;
-
+/*
             if (PositionY >= topBoundary || PositionY <= botBoundary)
             {
                 VertSwipeStarted = true;
@@ -156,13 +163,13 @@ namespace KinectSpaceToWindowCoords
                 HorSwipeStarted = true;
             }
             else
-                HorSwipeStarted = false;
+                HorSwipeStarted = false;*/
         }
 
         static void control_PointUpdate(object sender, PointBasedEventArgs e)
         {
             PositionX = e.Position.X;
-            PositionY = e.Position.Y;
+            PositionY = e.Position.Y + adjustedHeight*15;
             Trace.WriteLine("xpos " + PositionX + " ypos " + PositionY + "\n");
         }
 
@@ -189,7 +196,7 @@ namespace KinectSpaceToWindowCoords
             {
                 Trace.WriteLine("Swipe right!");
                 SwipeRight = true;
-                HorSwipeStarted = false;
+                //HorSwipeStarted = false;
             }
         }
 
@@ -199,7 +206,7 @@ namespace KinectSpaceToWindowCoords
             {
                 Trace.WriteLine("Swipe down!");
                 SwipeDown = true;
-                VertSwipeStarted = false;
+                //VertSwipeStarted = false;
             }
         }
 
@@ -209,7 +216,7 @@ namespace KinectSpaceToWindowCoords
             {
                 Trace.WriteLine("Swipe up!");
                 SwipeUp = true;
-                VertSwipeStarted = false;
+                //VertSwipeStarted = false;
             }
         }
 

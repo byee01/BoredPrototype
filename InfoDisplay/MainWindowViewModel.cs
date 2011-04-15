@@ -218,7 +218,7 @@ namespace KinectSpaceToWindowCoords
 
                     if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
                     {
-                        cursorTimer.Start();
+                        //cursorTimer.Start();
                         //Trace.WriteLine("swipe started");
                     }
                     else if (!CameraSession.HorSwipeStarted && !CameraSession.VertSwipeStarted)
@@ -287,7 +287,8 @@ namespace KinectSpaceToWindowCoords
         /// </summary>
         public void SwipedUp()
         {
-            this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            //this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            this.URI = "javascript:scrollKinectUp();if(null){" + dummyVariable + "}";
             CameraSession.SwipeDown = CameraSession.SwipeUp = false;
             dummyVariable = (dummyVariable + 1) % 2;
             Trace.WriteLine("Moving up!");
@@ -298,7 +299,8 @@ namespace KinectSpaceToWindowCoords
         /// </summary>
         public void SwipedDown()
         {
-            this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            //this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
+            this.URI = "javascript:scrollKinectDown();if(null){" + dummyVariable + "}";
             CameraSession.SwipeUp = CameraSession.SwipeDown = false;
             dummyVariable = (dummyVariable + 1) % 2;
         }

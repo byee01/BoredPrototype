@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
 		:default_url   => "/system/:attachment/:style/default-flyer.png",
 		:styles =>{ :small => "200x309"}
 
+	def pretty_date
+		time.strftime("%A, %b. %d - %I:%M%p")
+	end
+		
 	def category_list
 		list = []
 		if !self.categories.nil?

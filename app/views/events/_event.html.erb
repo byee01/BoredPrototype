@@ -2,8 +2,7 @@
 	<% if !event.flyer.nil? and event.flyer.exists?%>
 		<img src="<%= event.flyer.url(:small) %>"/>
 	<% else %>
-		<!--<img src="<%= event.pattern %>"/>-->
-		<img src="/img/default-flyer.png"/>
+		<img src="/images/default-flyer.png"/>
 	<% end %>
 	<h3><%= event.name %></h3>
 	<p><%= event.time.strftime("%A, %b. %d") %></p>
@@ -18,11 +17,10 @@
 	</div>
 	<div class="m-flyer">
 		<% if !event.flyer.nil? and event.flyer.exists?%>
-		<img class="overlay" src="/img/gradient-overlay.png">
+		<img class="overlay" src="/images/gradient-overlay.png">
 		<img src="<%= event.flyer.url(:small) %>"/>
 		<% else %>
-		<!--<img src="<%= event.pattern %>"/>-->
-		<img src="/img/default-flyer.png"/>
+		<img src="/images/default-flyer.png"/>
 		<% end %>
 	</div>
 	<div class="m-details">
@@ -43,9 +41,4 @@
 	<% similar.each do |e| %>
 		<p><%= e.name %> | <%= e.description %></p>
 	<% end %>
-	<!--<p><% event.category_list.each do |c| %> <%= c.name %><%end%></p>-->
-	<!--<p><%= link_to 'Show', event %></p>-->
-	<!--<p><%= link_to 'Edit', edit_event_path(event) %></p>-->
-	<!--<p><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></p>-->
-	<!--<a class="close-reveal-modal">&#215;</a>-->
 </div>
