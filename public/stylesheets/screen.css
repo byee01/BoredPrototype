@@ -325,6 +325,7 @@ a {
 
 
 	span.cat-stripes {
+		float: left;
 		display: block;
 		height: 6px;
 		width: 20%;
@@ -332,17 +333,17 @@ a {
 		background: red;
 	}
 
-	span.cat-stripes .c-prof		{ background: red; }
-	span.cat-stripes .c-all		{ background: white; }
-	span.cat-stripes .c-sports		{ background: orange; }
-	span.cat-stripes .c-greek		{ background: yellow; }
-	span.cat-stripes .c-cultural		{ background: green; }
-	span.cat-stripes .c-movies		{ background: blue; }
-	span.cat-stripes .c-arts		{ background: purple; }
-	span.cat-stripes .c-music		{ background: cyan; }
-	span.cat-stripes .c-academic		{ background: antiquewhite; }
-	span.cat-stripes .c-social		{ background: steelblue; }
-	span.cat-stripes .c-service		{ background: deeppink; }
+	span.cat-stripes.c-prof		{ background: red; }
+	span.cat-stripes.c-all		{ background: white; }
+	span.cat-stripes.c-sports		{ background: orange; }
+	span.cat-stripes.c-greek		{ background: yellow; }
+	span.cat-stripes.c-cultural		{ background: green; }
+	span.cat-stripes.c-movies		{ background: blue; }
+	span.cat-stripes.c-arts		{ background: purple; }
+	span.cat-stripes.c-music		{ background: cyan; }
+	span.cat-stripes.c-academic		{ background: antiquewhite; }
+	span.cat-stripes.c-social		{ background: steelblue; }
+	span.cat-stripes.c-service		{ background: deeppink; }
 
 /*	==============================================
 	Checkbox
