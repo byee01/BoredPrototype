@@ -34,13 +34,7 @@ class Event < ActiveRecord::Base
 		return list
 	end
 		
-	def get_similar
-		num_events = 3
-		query = self.name #consider creating an array of words
-		similar = Event.description_like(query).limit(num_events)
-		
-		return similar
-	end	
+	
 		
 	def cons_categories
 		self.categories = self.categories.join(",") if not self.categories.nil? and not self.categories.kind_of? String
@@ -80,4 +74,50 @@ class Event < ActiveRecord::Base
 		
 		return s
 	end
+	
+	def get_similar
+		num_events = 3
+		
+		similar = Hash.new
+		Event.description_like(self.description).limit(num_events).each do |e| 
+			next if e.id == self.id
+			if similar.key? e
+				similar[e] += 1
+			else 
+				similar[e] = 1
+			end 
+		end
+		
+		Event.name_like(self.name).limit(num_events).each do |e| 
+			next if e.id == self.id
+			if similar.key? e
+				similar[e] += 1 
+			else 
+				similar[e] = 1
+			end
+		end
+		
+		Event.categories_like(self.categories).limit(num_events).each do |e| 
+			next if e.id == self.id
+			if similar.key? e
+				similar[e] += 2 
+			else 
+				similar[e] = 2
+			end
+		end
+		
+		Event.time_like(self.time).limit(num_events).each do |e| 
+			next if e.id == self.id
+			if similar.key? e
+				similar[e] += 2 
+			else 
+				similar[e] = 2
+			end
+		end
+		
+		similar = similar.sort_by{|k,v| v}
+		similar = similar[0..2].collect{|x| x[0]} #sort by ranking, then return top 3 results
+		
+		return similar
+	end	
 end

@@ -41,6 +41,6 @@
 	</div>
 	<% similar = event.get_similar %>
 	<% similar.each do |e| %>
-		<p><%= e.name %> | <%= e.description %></p>
+		<p><%= e.name %> | <img src="<%= e.flyer.url(:small) %>"/></p>
 	<% end %>
 </div>
