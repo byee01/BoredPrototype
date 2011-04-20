@@ -4,7 +4,7 @@ respond_to :html, :js, :json
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
+    @events = Event.all.upcoming
 	@my_events = Event.where(:user_id => 1)
 	@event = Event.new
 	

@@ -16,6 +16,10 @@ class Event < ActiveRecord::Base
 		:default_url   => "/system/:attachment/:style/default-flyer.png",
 		:styles =>{ :small => "200x309"}
 
+		
+	scope :all, order("time ASC")
+	scope :upcoming, where("time >= ?", Time.now)
+		
 	def pretty_date
 		time.strftime("%A, %b. %d - %I:%M%p")
 	end
