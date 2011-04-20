@@ -53,5 +53,31 @@ class Event < ActiveRecord::Base
 		#self.errors.add :time,  "Event can't end if it hasn't started" unless (self.end_time.nil? or self.end_time > self.time)
 	end
 	
+	def happening_today?
+		return true if self.time.year == Time.now.year and self.time.month == Time.now.month and self.time.day == Time.now.day
+	end
 	
+	def happening_this_week?
+		return true if self.time.year == Time.now.year  and self.time.strftime("%U").to_i == Time.now.strftime("%U").to_i
+	end
+	
+	def happening_in_two_weeks?
+		return true if self.time.year == Time.now.year  and self.time.strftime("%U").to_i == (Time.now.strftime("%U").to_i + 1)
+	end
+	
+	def happening_in_a_month?
+		return true if self.time.year == Time.now.year  and self.time.mon == (Time.now.mon + 1)
+	end
+	
+	def style_list
+		s = ""
+		
+		self.category_list.each{ |c| s << " col#{c.value}"}
+		s << " today" if happening_today?
+		s << " this_week" if happening_this_week?
+		s << " in_two_weeks" if happening_in_two_weeks?
+		s << " in_a_month" if happening_in_a_month?
+		
+		return s
+	end
 end

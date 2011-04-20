@@ -111,6 +111,11 @@ respond_to :html, :js, :json
   def list
 	@events = Event.all
 	
+	 respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @events }
+    end
+	
   end
   
   def approve
@@ -146,8 +151,6 @@ respond_to :html, :js, :json
 	
 	@search_results =  Event.description_like("").limit(num_events)
 	respond_with @search_results
-	#render :json =>search_results
-	#render :json =>Event.find(63)
   end
 
   def date_input
