@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
 	
 	has_attached_file :flyer,
 		:default_url   => "/system/:attachment/:style/default-flyer.png",
-		:styles =>{ :small => "200x309"}
+		:styles =>{ :small => "200x309", :thumb => "100x155"}
 
 		
 	scope :all, order("time ASC")
