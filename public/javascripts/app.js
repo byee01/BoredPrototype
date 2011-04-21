@@ -16,6 +16,16 @@ function displayErrors(){
 }
 
 /*---------------------------
+Form stuff
+-----------------------------*/
+
+$('.event_edit_btn').live('click', function(e){
+	e.preventDefault();
+	$('#presentable_field_' + $(this).val()).hide();
+	$('#editable_field_' + $(this).val()).show();
+});
+
+/*---------------------------
  Scroll function (only for Kinect!)
 ----------------------------*/
 

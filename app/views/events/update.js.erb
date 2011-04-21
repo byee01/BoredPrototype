@@ -1,10 +1,10 @@
-$('.reveal-modal-bg').click();
-eventErrors = Array.new();
-$('#my_events').reveal();
+eventErrors = new Array();
 <% @event.errors.full_messages.each do |msg|  %>
-	eventErrors.push(<%=msg%>);
+	eventErrors.push("<%=msg%>");
 <%end%>
 <%if @event.errors.any?%>
-	alert("lol");
 	displayErrors();
+<% else %>
+	$('.reveal-modal-bg').click();
 <%end%>
+//$('#my_events').reveal();

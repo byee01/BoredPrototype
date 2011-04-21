@@ -1,20 +1,27 @@
-<%#= form_for(@event, :url=>{:action=>'update', :id=>@event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}) do |f|%>
-<!--form_for(@event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'})-->
+<%if defined? event and !event.nil? 
+		local_event = event
+	else
+		local_event = @event
+	end
+%>
+<%#= form_for(local_event, :url=>{:action=>'update', :id=>local_event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}) do |f|%>
+<!--form_for(local_event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'})-->
+
 <% if up %>
-	<% *test = {:url=>{:action=>'update', :id=>@event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}} %>
+	<% *test = {:url=>{:action=>'update', :id=>local_event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}} %>
 <% else %>
 	<% *test = {:url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}} %>
 <% end %>
-<%=  form_for(@event, *test)  do |f|%>
+<%=  form_for(local_event, *test)  do |f|%>
 		<div class="m-topbar">Creating a New Event
 	  <%= f.submit %> 
 	  </div>
-		<% if @event.errors.any? %>
+		<% if local_event.errors.any? %>
 		<div id="error_explanation">
-			<%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
+			<%= pluralize(local_event.errors.count, "error") %> prohibited this event from being saved:
 
 			<ul>
-			<% @event.errors.full_messages.each do |msg| %>
+			<% local_event.errors.full_messages.each do |msg| %>
 			<li><%= msg %></li>
 			<% end %>
 			</ul>
@@ -38,7 +45,7 @@
 					<img class="preview-indicator" src="/images/preview-indicator.png">
 					<div id="m-flyer-overlay"></div>
 					<%= f.label :flyer %><br />
-					<img src="<%= @event.flyer.url(:small) %>"/>
+					<img src="<%= local_event.flyer.url(:small) %>"/>
 				</div>
 				<%= f.file_field :flyer, :id=>"b-new" %>
 				<!--<button id="b-edit">Change Flyer</button>
@@ -84,7 +91,7 @@
 					<% check_id = get_check_id(c.name) %>
 					<li class="cat-radio">
 						<%= label_tag check_id, c.name %>
-						<% if @event.category_list.find{|d| d.value == c.value}%>
+						<% if local_event.category_list.find{|d| d.value == c.value}%>
 							<%= check_box_tag "event[categories][]", c.value, true, {:class=>'check2', :id => check_id }%>
 						<% else%>
 							<%= check_box_tag "event[categories][]", c.value, false, {:class=>'check2', :id => check_id }%>

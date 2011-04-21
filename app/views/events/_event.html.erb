@@ -10,6 +10,7 @@
 	<span class="cat-stripes c-music"></span>
 </div>
 <div id="event-<%=@count%>-desc" class="reveal-modal event-desc">
+	<div id="presentable_field_<%=@count %>" class="presentable_fields">
 	<div class="m-topbar">"Viewing Event"
 		<span class="m-helptext">Click anywhere outside of this box to close.</span>
 	</div>
@@ -39,8 +40,14 @@
 			<p><%= event.description %></p>
 		</div>
 	</div>
+	
 	<% similar = event.get_similar %>
 	<% similar.each do |e| %>
 		<p><%= e.name %> | <img src="<%= e.flyer.url(:thumb) %>"/></p>
 	<% end %>
+	</div>
+	<button class="event_edit_btn" value="<%=@count%>">Edit</button>
+	<div id="editable_field_<%=@count%>" class="editable_fields">
+		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event}%>
+	</div>
 </div>

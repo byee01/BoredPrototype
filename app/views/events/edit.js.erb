@@ -1,3 +1,12 @@
+eventErrors = new Array();
+<% @event.errors.full_messages.each do |msg|  %>
+	eventErrors.push("<%=msg%>");
+<%end%>
+<%if @event.errors.any?%>
+	alert("lol");
+	displayErrors();
+<% else %>
 $('.reveal-modal-bg').click();
 $('#edit_event > div:last').html("<%= escape_javascript( render(:partial => "form", :locals=>{:up=>true}) ) %>");
 $('#edit_event').reveal();
+<%end%>

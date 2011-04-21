@@ -375,3 +375,7 @@ a {
 .jquery-safari-checkbox-checked .jquery-safari-checkbox-disabled img{
 	background-position: 0px -48px;
 }
+
+.editable_fields{
+	display: none;
+}
