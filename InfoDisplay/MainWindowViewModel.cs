@@ -28,6 +28,9 @@ namespace KinectSpaceToWindowCoords
         string uri;
         double scale;
         DispatcherTimer cameraTimer;
+        DispatcherTimer changeCatTimer;
+        DispatcherTimer changePageTimer;
+        
         Rectangle workingArea;
 
         private System.Windows.Input.Cursor gripCursor;
@@ -177,10 +180,34 @@ namespace KinectSpaceToWindowCoords
             this.cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
             this.cameraTimer.Start();
 
-            this.cursorTimer = new System.Windows.Forms.Timer() { Interval = 1 };
-            this.cursorTimer.Tick += new EventHandler(cursorTimer_Tick);
+            //this.cursorTimer = new System.Windows.Forms.Timer() { Interval = 1 };
+            //this.cursorTimer.Tick += new EventHandler(cursorTimer_Tick);
+
+            this.changeCatTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
+            this.changeCatTimer.Tick += new EventHandler(changeCatTimer_Tick);
+
+            this.changePageTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(1000) };
+            this.changePageTimer.Tick += new EventHandler(changePageTimer_Tick);
 
             Trace.Write("Kinect device starting...");
+        }
+
+        void changePageTimer_Tick(object sender, EventArgs e)
+        {
+            if (CameraSession.NearTop)
+                SwipedUp();
+            if (CameraSession.NearBottom)
+                SwipedDown();
+        }
+
+        void changeCatTimer_Tick(object sender, EventArgs e)
+        {
+            if (CameraSession.NearLeft)
+                SwipedRight();
+            if (CameraSession.NearRight)
+                SwipedLeft();
+
+            Trace.WriteLine("changing categories!");
         }
 
         /// <summary>
@@ -216,14 +243,22 @@ namespace KinectSpaceToWindowCoords
                     this.OnPropertyChanged("SensorY");
                     SetCursorPos((int)this.cursorX, (int)this.cursorY);
 
-                    if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
+                  /*  if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
                     {
                         //cursorTimer.Start();
                         //Trace.WriteLine("swipe started");
                     }
                     else if (!CameraSession.HorSwipeStarted && !CameraSession.VertSwipeStarted)
                         cursorTimer.Stop();
-
+                    */
+                    if (CameraSession.NearLeft || CameraSession.NearRight)
+                        changeCatTimer.Start();
+                    else if (!CameraSession.NearLeft && !CameraSession.NearRight)
+                        changeCatTimer.Stop();
+                    if (CameraSession.NearTop || CameraSession.NearBottom)
+                        changePageTimer.Start();
+                    else if (!CameraSession.NearTop && !CameraSession.NearBottom)
+                        changePageTimer.Stop();
                     if (CameraSession.SwipeLeft)
                         SwipedLeft();
                     if (CameraSession.SwipeRight)

@@ -20,6 +20,7 @@
 			</ul>
 		</div>
 		<% end %>
+		
 	  	<div class="m-title">
 				<%= f.label :name %><br />
 				<%= f.text_field :name%><br/>
@@ -45,6 +46,10 @@
 		</div>
 					
 		<div class="m-details">
+			<div id="ajax_errors">
+				<ul>
+				</ul>
+			</div>
 			<div class="m-text-input">
 			<div>
 				<h3><%= label_tag 'date_input', 'Start Time' %></h3>

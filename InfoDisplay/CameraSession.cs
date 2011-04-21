@@ -21,6 +21,10 @@ namespace KinectSpaceToWindowCoords
         public static bool SwipeDown { get; set; }
         public static bool SwipeUp{get;set;}
         public static bool Push { get; set; }
+        public static bool NearLeft { get; set; }
+        public static bool NearRight { get; set; }
+        public static bool NearTop { get; set; }
+        public static bool NearBottom { get; set; }
         public static bool HorSwipeStarted { get; private set; }
         public static bool VertSwipeStarted { get; private set; }
         public static bool Steady { get; private set; }
@@ -70,7 +74,7 @@ namespace KinectSpaceToWindowCoords
 
             Trace.WriteLine("Kinect device found.");
 
-            sessionManager = new XnMSessionManager(context, "Wave", "RaiseHand");
+            sessionManager = new XnMSessionManager(context, "RaiseHand", "RaiseHand");
             sessionManager.SessionStarted +=
                 new EventHandler<PointEventArgs>(sessionManager_SessionStarted);
             sessionManager.SessionEnded +=
@@ -120,18 +124,18 @@ namespace KinectSpaceToWindowCoords
             swipeDetector.SwipeDown += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeDown);
             swipeDetector.SwipeUp += new EventHandler<SwipeDetectorEventArgs>(swipeDetector_SwipeUp);
 
-          /*  XnMSteadyDetector steadyDetector = new XnMSteadyDetector();
-            steadyDetector.DetectionDuration = 200;
+            XnMSteadyDetector steadyDetector = new XnMSteadyDetector();
+            steadyDetector.DetectionDuration = 800;
             steadyDetector.Steady += new EventHandler<SteadyEventArgs>(steadyDetector_Steady);
-            */
-            XnMPushDetector pushDetector = new XnMPushDetector();
-            pushDetector.Push += new EventHandler<PushDetectorEventArgs>(pushDetector_Push);
+            
+            //XnMPushDetector pushDetector = new XnMPushDetector();
+            //pushDetector.Push += new EventHandler<PushDetectorEventArgs>(pushDetector_Push);
 
             XnMBroadcaster broadcaster = new XnMBroadcaster();
             pointFilter.AddListener(pointControl);
             broadcaster.AddListener(pointFilter);
             broadcaster.AddListener(swipeDetector);
-            broadcaster.AddListener(pushDetector);
+            broadcaster.AddListener(steadyDetector);
             //broadcaster.AddListener(steadyDetector);
             HorSwipeStarted = VertSwipeStarted = true;
             sessionManager.AddListener(broadcaster);
@@ -149,7 +153,7 @@ namespace KinectSpaceToWindowCoords
 
         static void steadyDetector_Steady(object sender, SteadyEventArgs e)
         {
-            Steady = true;
+            Push = true;
 /*
             if (PositionY >= topBoundary || PositionY <= botBoundary)
             {
@@ -170,6 +174,18 @@ namespace KinectSpaceToWindowCoords
         {
             PositionX = e.Position.X;
             PositionY = e.Position.Y + adjustedHeight*15;
+
+            if (PositionX <= leftBoundary)
+                NearLeft = true;
+            else if (PositionX >= rightBoundary)
+                NearRight = true;
+            else if (PositionY >= topBoundary)
+                NearTop = true;
+            else if (PositionY <= botBoundary)
+                NearBottom = true;
+            else
+                NearLeft = NearRight = NearTop = NearBottom = false;
+
             Trace.WriteLine("xpos " + PositionX + " ypos " + PositionY + "\n");
         }
 

@@ -66,7 +66,7 @@ respond_to :html, :js, :json
 	  puts @event.errors
         format.html { render :action => "new" }
 		format.js do 
-			# do something
+			responds_to_parent{render}
 		end
       end
     end
@@ -77,6 +77,7 @@ respond_to :html, :js, :json
   def update
     @event = Event.find(params[:id])
 
+		puts "does it even get here?"
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
@@ -86,7 +87,7 @@ respond_to :html, :js, :json
       else
         format.html { render :action => "edit" }
         format.js do
-			puts "#{@event.errors}"
+			responds_to_parent{render}
 		end
       end
     end

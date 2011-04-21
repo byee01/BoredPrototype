@@ -1,1 +1,9 @@
-location.reload();
+eventErrors = new Array();
+<% @event.errors.full_messages.each do |msg|  %>
+	eventErrors.push("<%=msg%>");
+<%end%>
+<%if @event.errors.any?%>
+	displayErrors();
+<% else %>
+	location.reload();
+<%end%>
