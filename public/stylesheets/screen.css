@@ -303,6 +303,9 @@ a {
 		margin-right: 30px;
 		position:relative;
 	}
+	label.event_flyer {
+		display: none;
+	}
 
 	.cat-radio label {
 		display: inline-block;
