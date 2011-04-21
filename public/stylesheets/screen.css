@@ -376,6 +376,6 @@ a {
 	background-position: 0px -48px;
 }
 
-.editable_fields{
+.editable_fields, #login{
 	display: none;
 }
