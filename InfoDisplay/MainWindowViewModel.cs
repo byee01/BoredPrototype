@@ -27,6 +27,8 @@ namespace KinectSpaceToWindowCoords
         double cursorY;
         string uri;
         double scale;
+        bool superMode = false;
+
         DispatcherTimer cameraTimer;
         DispatcherTimer changeCatTimer;
         DispatcherTimer changePageTimer;
@@ -183,12 +185,18 @@ namespace KinectSpaceToWindowCoords
             //this.cursorTimer = new System.Windows.Forms.Timer() { Interval = 1 };
             //this.cursorTimer.Tick += new EventHandler(cursorTimer_Tick);
 
-            this.changeCatTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
-            this.changeCatTimer.Tick += new EventHandler(changeCatTimer_Tick);
+            Boolean.TryParse(ConfigurationManager.AppSettings["superMode"], out superMode);
 
-            this.changePageTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(1000) };
-            this.changePageTimer.Tick += new EventHandler(changePageTimer_Tick);
+            if (superMode)
+            {
 
+
+                this.changeCatTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
+                this.changeCatTimer.Tick += new EventHandler(changeCatTimer_Tick);
+
+                this.changePageTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(1000) };
+                this.changePageTimer.Tick += new EventHandler(changePageTimer_Tick);
+            }
             Trace.Write("Kinect device starting...");
         }
 
@@ -251,14 +259,17 @@ namespace KinectSpaceToWindowCoords
                     else if (!CameraSession.HorSwipeStarted && !CameraSession.VertSwipeStarted)
                         cursorTimer.Stop();
                     */
-                    if (CameraSession.NearLeft || CameraSession.NearRight)
-                        changeCatTimer.Start();
-                    else if (!CameraSession.NearLeft && !CameraSession.NearRight)
-                        changeCatTimer.Stop();
-                    if (CameraSession.NearTop || CameraSession.NearBottom)
-                        changePageTimer.Start();
-                    else if (!CameraSession.NearTop && !CameraSession.NearBottom)
-                        changePageTimer.Stop();
+                    if (superMode)
+                    {
+                        if (CameraSession.NearLeft || CameraSession.NearRight)
+                            changeCatTimer.Start();
+                        else if (!CameraSession.NearLeft && !CameraSession.NearRight)
+                            changeCatTimer.Stop();
+                        if (CameraSession.NearTop || CameraSession.NearBottom)
+                            changePageTimer.Start();
+                        else if (!CameraSession.NearTop && !CameraSession.NearBottom)
+                            changePageTimer.Stop();
+                    }
                     if (CameraSession.SwipeLeft)
                         SwipedLeft();
                     if (CameraSession.SwipeRight)

@@ -153,7 +153,8 @@ namespace KinectSpaceToWindowCoords
 
         static void steadyDetector_Steady(object sender, SteadyEventArgs e)
         {
-            Push = true;
+            if(PositionX > leftBoundary && PositionX < rightBoundary)
+                Push = true;
 /*
             if (PositionY >= topBoundary || PositionY <= botBoundary)
             {

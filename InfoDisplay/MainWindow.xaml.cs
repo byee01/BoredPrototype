@@ -6,6 +6,7 @@ using WebKit;
 using System.Windows.Forms.Integration;
 using System.Windows.Data;
 using System.IO;
+using System.Configuration;
 
 namespace KinectSpaceToWindowCoords
 {
@@ -88,7 +89,7 @@ namespace KinectSpaceToWindowCoords
             this.browserContainer.Children.Add(host);
 
 
-            wkBrowser.Navigate("http://www.tinyurl.com/BoredCast1");
+            wkBrowser.Navigate(ConfigurationManager.AppSettings["url"]);
 
             this.ViewModel.PropertyChanged += (o, f) =>
             {
