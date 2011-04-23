@@ -59,6 +59,7 @@ $('#events').imagesLoaded( function(){
 	var original = $('#filtering-nav li.select')[0];
 	$('#filtering-nav a').click(function(){
 		var colorClass = '.' + $(this).attr('class');
+		console.log(colorClass);
 
 		$(original).toggleClass('select');
 		$(this).parent().toggleClass('select');
