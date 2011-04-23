@@ -19,6 +19,11 @@ body {
 h1 {
 	font-size: 2em;
 }
+a {
+	color: #111;
+	text-decoration: none;
+	font-decoration: none;	
+}
 
 .header {
 	background: #631515;
@@ -145,13 +150,17 @@ button:hover, input[type="submit"]:hover {
 .box p				{ color: #ccc; font-size: 0.7em; padding-top: 2px; }
 .box h3				{ padding-bottom: 0px; font-size: 0.9em; }
 
-.box				{ -webkit-transition: all 0.2s; }
 
-a {
-	color: #111;
-	text-decoration: none;
-	font-decoration: none;	
-}
+
+/*	=============================================
+	OPACITY CHANGES
+	============================================= */
+	.box {-webkit-transition: all 0.3s;}
+	.box.today {}
+	.box.this_week {opacity: 0.85;}
+	.box.in_two_weeks {opacity: 0.65;}
+	.box.in_a_month {opacity: 0.25;}
+	.box:hover	{ opacity: 1; -webkit-transition: all 0.3s; }
 
 
 /*	=============================================
