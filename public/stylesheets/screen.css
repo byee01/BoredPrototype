@@ -244,6 +244,11 @@ a {
 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCC), to(#FFF)); 
 		font-size: 16px; 
 	}
+	.reveal-modal input[type="file"] {
+		position: absolute;
+		top: 187px; left: 10px;
+		color: white;
+	}
 	
 	.reveal-modal .m-helptext {
 		text-shadow: none;
