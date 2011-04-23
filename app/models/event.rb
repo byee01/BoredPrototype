@@ -66,7 +66,7 @@ class Event < ActiveRecord::Base
 	def style_list
 		s = ""
 		
-		self.category_list.each{ |c| s << " col#{c.value}"}
+		self.category_list.each{ |c| s << " c-#{c.to_s.downcase}"}
 		s << " today" if happening_today?
 		s << " this_week" if happening_this_week?
 		s << " in_two_weeks" if happening_in_two_weeks?
