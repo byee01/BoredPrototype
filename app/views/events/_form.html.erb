@@ -4,6 +4,12 @@
 		local_event = @event
 	end
 %>
+<% if defined? title
+	form_title = title
+	else
+	form_title = "Creating a New Event"
+	end
+%>
 <%#= form_for(local_event, :url=>{:action=>'update', :id=>local_event.id, :format=>'js'}, :html=> {:multipart=>true, :target=>'upload_frame', :method=>:put}) do |f|%>
 <!--form_for(local_event, :url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'})-->
 
@@ -13,7 +19,7 @@
 	<% *test = {:url=>events_path(:format=>'js'), :html=> {:multipart=>true, :target=>'upload_frame'}} %>
 <% end %>
 <%=  form_for(local_event, *test)  do |f|%>
-		<div class="m-topbar">Creating a New Event
+		<div class="m-topbar"><%= form_title %>
 	  <%= f.submit %> 
 	  </div>
 		<% if local_event.errors.any? %>
