@@ -6,8 +6,10 @@
 	<% end %>
 	<h3><%= event.name %></h3>
 	<p><%= event.time.strftime("%A, %b. %d") %></p>
-	<span class="cat-stripes c-prof"></span>
-	<span class="cat-stripes c-music"></span>
+
+	<% event.categories.split(%r{,\s*}).each do |cat_num| %>
+		<span class="cat-stripes c-<%=EventsHelper::to_category(cat_num).to_s.downcase %>"></span>
+	<% end %>
 </div>
 <div id="event-<%=@count%>-desc" class="reveal-modal event-desc">
 	<div id="presentable_field_<%=@count %>" class="presentable_fields">

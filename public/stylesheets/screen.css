@@ -335,16 +335,16 @@ a {
 		background: red;
 	}
 
-	span.cat-stripes.c-1		{ background: purple; }
-	span.cat-stripes.c-2		{ background: orange; }
-	span.cat-stripes.c-4		{ background: red; }
-	span.cat-stripes.c-5		{ background: yellow; }
-	span.cat-stripes.c-6		{ background: green; }
-	span.cat-stripes.c-8		{ background: blue; }
-	span.cat-stripes.c-7		{ background: cyan; }
-	span.cat-stripes.c-9		{ background: antiquewhite; }
-	span.cat-stripes.c-10		{ background: steelblue; }
-	span.cat-stripes.c-11		{ background: deeppink; }
+	span.cat-stripes.c-arts			{ background: purple; }
+	span.cat-stripes.c-sports		{ background: orange; }
+	span.cat-stripes.c-professional	{ background: red; }
+	span.cat-stripes.c-greek		{ background: yellow; }
+	span.cat-stripes.c-cultural		{ background: green; }
+	span.cat-stripes.c-music		{ background: blue; }
+	span.cat-stripes.c-movies		{ background: cyan; }
+	span.cat-stripes.c-academic		{ background: antiquewhite; }
+	span.cat-stripes.c-social		{ background: steelblue; }
+	span.cat-stripes.c-service		{ background: deeppink; }
 	span.cat-stripes.c-all		{ background: white; }
 
 /*	==============================================
