@@ -154,7 +154,7 @@ $('input.date_input').keyup(function () {
 				success: 	function(data){  
 								console.log(data);
 								$('span.date_output').text(data.time_s);
-								$('.hidden_date_input').val(data.time)
+								$('input.hidden_date_input').val(data.time)
 							},
 				error: 		function(data){ 
 								console.log("E\n" + data);

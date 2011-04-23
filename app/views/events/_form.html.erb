@@ -62,7 +62,7 @@
 				<h3><%= label_tag 'date_input', 'Start Time' %></h3>
 				
 				<p><input class="date_input" type="text" placeholder="Tomorrow at 3p..." /><span class="date_output">When is your event?</span></p>
-				<p><%= f.hidden_field :time, :id => 'hidden_date_input', :value => Time.now %></p>
+				<p><%= f.hidden_field :time, :class => 'hidden_date_input', :value => Time.now %></p>
 			</div>
 			
 			<!--<%#= f.label :end_time %><br />
