@@ -5,10 +5,12 @@ class Event < ActiveRecord::Base
 	validates_presence_of :name, :description, :location, :time, :user_id, :categories
 	validates_size_of :name, :maximum => 100
 	validates_size_of :location, :maximum => 100
-	validates_format_of :categories, :with => /^\b0*([1-9]|1[01])(,0*([1-9]|1[01]))?$/, :message => "You may select at most two categories"
+	validates_format_of :categories, :with => /^\b0*([1-9]|1[01])(,0*([1-9]|1[01]))?$/, :message => "must be at most two categories"
 	validates_numericality_of :user_id
 	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*@:"$\-\?\\\/']*$/
 	validates_uniqueness_of :name
+	
+	validate :check_time_future, :on => :create
 	
 	before_validation :cons_categories
 	
@@ -40,10 +42,13 @@ class Event < ActiveRecord::Base
 		self.categories = self.categories.join(",") if not self.categories.nil? and not self.categories.kind_of? String
 	end
 	
-	def validate
-		errors.add_to_base "You must either upload a flyer or choose a pattern" if self.flyer.blank? and self.pattern.blank?
+	#def validate
+	#	errors.add_to_base "You must either upload a flyer or choose a pattern" if self.flyer.blank? and self.pattern.blank?
 		#self.errors.add :time, "Must specify a date in the future" unless ((self.end_time.nil? or self.end_time.future?) and self.time.future?)
-		self.errors.add :time, "Must specify a date in the future" unless self.time.future?
+	#end
+	
+	def check_time_future
+		self.errors.add :time, "Must specify a date in the future" unless !self.time.nil? and self.time.future?
 		#self.errors.add :time,  "Event can't end if it hasn't started" unless (self.end_time.nil? or self.end_time > self.time)
 	end
 	
