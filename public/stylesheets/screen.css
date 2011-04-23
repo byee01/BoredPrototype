@@ -152,8 +152,6 @@ button:hover, input[type="submit"]:hover {
 
 .box				{ -webkit-transition: all 0.2s; }
 
-.preview-indicator	{ position: absolute; margin: 10px; }
-
 a {
 	color: #111;
 	text-decoration: none;
