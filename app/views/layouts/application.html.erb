@@ -5,7 +5,6 @@
 		<title>BoredCast</title>
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin"/>
 		<%= stylesheet_link_tag "screen" %>
-
 		<%= csrf_meta_tag %>
 	</head>
 	<body>
@@ -13,8 +12,7 @@
 			<!--<input id="topSearch" type="text" value="Search this board..."></input> -->
 			<span id="login"><strong>Log in</strong>&nbsp;&nbsp;&middot;&nbsp;&nbsp;Sign up with AndrewID</span> 
 			<a href="<%= root_url %>"><img id="logo" src="/images/logo.png" alt="Teudu: Event Discovery!"> </a>
-			<button id="create_event_btn" href="#">+ Add an Event</button> 
-			<!--<button id="my_events_btn" href="#"> + My Events</button>-->
+			<button id="create_event_btn" href="#">+ Add an Event</button>
 			<ul class="nav" id="filtering-nav">
 				<li><a class="all" href="#all">All</a></li>
 			<% EventsHelper::all_categories.each do |c| %>
@@ -23,10 +21,10 @@
 			</ul>
 		</div>
 		<div class="container">
-		<%= yield %>
+			<%= yield %>
 		</div>
 	</body>
 	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script> 
-	<%= javascript_include_tag  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins", "jquery.checkbox.min", "app", "ui" %>
+<%= javascript_include_tag  "jquery.masonry", "jquery.reveal", "jquery.validate.min", "rails", "jquery.plugins", "jquery.checkbox.min", "app" %>
 </html>
