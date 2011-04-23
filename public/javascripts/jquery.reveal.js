@@ -22,6 +22,8 @@
 		e.preventDefault();
 		var modalLocation = $(this).attr('id');
 		$('#'+modalLocation+"-desc").reveal($(this));
+		$('.editable_fields').hide();
+		$('.presentable_fields').show();
 	});
 
 /*---------------------------
