@@ -57,18 +57,13 @@ h1 {
 	color: #fff;
 	font-size: 0.8em;
 	font-weight: bold;
-	
-	/* CSS 3*/
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
 }
  
 .nav li:hover, .nav li.select {
-	
-	/* CSS 3 */
+	background: #555;
+	/* CSS 3 
 	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#222), to(#555)); 
-	background: -moz-linear-gradient(0% 90% 90deg,#555, #222);
+	background: -moz-linear-gradient(0% 90% 90deg,#555, #222); */
 }
 
 .nav li.unique-li {
@@ -192,7 +187,7 @@ a {
 	}
 	
 	#create_event .m-topbar {
-		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#14ac00), to(#086d00)); 
+		background: #086d00; 
 	}
 	
 	/* defines the sidebar in the modal */
