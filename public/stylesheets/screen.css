@@ -275,6 +275,12 @@ a {
 	.reveal-modal #event_submit {
 		float: right;
 	}
+
+	.reveal-modal .event_edit_btn {
+		position: absolute;
+		margin: 10px;
+		bottom: 0;
+	}
 	
 	.reveal-modal h1, .reveal-modal h2, .reveal-modal h3,
 	.reveal-modal h4 {

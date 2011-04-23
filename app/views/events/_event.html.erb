@@ -47,10 +47,10 @@
 	<% similar.each do |e| %>
 		<p><%= e.name %> | <img src="<%= e.flyer.url(:thumb) %>"/></p>
 	<% end %>
-	<button class="event_edit_btn" value="<%=@count%>">Edit</button>
 	</div>
 	
 	<div id="editable_field_<%=@count%>" class="editable_fields">
 		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event, :title => "Editing an event"}%>
 	</div>
+	<button class="event_edit_btn" value="<%=@count%>">Edit this event</button>
 </div>
