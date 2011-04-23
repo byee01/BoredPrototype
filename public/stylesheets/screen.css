@@ -60,17 +60,10 @@ h1 {
  
 .nav li:hover, .nav li.select {
 	background: #555;
-	/* CSS 3 
+
+	/* CSS 3 */
 	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#222), to(#555)); 
 	background: -moz-linear-gradient(0% 90% 90deg,#555, #222); */
-}
-
-.nav li.unique-li {
-	
-	/* CSS 3 */
-	background: -webkit-gradient(linear, 0% 0%, 0% 90%, from(#5C0F22), to(#751D33)); 
-	background: -moz-linear-gradient(0% 90% 90deg,#555, #222);
-	margin-right: 15px;
 }
 
 #topSearch {
