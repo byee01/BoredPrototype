@@ -215,6 +215,10 @@ a {
 		min-height: 300px;
 		background: url('../images/default-flyer.png');
 	}
+
+	.reveal-modal .m-flyer-preview label {
+		display: none;
+	}
 	
 	/* Buttons in the Reveal Modal Sidebar */
 	.reveal-modal .m-sidebar button {
@@ -249,7 +253,7 @@ a {
 	
 	.reveal-modal .m-title input[type="text"] {
 		width: 450px;
-		border: 1px solid #AAA; color: #888;
+		border: 1px solid #AAA;
 		padding: 7px; margin-top: 8px; margin-bottom: 8px;
 		font-family: 'Cabin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#CCC), to(#FFF)); 
