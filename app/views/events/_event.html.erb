@@ -23,8 +23,6 @@
 	<div class="m-sidebar m-flyer">
 		<% if !event.flyer.nil? and event.flyer.exists?%>
 		<img src="<%= event.flyer.url(:small) %>"/>
-		<% else %>
-		<img src="/images/default-flyer.png"/>
 		<% end %>
 	</div>
 	<div class="m-details">
