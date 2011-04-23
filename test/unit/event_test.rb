@@ -20,16 +20,17 @@ class EventTest < ActiveSupport::TestCase
 
 	context "Creating an event" do
 		setup do
-			#@sampleFactory = Factory.create(:event)
+			@sampleEvent = Factory.create(:event)
+			@oldEvent = Factory.create(:event, :time => (Time.now - 3424525))
 		end
 		
-		should "have a flyer or a pattern" do
-			#check if there is either a flyer or a pattern
-			assert true
+		should "have date in future" do
+			assert_equal @oldEvent.valid?, false
 		end
 		
 		teardown do
-			#@sampleFactory.destroy
+			@sampleEvent.destroy
+			@oldEvent.destroy
 		end
 	end
 
