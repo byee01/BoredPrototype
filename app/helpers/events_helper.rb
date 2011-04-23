@@ -14,8 +14,7 @@ module EventsHelper
 	
 	@@category_hash = {
 	"Arts" => 1, 
-	"Sports" =>2, 
-	"Gaming" => 3,
+	"Sports" =>2,
 	"Professional" => 4,
 	"Greek" => 5,
 	"Cultural" => 6,

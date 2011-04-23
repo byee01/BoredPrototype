@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
 		
 	scope :all, order("time ASC")
 	scope :upcoming, where("time >= ?", Time.now)
-		
+
 	def pretty_date
 		time.strftime("%A, %b. %d - %I:%M%p")
 	end
