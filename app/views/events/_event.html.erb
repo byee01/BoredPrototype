@@ -11,7 +11,7 @@
 		<span class="cat-stripes c-<%=EventsHelper::to_category(cat_num).to_s.downcase %>"></span>
 	<% end %>
 </div>
-<div id="event-<%=@count%>-desc" class="reveal-modal event-desc">
+<div id="event-<%= event.id %>-desc" class="reveal-modal event-desc">
 	<div id="presentable_field_<%=@count %>" class="presentable_fields">
 	<div class="m-topbar">"Viewing Event"
 		<span class="m-helptext">Click anywhere outside of this box to close.</span>
@@ -46,7 +46,7 @@
 	<% if similar.any? %>
 		<div class="related_events"><ul>
 		<% similar.each do |e| %>
-			<li><a><div class="related_event">
+			<li><a class="<%= e.id %>"><div class="related_event">
 			<img src="<%= e.flyer.url(:thumb) %>"/>
 				<div class="re_overlay">
 					<p><%= e.name %></p>
