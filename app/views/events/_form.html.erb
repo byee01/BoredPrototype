@@ -60,16 +60,17 @@
 			<div class="m-text-input">
 			<div>
 				<h3><%= label_tag 'date_input', 'Start Time' %></h3>
-				
-				<p><input class="date_input" type="text" placeholder="Tomorrow at 3p..." /><span class="date_output">When is your event?</span></p>
 				<%
 					if local_event.time.nil?
-						e_time = Time.now
-					else 
-						e_time = local_event.time
-					end
-				%>
+						e_time = Time.now %>
+						<p><input class="date_input" type="text" placeholder="Tomorrow at 3p..." /><span class="date_output">When is your event?</span></p>
 				<p><%= f.hidden_field :time, :class => 'hidden_date_input', :value => e_time %></p>
+					<% else 
+						e_time = local_event.time %>
+						<p><input class="date_input" type="text" value="<%= local_event.time.strftime('%B %d, %Y at %l:%M %P') %>" placeholder="Tomorrow at 3p..." /><span class="date_output">When is your event?</span></p>
+				<p><%= f.hidden_field :time, :class => 'hidden_date_input', :value => e_time %></p>
+					<% end %>				
+
 			</div>
 			
 			<!--<%#= f.label :end_time %><br />

@@ -23,10 +23,16 @@ $('.event_edit_btn').live('click', function(e){
 	e.preventDefault();
 	$('#presentable_field_' + $(this).val()).hide();
 	$('#editable_field_' + $(this).val()).show();
-
+/*
 	var date_output = $(this).parent().next().find('.hidden_date_input').val();
 	$(this).parent().next().find('.date_input').val(date_output);
 	$(this).parent().next().find('.date_input').keyup();
+	
+	setTimeout(function (){
+		var pretty_output = $(this).parent().next().find('.date_output').text();
+		$(this).parent().next().find('.date_input').val(pretty_output);
+	
+	}, 750); */
 });
 
 /*---------------------------
