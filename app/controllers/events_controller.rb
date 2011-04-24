@@ -103,7 +103,7 @@ respond_to :html, :js, :json
 		@my_events = Event.where(:user_id => 1)
       format.html { redirect_to(list_events_path) }
       format.js do
-		responds_to_parent{render}
+		render
 	  end
 	  end
     end

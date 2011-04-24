@@ -47,6 +47,7 @@
 		<p><%= e.name %> | <img src="<%= e.flyer.url(:thumb) %>"/></p>
 	<% end %>
 		<button class="event_edit_btn" value="<%=@count%>">Edit this event</button>
+		<%= button_to "Destroy", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete %>
 	</div>
 	<div id="editable_field_<%=@count%>" class="editable_fields">
 		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event, :title => "Editing an event"}%>
