@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 	validates_format_of :categories, :with => /^\b0*([1-9]|1[01])(,0*([1-9]|1[01]))?$/, :message => "must be at most two categories"
 	validates_numericality_of :user_id
 	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*@:"$\-\?\\\/']*$/
-	validates_uniqueness_of :name
+	#validates_uniqueness_of :name
 	
 	validate :check_time_future, :on => :create
 	
@@ -65,7 +65,7 @@ class Event < ActiveRecord::Base
 	end
 	
 	def happening_in_a_month?
-		return true if self.time.year == Time.now.year  and self.time.mon > (Time.now.mon + 1)
+		return true if self.time.year == Time.now.year  and self.time.mon > Time.now.mon
 	end
 	
 	def style_list

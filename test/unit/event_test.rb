@@ -13,24 +13,27 @@ class EventTest < ActiveSupport::TestCase
 	should_not_allow_values_for :description, "<script>sfsfds</script>", "<b>hi</b>"
 	should_not_allow_values_for :categories, "1,3,4", "10,12", "12, 1", "5,13"
 
-	#to test:
-	#categories are maintained between creating, editing, and updating
-	#either a flyer or a pattern exists
-	#test uniqueness of event
-
 	context "Creating an event" do
 		setup do
 			@sampleEvent = Factory.create(:event)
-			@oldEvent = Factory.create(:event, :time => (Time.now - 3424525))
+			@oldEvent = Factory.create(:event, :name => "Tom's Birthday", :time =>  (Time.now  + 2432426))
+			@laterEvent = Factory.create(:event, :name => "later event", :time => (Time.now  + 3432425))
 		end
 		
 		should "have date in future" do
-			assert_equal @oldEvent.valid?, false
+			@oldEvent.time = (Time.now - 3424525)
+			@oldEvent.save
+			assert_not_equal @oldEvent.time,  (Time.now - 3424525)
 		end
 		
+		should "test named scope all" do
+			assert_equal ["Something random", "Tom's Birthday", "later event"], Event.all.map{|v| v.name}
+		end
+				
 		teardown do
 			@sampleEvent.destroy
 			@oldEvent.destroy
+			@laterEvent.destroy
 		end
 	end
 
