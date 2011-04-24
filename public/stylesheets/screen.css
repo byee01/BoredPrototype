@@ -345,6 +345,10 @@ button:hover, input[type="submit"]:hover {
 		margin: 0 10px;
 	}
 
+	.related_events li a {
+		cursor: pointer;
+	}
+
 	.related_events .re_overlay {
 		position: relative;
 		top: -40px;

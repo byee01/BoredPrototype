@@ -2,12 +2,18 @@
 /*---------------------------
 Related Events
 -----------------------------*/
-/*
+
 $('div.related_event').live('click', function() {
-	
+	var relatedEvent = $(this).parent().attr('class');
+	console.log(relatedEvent);
+	/* Close current event */
+	$('.reveal-modal-bg').click();
+
+	/* Open related event */
+	$("#event-" + relatedEvent).click();
+
 });
 
-*/
 /*--------------------------
  Event errors
 ---------------------------*/
