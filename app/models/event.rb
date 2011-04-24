@@ -7,8 +7,8 @@ class Event < ActiveRecord::Base
 	validates_size_of :location, :maximum => 100
 	validates_format_of :categories, :with => /^\b0*([1-9]|1[01])(,0*([1-9]|1[01]))?$/, :message => "must be at most two categories"
 	validates_numericality_of :user_id
-	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*@:"$\-\?\\\/']*$/
-	#validates_uniqueness_of :name
+	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*@&:"$\-\?\\\/']*$/
+	#validates_uniqueness_of :name 
 	
 	validate :check_time_future, :on => :create
 	

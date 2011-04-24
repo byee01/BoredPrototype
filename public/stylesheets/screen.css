@@ -334,6 +334,12 @@ button:hover, input[type="submit"]:hover {
 		border-radius: 8px;
 	}
 
+	.error_message {
+		color: white;
+		background: #a20000;
+		padding: 5px;
+	}
+
 	.cat-radio label:hover {
 		border: 1px solid #444;
 	}
