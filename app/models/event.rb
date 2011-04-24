@@ -72,7 +72,7 @@ class Event < ActiveRecord::Base
 		s = ""
 		
 		self.category_list.each{ |c| s << " c-#{c.to_s.downcase}"}
-		s << " this_week" if happening_this_week?
+		s << " this_week" if happening_this_week? and !happening_today?
 		s << " today" if happening_today?
 		s << " in_two_weeks" if happening_in_two_weeks?
 		s << " in_a_month" if happening_in_a_month?
