@@ -12,7 +12,7 @@
 	<% end %>
 </div>
 <div id="event-<%= event.id %>-desc" class="reveal-modal event-desc">
-	<div id="presentable_field_<%=@count %>" class="presentable_fields">
+	<div id="presentable_field_<%= event.id %>" class="presentable_fields">
 	<div class="m-topbar">"Viewing Event"
 		<span class="m-helptext">Click anywhere outside of this box to close.</span>
 	</div>
@@ -55,10 +55,10 @@
 		<% end %>
 		</ul></div>
 	<% end %>
-		<button class="event_edit_btn" value="<%=@count%>">Edit this event</button>
+		<button class="event_edit_btn" value="<%= event.id %>">Edit this event</button>
 		<%= button_to "Delete Event", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete, :id => "destroy_event_btn" %>
 	</div>
-	<div id="editable_field_<%=@count%>" class="editable_fields">
+	<div id="editable_field_<%= event.id %>" class="editable_fields">
 		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event, :title => "Editing an event"}%>
 	</div>
 	
