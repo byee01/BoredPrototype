@@ -340,6 +340,10 @@ button:hover, input[type="submit"]:hover {
 		padding: 5px;
 	}
 
+	.related_events {
+		float: right;
+	}
+
 	.cat-radio label:hover {
 		border: 1px solid #444;
 	}
@@ -415,8 +419,8 @@ button:hover, input[type="submit"]:hover {
 
 
 #destroy_event_btn {
-	position: absolute;
-	right: 10px; margin: 0;
+	position: relative;
+	left: 120px; top: 159px; margin: 0;
 }
 
 #admin{
