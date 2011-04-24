@@ -1,4 +1,4 @@
-<div id="event-<%=@count%>" class="box<%= event.style_list %>">
+<div id="event-<%= event.id %>" class="box<%= event.style_list %>">
 	<% if !event.flyer.nil? and event.flyer.exists?%>
 		<img src="<%= event.flyer.url(:small) %>"/>
 	<% else %>
