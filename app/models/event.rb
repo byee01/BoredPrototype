@@ -82,7 +82,7 @@ class Event < ActiveRecord::Base
 		num_events = 3
 		
 		similar = Hash.new
-		Event.description_like(self.description).limit(num_events).each do |e| 
+		Event.upcoming.description_like(self.description).limit(num_events).each do |e| 
 			next if e.id == self.id
 			if similar.key? e
 				similar[e] += 1
@@ -91,7 +91,7 @@ class Event < ActiveRecord::Base
 			end 
 		end
 		
-		Event.name_like(self.name).limit(num_events).each do |e| 
+		Event.upcoming.name_like(self.name).limit(num_events).each do |e| 
 			next if e.id == self.id
 			if similar.key? e
 				similar[e] += 1 
@@ -100,7 +100,7 @@ class Event < ActiveRecord::Base
 			end
 		end
 		
-		Event.categories_like(self.categories).limit(num_events).each do |e| 
+		Event.upcoming.categories_like(self.categories).limit(num_events).each do |e| 
 			next if e.id == self.id
 			if similar.key? e
 				similar[e] += 2 
@@ -109,7 +109,7 @@ class Event < ActiveRecord::Base
 			end
 		end
 		
-		Event.time_like(self.time).limit(num_events).each do |e| 
+		Event.upcoming.time_like(self.time).limit(num_events).each do |e| 
 			next if e.id == self.id
 			if similar.key? e
 				similar[e] += 2 
