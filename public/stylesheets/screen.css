@@ -407,3 +407,8 @@ button:hover, input[type="submit"]:hover {
 	display: none;
 }
 
+
+#destroy_event_btn {
+	position: absolute;
+	right: 10px; margin: 0;
+}
