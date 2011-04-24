@@ -40,18 +40,15 @@ $('#filtering-nav a').hover(
 	function() {
 		var hoveredClass = "div.box." + $(this).attr('class');
 		var hoveredBoxes = $(hoveredClass);
-		console.log(hoveredBoxes);
-
-		if(!hoveredBoxes.hasClass("hl")) {
-			hoveredBoxes.addClass("hl");
-		}
+		hoveredBoxes.toggleClass('hl', true);
+		hoveredBoxes.not('.hl').toggleClass('.in_a_month', true);
 	},
 	function() {
 		var hoveredClass = "div.box." + $(this).attr('class');
 		var hoveredBoxes = $(hoveredClass);
-		hoveredBoxes.removeClass("hl");
+		hoveredBoxes.toggleClass('hl', false)
+		hoveredBoxes.not('.hl').toggleClass('.in_a_month', false);
 	}
-
 );
 
 /*---------------------------
