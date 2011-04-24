@@ -342,6 +342,22 @@ button:hover, input[type="submit"]:hover {
 
 	.related_events {
 		float: right;
+		margin: 0 10px;
+	}
+
+	.related_events .re_overlay {
+		position: relative;
+		top: -40px;
+		padding: 2px 4px;
+		width: 95px;
+		display: block;
+		background: rgba(0,0,0,0.5); color: white;
+	}
+
+	.related_events .re_overlay p {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.cat-radio label:hover {

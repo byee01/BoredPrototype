@@ -46,10 +46,12 @@
 	<% if similar.any? %>
 		<div class="related_events"><ul>
 		<% similar.each do |e| %>
-			<li><div class="related_event">
+			<li><a><div class="related_event">
 			<img src="<%= e.flyer.url(:thumb) %>"/>
-			<p><%= e.name %></p>
-			</div></li>
+				<div class="re_overlay">
+					<p><%= e.name %></p>
+				</div>
+			</div></a></li>
 		<% end %>
 		</ul></div>
 	<% end %>
