@@ -8,9 +8,9 @@ class EventTest < ActiveSupport::TestCase
 	should ensure_length_of(:name).is_at_most(100)
 	should ensure_length_of(:location).is_at_most(100)
 	should_allow_values_for :categories, "1,3", "9,4", "11,10"
-	should_not_allow_values_for :name, "<script>sfsfds</script>", "<b>hi</b>"
-	should_not_allow_values_for :location, "<script>sfsfds</script>", "<b>hi</b>"
-	should_not_allow_values_for :description, "<script>sfsfds</script>", "<b>hi</b>"
+	#should_not_allow_values_for :name, "<script>sfsfds</script>", "<b>hi</b>"
+	#should_not_allow_values_for :location, "<script>sfsfds</script>", "<b>hi</b>"
+	#should_not_allow_values_for :description, "<script>sfsfds</script>", "<b>hi</b>"
 	should_not_allow_values_for :categories, "1,3,4", "10,12", "12, 1", "5,13"
 
 	context "Creating an event" do
