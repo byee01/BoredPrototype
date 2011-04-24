@@ -334,6 +334,16 @@ button:hover, input[type="submit"]:hover {
 		border-radius: 8px;
 	}
 
+	.error_message {
+		color: white;
+		background: #a20000;
+		padding: 5px;
+	}
+
+	.related_events {
+		float: right;
+	}
+
 	.cat-radio label:hover {
 		border: 1px solid #444;
 	}
@@ -409,8 +419,17 @@ button:hover, input[type="submit"]:hover {
 
 
 #destroy_event_btn {
-	position: absolute;
-	right: 10px; margin: 0;
+	position: relative;
+	left: 120px; top: 159px; margin: 0;
+	color: #fff;
+	text-shadow: rgba(0,0,0,0.5) 0em 2px;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a20000), to(#680000)); 
+	background: -moz-linear-gradient(0% 100% 90deg,#680000, #a20000);
+}
+
+#destroy_event_btn:hover{
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#a20000), to(#680000)); 
+	background: -moz-linear-gradient(0% 100% 180deg,#680000, #a20000);	
 }
 
 #admin{

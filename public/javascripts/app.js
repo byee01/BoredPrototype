@@ -7,7 +7,7 @@ var eventErrors = new Array();
 function displayErrors(){
 	var s = "";
 	for(var item in eventErrors){
-		s = s + "<ul>" + eventErrors[item] + "</ul>";
+		s = s + "<li class='error_message'><p>" + eventErrors[item] + "</p></li>";
 	}
 
 	$("#ajax_errors ul").html(s);

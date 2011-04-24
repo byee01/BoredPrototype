@@ -28,7 +28,7 @@
 
 			<ul>
 			<% local_event.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
+				<li class="error_message"><p><%= msg %></p></li>
 			<% end %>
 			</ul>
 		</div>

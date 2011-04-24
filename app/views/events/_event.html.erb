@@ -43,11 +43,18 @@
 	</div>
 	
 	<% similar = event.get_similar %>
-	<% similar.each do |e| %>
-		<p><%= e.name %> | <img src="<%= e.flyer.url(:thumb) %>"/></p>
+	<% if similar.any? %>
+		<div class="related_events"><ul>
+		<% similar.each do |e| %>
+			<li><div class="related_event">
+			<img src="<%= e.flyer.url(:thumb) %>"/>
+			<p><%= e.name %></p>
+			</div></li>
+		<% end %>
+		</ul></div>
 	<% end %>
 		<button class="event_edit_btn" value="<%=@count%>">Edit this event</button>
-		<%= button_to "Destroy", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete, :id => "destroy_event_btn" %>
+		<%= button_to "Delete Event", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete, :id => "destroy_event_btn" %>
 	</div>
 	<div id="editable_field_<%=@count%>" class="editable_fields">
 		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event, :title => "Editing an event"}%>
