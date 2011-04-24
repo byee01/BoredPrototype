@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
 	#end
 	
 	def check_time_future
-		self.errors.add :time, "Must specify a date in the future" unless !self.time.nil? and self.time.future?
+		self.errors.add :time, "must be in the future" unless !self.time.nil? and self.time.future?
 		#self.errors.add :time,  "Event can't end if it hasn't started" unless (self.end_time.nil? or self.end_time > self.time)
 	end
 	
