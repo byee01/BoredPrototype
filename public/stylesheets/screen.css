@@ -412,3 +412,21 @@ button:hover, input[type="submit"]:hover {
 	position: absolute;
 	right: 10px; margin: 0;
 }
+
+#admin{
+	width: 700px;
+	margin: 0 auto;
+	margin-top: 150px;
+	background-color: #cdd;
+	padding: 20px;
+}
+	#admin h2{
+		font-style: normal;
+		font-size: 1.5em;
+	}
+	#admin table{
+		width: 680px;
+	}
+	#admin th{
+		text-align: left;
+	}
