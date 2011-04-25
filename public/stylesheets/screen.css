@@ -366,7 +366,7 @@ button:hover, input[type="submit"]:hover {
 		margin: 0 10px;
 	}
 
-	.related_event li { float: right; }
+	.related_events li { float: right; }
 
 	.related_events li a {
 		cursor: pointer;
