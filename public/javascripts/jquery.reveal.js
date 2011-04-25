@@ -22,6 +22,9 @@
 		e.preventDefault();
 		var modalLocation = $(this).attr('id');
 		$('#'+modalLocation+"-desc").reveal($(this));
+
+		var gaLink = "user-click/event-" + modalLocation;
+		 _gaq.push(['_trackPageview', gaLink]);
 		$('.editable_fields').hide();
 		$('.presentable_fields').show();
 	});

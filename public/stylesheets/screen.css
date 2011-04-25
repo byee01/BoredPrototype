@@ -366,6 +366,8 @@ button:hover, input[type="submit"]:hover {
 		margin: 0 10px;
 	}
 
+	.related_events li { float: right; margin-left: 10px;}
+
 	.related_events li a {
 		cursor: pointer;
 	}
@@ -374,7 +376,7 @@ button:hover, input[type="submit"]:hover {
 		position: relative;
 		top: -40px;
 		padding: 2px 4px;
-		width: 95px;
+		width: 92px;
 		display: block;
 		background: rgba(0,0,0,0.5); color: white;
 	}
