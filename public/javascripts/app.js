@@ -67,7 +67,7 @@ $('#filtering-nav a').hover(
 Form stuff
 -----------------------------*/
 
-$('.event_edit_btn').live('click', function(e){
+$('button.event_edit_btn').live('click', function(e){
 	e.preventDefault();
 	$('#presentable_field_' + $(this).val()).hide();
 	$('#editable_field_' + $(this).val()).show();
@@ -169,7 +169,7 @@ $('#my_events_btn').click(function(e){
 ----------------------------*/
 
 
-$(".cat-radio input:checkbox").checkbox({cls:'jquery-safari-checkbox'});
+$("li.cat-radio input:checkbox").checkbox({cls:'jquery-safari-checkbox'});
 
 
 /*---------------------------
