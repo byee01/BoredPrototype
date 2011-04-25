@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 	validates_format_of :categories, :with => /^\b0*([1-9]|1[01])(,0*([1-9]|1[01]))?$/, :message => "must be at most two categories"
 	validates_numericality_of :user_id
 	validates_format_of :name, :description, :location, :with=> /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\?\\\/']*$/
-	validate :check_time_future, :on => :create
+	validate :check_time_future
 	
 	before_validation :cons_categories
 	
