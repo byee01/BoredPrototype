@@ -38,8 +38,7 @@ function displayErrors(){
 		s = s + "<li class='error_message'><p>" + eventErrors[item] + "</p></li>";
 	}
 
-	$("#ajax_errors").html(s).fadeIn();
-	
+	$(".ajax_errors").html(s).fadeIn();
 }
 
 

@@ -26,6 +26,7 @@
 		 _gaq.push(['_trackPageview', gaLink]);
 		$('.editable_fields').hide();
 		$('.presentable_fields').show();
+		$('.ajax_errors').hide();
 	});
 
 /*---------------------------
