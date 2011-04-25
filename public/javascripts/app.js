@@ -107,7 +107,6 @@ $('#events').imagesLoaded( function(){
 	var original = $('#filtering-nav li.select')[0];
 	$('#filtering-nav a').click(function(){
 		var colorClass = '.' + $(this).attr('class');
-		console.log(colorClass);
 
 		$(original).toggleClass('select');
 		$(this).parent().toggleClass('select');
@@ -200,12 +199,10 @@ $('input.date_input').keyup(function () {
 				dataType: 'json',
 				data: "date=" + t.value,
 				success: 	function(data){  
-								console.log(data);
 								$('span.date_output').text(data.time_s);
 								$('input.hidden_date_input').val(data.time)
 							},
 				error: 		function(data){ 
-								console.log("E\n" + data);
 								$('span.date_output').text("Oops! Don't understand that!");
 							}
 			});
