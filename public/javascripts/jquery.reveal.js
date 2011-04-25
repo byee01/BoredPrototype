@@ -17,7 +17,6 @@
  Listener for data-reveal-id attributes
 ----------------------------*/
 
-	//$('a[data-reveal-id]').live('click', function(e) {
 	$('div.box').live('click', function(e) {
 		e.preventDefault();
 		var modalLocation = $(this).attr('id');
@@ -36,7 +35,7 @@
     $.fn.reveal = function(options) {
         
         
-        var defaults = {
+        var defaults = {  
 		    animationspeed: 300, //how fast animtions are
 		    dismissmodalclass: 'close-reveal-modal' //the class of a button or element that will close an open modal
     	}; 
@@ -55,7 +54,6 @@
           		locked = false,
 				modalBG = $('.reveal-modal-bg');
 
-				console.log(modal);
 /*---------------------------
  Create Modal BG
 ----------------------------*/
@@ -71,13 +69,13 @@
     		openModal();
 			
 			//Close Modal Listeners
-			var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent',closeModal)
-
 			modalBG.css({"cursor":"pointer"});
 			modalBG.bind('click.modalEvent',closeModal);
- 			$('body').keyup(function(e) {
-        		if(e.keyCode==27){ closeModal(); } // 27 is the keycode for the Escape key
-			});   		
+			$('body').keyup(function(e) {
+        		if(e.which===27){ closeModal(); } // 27 is the keycode for the Escape key
+			});
+			
+    		
 /*---------------------------
  Open & Close Animations
 ----------------------------*/
