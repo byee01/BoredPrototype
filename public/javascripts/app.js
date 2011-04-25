@@ -1,4 +1,3 @@
-
 /*---------------------------
 Related Events
 -----------------------------*/
@@ -14,6 +13,14 @@ $('div.related_event').live('click', function() {
 
 });
 
+/*---------------------------
+About Page
+-----------------------------*/
+
+$('#about').click(function(e) {
+	e.preventDefault();
+	$('#about_page').reveal();
+});
 /*--------------------------
  Event errors
 ---------------------------*/

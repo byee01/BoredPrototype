@@ -87,9 +87,10 @@ a {
 	border-radius: 20px;
 }
 
-#login {
+#about {
 	float: right;
 	margin-top:23px;
+	margin-right: 1.5em;
 	color: white;
 	font-size: 0.7em;
 }
@@ -433,7 +434,7 @@ button:hover, input[type="submit"]:hover {
 	background-position: 0px -48px;
 }
 
-.editable_fields, #login{
+.editable_fields {
 	display: none;
 }
 

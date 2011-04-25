@@ -6,11 +6,12 @@
 		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Cabin"/>
 		<%= stylesheet_link_tag "screen" %>
 		<%= csrf_meta_tag %>
+		<%= render :partial => 'ga' %>
 	</head>
 	<body>
 		<div class="header"> 
 			<!--<input id="topSearch" type="text" value="Search this board..."></input> -->
-			<span id="login"><strong>Log in</strong>&nbsp;&nbsp;&middot;&nbsp;&nbsp;Sign up with AndrewID</span> 
+			<a id="about" href="#">About Teudu</a>
 			<a href="<%= root_url %>"><img id="logo" src="/images/logo.png" alt="Teudu: Event Discovery!"> </a>
 			<button id="create_event_btn" href="#">+ Add an Event</button>
 			<ul class="nav" id="filtering-nav">
@@ -23,6 +24,7 @@
 		<div class="container">
 			<%= yield %>
 		</div>
+		<%= render :partial=> 'about' %>
 	</body>
 	
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script> 
