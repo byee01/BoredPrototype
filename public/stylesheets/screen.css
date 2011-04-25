@@ -95,6 +95,26 @@ a {
 	font-size: 0.7em;
 }
 
+#about_page h1 {
+	color: #000;
+}
+
+#about_page h2 {
+	color: #666;
+}
+
+.about-team {
+	background: #000;
+	overflow: auto;
+}
+
+.about-team li {
+	border: 1px solid #222;
+	float: left;
+	width: 100px;
+	margin: 10px;
+}
+
 button, input[type="submit"] {
 	float: left;
 	border: 1px solid #444;
