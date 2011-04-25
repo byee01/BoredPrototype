@@ -6,7 +6,7 @@ $('div.related_event').live('click', function() {
 	var relatedEvent = $(this).parent().attr('class');
 	console.log(relatedEvent);
 	/* Close current event */
-	$('.reveal-modal-bg').click();
+	$('div.reveal-modal-bg').click();
 
 	/* Open related event */
 	$("#event-" + relatedEvent).click();
@@ -39,8 +39,7 @@ function displayErrors(){
 		s = s + "<li class='error_message'><p>" + eventErrors[item] + "</p></li>";
 	}
 
-	$("#ajax_errors ul").html(s);
-	$("#ajax_errors").fadeIn();
+	$("#ajax_errors").html(s).fadeIn();
 	
 }
 
