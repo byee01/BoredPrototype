@@ -4,7 +4,6 @@ Related Events
 
 $('div.related_event').live('click', function() {
 	var relatedEvent = $(this).parent().attr('class');
-	console.log(relatedEvent);
 	/* Close current event */
 	$('div.reveal-modal-bg').click();
 
@@ -192,7 +191,6 @@ $('input.date_input').keyup(function () {
 
 		// fire an ajax request in 1/5 of a second
 		this.timer = setTimeout(function () {
-			console.log('Sending request...' + t.value);
 			$.ajax({
 				type: "GET",
 				url: "/date_parse",
