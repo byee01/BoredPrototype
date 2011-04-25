@@ -63,7 +63,7 @@ class Event < ActiveRecord::Base
 	end
 	
 	def happening_in_a_month?
-		return true if self.time.year == Time.now.year  and self.time.mon > Time.now.mon
+		return true if self.time.year >= Time.now.year  and self.time.mon > Time.now.mon
 	end
 	
 	def style_list
