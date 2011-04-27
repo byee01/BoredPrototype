@@ -179,8 +179,8 @@ button:hover, input[type="submit"]:hover {
 	============================================= */
 	.box {-webkit-transition: all 0.3s;}
 	.box.today { border: 1px solid gold;}
-	.box.this_week {opacity: 0.8;}
-	.box.in_two_weeks {opacity: 0.4;}
+	.box.this_week {opacity: 1;}
+	.box.in_two_weeks {opacity: 0.6;}
 	.box.in_a_month {opacity: 0.2;}
 	.box.hl {opacity: 1;}
 	.box:hover	{ opacity: 1; -webkit-transition: all 0.3s; }
