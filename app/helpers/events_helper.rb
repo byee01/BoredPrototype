@@ -10,6 +10,17 @@ module EventsHelper
 		def to_s
 			@name
 		end
+		
+		def ==(object)
+			if object.equal?(self)
+				return true
+			end
+			if !object.instance_of?(self.class)
+				return false
+			end
+			return self.name == object.name
+		end
+		
 	end
 	
 	@@category_hash = {

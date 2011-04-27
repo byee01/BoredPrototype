@@ -99,13 +99,19 @@ class Event < ActiveRecord::Base
 				similar[e] = 1
 			end
 		end
-		
-		Event.upcoming.categories_like(self.categories).limit(num_events).each do |e| 
+		i = 1
+		#Event.upcoming.categories_like(self.categories).limit(num_events).each do |e| 
+		Event.upcoming.all.each do |e|
+			next if i ==3
 			next if e.id == self.id
-			if similar.key? e
-				similar[e] += 2 
-			else 
-				similar[e] = 2
+			e.category_list.each do |c|
+				if self.category_list.include? c
+					if similar.key? e
+						similar[e] += 2 
+					else 
+						similar[e] = 2
+					end
+				end
 			end
 		end
 		
