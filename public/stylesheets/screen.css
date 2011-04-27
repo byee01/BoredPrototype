@@ -178,9 +178,9 @@ button:hover, input[type="submit"]:hover {
 	OPACITY CHANGES
 	============================================= */
 	.box {-webkit-transition: all 0.3s;}
-	.box.today {}
-	.box.this_week {opacity: 0.85;}
-	.box.in_two_weeks {opacity: 0.65;}
+	.box.today { border: 1px solid gold;}
+	.box.this_week {opacity: 0.6;}
+	.box.in_two_weeks {opacity: 0.4;}
 	.box.in_a_month {opacity: 0.25;}
 	.box.hl {opacity: 1;}
 	.box:hover	{ opacity: 1; -webkit-transition: all 0.3s; }
@@ -502,3 +502,48 @@ form label.error{
 		margin: 0px;
 		top: 0px;
 	}
+	
+	label[for^="check_arts"]{
+		border-color: purple;
+	}
+	label[for^="check_sports"]{
+		border-color: orange;
+	}
+	label[for^="check_professional"]{
+		border-color: red;
+	}
+	label[for^="check_greek"]{
+		border-color: yellow;
+	}
+	label[for^="check_cultural"]{
+		border-color: green;
+	}
+	label[for^="check_music"]{
+		border-color: blue;
+	}
+	label[for^="check_movies"]{
+		border-color: cyan;
+	}
+	label[for^="check_academic"]{
+		border-color: antiquewhite;
+	}
+	label[for^="check_social"]{
+		border-color: steelblue;
+	}
+	label[for^="check_service"]{
+		border-color: deeppink;
+	}
+	
+	/*
+	label[c-arts			{ border-bottom: 3px solid purple; }, a.c-arts:hover .box { opacity: 1;}
+	a.c-sports		{  border-bottom: 3px solid orange; }
+	a.c-professional	{  border-bottom: 3px solid red; }
+	a.c-greek		{  border-bottom: 3px solid yellow; }
+	a.c-cultural		{  border-bottom: 3px solid green; }
+	a.c-music		{  border-bottom: 3px solid blue; }
+	a.c-movies		{  border-bottom: 3px solid cyan; }
+	a.c-academic		{  border-bottom: 3px solid antiquewhite; }
+	a.c-social		{  border-bottom: 3px solid steelblue; }
+	a.c-service		{  border-bottom: 3px solid deeppink; }
+	a.all		{  border-bottom: 3px solid white; }*/
+	
