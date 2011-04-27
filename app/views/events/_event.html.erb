@@ -55,8 +55,11 @@
 		<% end %>
 		</ul></div>
 	<% end %>
+	<div class="edit_btn_cont">
 		<button class="event_edit_btn" value="<%= event.id %>">Edit this event</button>
-		<%= button_to "Delete Event", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete, :id => "destroy_event_btn" %>
+		<div class="delete_btn_form"><%= button_to "Delete Event", event, :remote=>true, :confirm=>'Are you sure?', :method => :delete, :class => "destroy_event_btn" %></div>
+	</div>
+
 	</div>
 	<div id="editable_field_<%= event.id %>" class="editable_fields">
 		<%= render :partial=> 'form', :locals=>{:up=>true, :event=>event, :title => "Editing an event"}%>

@@ -310,11 +310,9 @@ button:hover, input[type="submit"]:hover {
 	}
 
 	.reveal-modal .event_edit_btn {
-		position: absolute;
-		margin: 10px;
-		bottom: 0;
+		margin: 7px;
 	}
-	
+
 	.reveal-modal h1, .reveal-modal h2, .reveal-modal h3,
 	.reveal-modal h4 {
 		font-weight: normal;
@@ -460,17 +458,25 @@ button:hover, input[type="submit"]:hover {
 	display: none;
 }
 
+.edit_btn_cont {
+	position:absolute;
+	bottom: 0;
+}
 
-#destroy_event_btn {
-	position: relative;
-	left: 120px; top: 159px; margin: 0;
+
+.delete_btn_form {
+	position: absolute;
+	left: 100px; bottom: 0; margin: 5px 10px;
+}
+
+input[type="submit"].destroy_event_btn  {
 	color: #fff;
 	text-shadow: rgba(0,0,0,0.5) 0em 2px;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a20000), to(#680000)); 
 	background: -moz-linear-gradient(0% 100% 90deg,#680000, #a20000);
 }
 
-#destroy_event_btn:hover{
+input[type="submit"].destroy_event_btn:hover {
 	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#a20000), to(#680000)); 
 	background: -moz-linear-gradient(0% 100% 180deg,#680000, #a20000);	
 }
