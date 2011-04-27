@@ -492,3 +492,13 @@ button:hover, input[type="submit"]:hover {
 	#admin th{
 		text-align: left;
 	}
+	
+form label.error{
+	position: relative;
+	margin-left: 185px;
+	top: -50px;
+}
+	.m-details .error{
+		margin: 0px;
+		top: 0px;
+	}
