@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace KinectSpaceToWindowCoords
+namespace Teudu.InteractiveDisplay
 {
     public abstract class PropertyChangeBase : INotifyPropertyChanged
     {

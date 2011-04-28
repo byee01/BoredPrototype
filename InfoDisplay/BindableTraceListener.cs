@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 
-namespace KinectSpaceToWindowCoords
+namespace Teudu.InteractiveDisplay
 {
     public class BindableTraceListener : TraceListener, INotifyPropertyChanged
     {

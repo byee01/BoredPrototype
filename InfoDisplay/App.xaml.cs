@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace KinectSpaceToWindowCoords
+namespace Teudu.InteractiveDisplay
 {
     public partial class App : Application
     {

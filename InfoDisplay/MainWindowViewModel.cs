@@ -7,10 +7,13 @@ using System.Windows.Forms;
 using System.Windows.Threading;
 using System.Configuration;
 
-namespace KinectSpaceToWindowCoords
+namespace Teudu.InteractiveDisplay
 {
     public class MainWindowViewModel : PropertyChangeBase
     {
+
+#region Private Members
+        #region PInvoke
         [DllImportAttribute("user32.dll", EntryPoint = "SetCursorPos")]
         [return: MarshalAsAttribute(System.Runtime.InteropServices.UnmanagedType.Bool)]
         public static extern bool SetCursorPos(int X, int Y);
@@ -19,6 +22,7 @@ namespace KinectSpaceToWindowCoords
         private static extern void mouse_event(UInt32 dwFlags, UInt32 dx, UInt32 dy, UInt32 dwData, IntPtr dwExtraInfo);
         private const UInt32 MouseEventLeftDown = 0x0002;
         private const UInt32 MouseEventLeftUp = 0x0004;
+        #endregion
 
         private int currentPage = 0;
         private int dummyVariable = 0;
@@ -27,25 +31,61 @@ namespace KinectSpaceToWindowCoords
         double cursorY;
         string uri;
         double scale;
-        bool superMode = false;
+        bool superMode = false; //enhanced NUI
 
         DispatcherTimer cameraTimer;
         DispatcherTimer changeCatTimer;
-        DispatcherTimer changePageTimer;
-        
+        DispatcherTimer changePageTimer;     
         Rectangle workingArea;
+#endregion
 
-        private System.Windows.Input.Cursor gripCursor;
-
-        System.Windows.Forms.Timer cursorTimer;
-
+#region Initialization
         public MainWindowViewModel()
         {
             this.Initialize();
-            gripCursor = new System.Windows.Input.Cursor(Application.StartupPath + "\\fist.cur");
         }
 
-        #region Properties
+        /// <summary>
+        /// Initialization routine for main functionality
+        /// </summary>
+        void Initialize()
+        {
+            Trace.Listeners.Add(App.TraceListener);
+            double cScale = 2;
+            Double.TryParse(ConfigurationManager.AppSettings["curScale"], out cScale);
+            this.Scale = cScale + 1;
+
+            var start = new ThreadStart(CameraSession.Run);
+            var cameraThread = new Thread(start);
+            cameraThread.Start();
+
+            Trace.Flush();
+            Trace.Write("Initializing...");
+
+            // assumes only single/first monitor
+            var screen = Screen.AllScreens[0];
+            this.workingArea = screen.WorkingArea;
+
+            this.cameraTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(10) };
+            this.cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
+            this.cameraTimer.Start();
+
+            Boolean.TryParse(ConfigurationManager.AppSettings["superMode"], out superMode);
+
+            // trigger NUI improvements
+            if (superMode)
+            {
+                this.changeCatTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
+                this.changeCatTimer.Tick += new EventHandler(changeCatTimer_Tick);
+
+                this.changePageTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(1000) };
+                this.changePageTimer.Tick += new EventHandler(changePageTimer_Tick);
+            }
+            Trace.Write("Kinect device starting...");
+        }
+#endregion
+
+#region Properties
 
         /// <summary>
         /// Acts as a logger for application
@@ -126,9 +166,20 @@ namespace KinectSpaceToWindowCoords
             get { return CameraSession.PositionY; }
         }
 
-        #endregion
+#endregion
 
-        #region Public Interface Methods
+#region Helpers
+        /// <summary>
+        /// Sends a mouse click to interface
+        /// </summary>
+        public static void SendMouseClick()
+        {
+            mouse_event(MouseEventLeftDown, 0, 0, 0, new System.IntPtr());
+            mouse_event(MouseEventLeftUp, 0, 0, 0, new System.IntPtr());
+        }
+#endregion
+
+#region Public Interface Methods
         /// <summary>
         /// Increments cursor movement scale factor
         /// </summary>
@@ -146,60 +197,14 @@ namespace KinectSpaceToWindowCoords
             if (this.Scale > 1)
                 this.Scale--;
         }
-        #endregion
+#endregion
 
+#region Timers
         /// <summary>
-        /// Sends a mouse click to interface
+        /// Timer for sending out page change pulses
         /// </summary>
-        public static void SendMouseClick()
-        {
-            mouse_event(MouseEventLeftDown, 0, 0, 0, new System.IntPtr());
-            mouse_event(MouseEventLeftUp, 0, 0, 0, new System.IntPtr());
-        }
-
-        /// <summary>
-        /// Initialization routine for main functionality
-        /// </summary>
-        void Initialize()
-        {
-            Trace.Listeners.Add(App.TraceListener);
-            double cScale = 2; 
-            Double.TryParse(ConfigurationManager.AppSettings["curScale"], out cScale);
-            this.Scale = cScale;
-            this.Scale++;
-            var start = new ThreadStart(CameraSession.Run);
-            var cameraThread = new Thread(start);
-            cameraThread.Start();
-            
-            Trace.Flush();
-            Trace.Write("Initializing...");
-
-            // assumes only single/first monitor
-            var screen = Screen.AllScreens[0];
-            this.workingArea = screen.WorkingArea;
-
-            this.cameraTimer = new DispatcherTimer(){ Interval = TimeSpan.FromMilliseconds(10) };
-            this.cameraTimer.Tick += new EventHandler(cameraTimer_Tick);
-            this.cameraTimer.Start();
-
-            //this.cursorTimer = new System.Windows.Forms.Timer() { Interval = 1 };
-            //this.cursorTimer.Tick += new EventHandler(cursorTimer_Tick);
-
-            Boolean.TryParse(ConfigurationManager.AppSettings["superMode"], out superMode);
-
-            if (superMode)
-            {
-
-
-                this.changeCatTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(500) };
-                this.changeCatTimer.Tick += new EventHandler(changeCatTimer_Tick);
-
-                this.changePageTimer = new DispatcherTimer() { Interval = TimeSpan.FromMilliseconds(1000) };
-                this.changePageTimer.Tick += new EventHandler(changePageTimer_Tick);
-            }
-            Trace.Write("Kinect device starting...");
-        }
-
+        /// <param name="sender">timer trigger</param>
+        /// <param name="e"></param>
         void changePageTimer_Tick(object sender, EventArgs e)
         {
             if (CameraSession.NearTop)
@@ -208,6 +213,11 @@ namespace KinectSpaceToWindowCoords
                 SwipedDown();
         }
 
+        /// <summary>
+        /// Timer for sending pulses to change categories
+        /// </summary>
+        /// <param name="sender">trigger for timer</param>
+        /// <param name="e"></param>
         void changeCatTimer_Tick(object sender, EventArgs e)
         {
             if (CameraSession.NearLeft)
@@ -251,7 +261,8 @@ namespace KinectSpaceToWindowCoords
                     this.OnPropertyChanged("SensorY");
                     SetCursorPos((int)this.cursorX, (int)this.cursorY);
 
-                  /*  if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
+                    /* There is too many threads running to make this work efficiently */
+                    /*  if (CameraSession.HorSwipeStarted || CameraSession.VertSwipeStarted)
                     {
                         //cursorTimer.Start();
                         //Trace.WriteLine("swipe started");
@@ -291,8 +302,9 @@ namespace KinectSpaceToWindowCoords
                 //TODO: Some sort of notification/overlay
             }
         }
+#endregion
 
-        #region Gesture Handlers
+#region Gesture Handlers
 
         /// <summary>
         /// Handles Left Swipe
@@ -333,8 +345,7 @@ namespace KinectSpaceToWindowCoords
         /// </summary>
         public void SwipedUp()
         {
-            //this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() + 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
-            this.URI = "javascript:scrollKinectUp();if(null){" + dummyVariable + "}";
+            this.URI = "javascript:scrollKinectUp();if(null){" + dummyVariable + "}"; //need a dummy variable to indicate that property has been changed
             CameraSession.SwipeDown = CameraSession.SwipeUp = false;
             dummyVariable = (dummyVariable + 1) % 2;
             Trace.WriteLine("Moving up!");
@@ -345,7 +356,6 @@ namespace KinectSpaceToWindowCoords
         /// </summary>
         public void SwipedDown()
         {
-            //this.URI = "$('html, body').animate({'scrollTop': $('body').scrollTop() - 0.5*$(window).height()}); if(null){" + dummyVariable + "}";
             this.URI = "javascript:scrollKinectDown();if(null){" + dummyVariable + "}";
             CameraSession.SwipeUp = CameraSession.SwipeDown = false;
             dummyVariable = (dummyVariable + 1) % 2;
@@ -360,6 +370,7 @@ namespace KinectSpaceToWindowCoords
             CameraSession.Push = false;
         }
 
-        #endregion
+#endregion
+
     }
 }
