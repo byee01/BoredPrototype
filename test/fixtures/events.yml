@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  location: MyString
+  time: 2011-09-11 16:57:37
+  flyer: MyString
+  pattern: 1
+  categories: MyString
+
+two:
+  name: MyString
+  description: MyText
+  location: MyString
+  time: 2011-09-11 16:57:37
+  flyer: MyString
+  pattern: 1
+  categories: MyString
