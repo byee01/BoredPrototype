@@ -1,5 +1,5 @@
 xml.events do
-  xml.categories('3')
+  xml.categories('A,B,C')
   @events.each do |event_obj|
     xml.event {
       xml.name(event_obj.name)
