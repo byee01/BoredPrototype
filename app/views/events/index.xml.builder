@@ -8,5 +8,4 @@ xml.events do
       xml.image(event_obj.flyer)
       xml.categories(event_obj.categories)
     end
-  end
 end
