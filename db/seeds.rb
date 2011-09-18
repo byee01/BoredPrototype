@@ -15,6 +15,5 @@ File.open("db/seed_data.txt").read.each_line do |image|
   time = Time.now + ((1+rand(5)) * 60 * 60 * 24)
   flyer = image
   categories = [rand(3)+1, rand(6)+4].join(", ")
-  puts truncate(name, :length => 34, :omission => '!')
-  #Event.create!(:name => name, :description => description, :location => location, :time => time, :flyer => flyer, :categories => categories) 
+  Event.create!(:name => truncate(name, :length => 34, :omission => '!'), :description => description, :location => location, :time => time, :flyer => flyer, :categories => categories) 
 end
