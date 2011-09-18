@@ -24,6 +24,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem 'faker'
 end
 
 # To use debugger
