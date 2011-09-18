@@ -20,6 +20,7 @@ gem 'jquery-rails'
 # Use postgres for database as Heroku doesn't support sqlite3
 group :production do
   gem 'pg'
+  gem 'faker'   # Temporary for seeding purposes(?)
 end
 
 group :development do
