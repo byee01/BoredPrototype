@@ -1,35 +1,5 @@
-<h1>Listing events</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Location</th>
-    <th>Time</th>
-    <th>Flyer</th>
-    <th>Pattern</th>
-    <th>Categories</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div id="events">
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.description %></td>
-    <td><%= event.location %></td>
-    <td><%= event.time %></td>
-    <td><%= event.flyer %></td>
-    <td><%= event.pattern %></td>
-    <td><%= event.categories %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <%= render event %> 
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+</div>
