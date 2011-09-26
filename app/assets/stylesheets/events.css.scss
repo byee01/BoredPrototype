@@ -9,6 +9,7 @@
   background: #222;
   width: 230px;
   color: #FFF;
+  overflow: hidden;
   
   h4 {
     font-size: 2em;
@@ -16,11 +17,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-top: 3em;
   }
 
   .thumbnail {
-    width: 100%;
-    height: 100%;
     background-size: cover;
     background-position: center;
   }

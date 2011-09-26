@@ -14,6 +14,7 @@ class Event < ActiveRecord::Base
     self.errors.add :time, "must be in the future" unless !self.time.nil? and self.time.future?
   end
 
+  # ** NOT YET WORKING LOL ** #
   # Return differently formatted dates based on how far in advance it is.
   # Say it's Monday - events would show up as:
   # Today - Monday @ time
@@ -23,6 +24,12 @@ class Event < ActiveRecord::Base
   #
   # @return [String] strftime'd date
   def abbreviated_date
+    self.time.future? ? 'In ' + distance_of_time_in_words(Time.now, self.time) : time_ago_in_words(self.time) + ' ago' 
+  end
+
+
+  # This is a work in progress
+  def abbreviated_date_temp
     distance_in_seconds = self.time - Time.now
     
     if distance_in_seconds < 0
@@ -32,12 +39,8 @@ class Event < ActiveRecord::Base
     case distance_in_seconds
       when 0..86399       then  return self.time.strftime("Today at %l:%M %P")
       when 86400..172799  then  return self.time.strftime("Tomorrow at %l:%M %P")
-      when 172800..432000 then  return self.time.strftime("%B at %l:%M %P")
-      else return self.time.strftime("%B, %A %d, at %l:%M %P")
+      when 172800..432000 then  return self.time.strftime("%A at %l:%M %P")
+      else return self.time.strftime("%A, %B %d, at %l:%M %P")
     end
-  end
-
-  def test_date
-    distance_in_seconds = Time.now - self.time
   end
 end
