@@ -12,5 +12,7 @@ $container.isotope({
 // Expand event when clicked
 $container.delegate('.event', 'click', function() {
   $(this).toggleClass('expanded');
+  
+  // This causes severe performance issues.
   $container.isotope('reLayout');
 });
