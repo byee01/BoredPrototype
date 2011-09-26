@@ -3,11 +3,8 @@
 <p><%= event.description %></p>
   <td><%= event.location %></td>
   <td><%= event.time %></td>
-  <%= image_tag event.flyer, :size => "150x230"%>
     <td><%= event.pattern %></td>
     <td><%= event.categories %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
+  <div style="background-image: url(<%= event.flyer %>);" class="thumbnail"></div>
 </div>
