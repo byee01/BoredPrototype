@@ -2,7 +2,15 @@
 // All this logic will automatically be available in application.js.
 
 //= require isotope
+var $container = $('#events');
 
-$('#events').isotope({
+// Set up isotope on .event
+$container.isotope({
   itemSelector: '.event'
+});
+
+// Expand event when clicked
+$container.delegate('.event', 'click', function() {
+  $(this).toggleClass('expanded');
+  $container.isotope('reLayout');
 });

@@ -1,6 +1,11 @@
 <div class="event">
-<h4><%= event.name %></h4>
-  <p class="location"><%= event.location %></p>
-  <p class="time"><%= event.abbreviated_date %></p>
+  <div class="caption">
+    <h4><%= event.name %></h4>
+    <p class="location"><%= event.location %></p>
+    <p class="time"><%= event.abbreviated_date %></p>
+  </div>
+  <div class="event-info">
+    <p class="desc"><%= event.description %></p>
+  </div>
   <div style="background-image: url(<%= event.flyer %>);" class="thumbnail"></div>
 </div>

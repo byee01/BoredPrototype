@@ -2,6 +2,15 @@
  * Base styles for Teudu
  */
 
+@mixin transition($property, $duration) {
+  -webkit-transition: $property $duration ease-in-out;
+  -moz-transition: $property $duration ease-in-out;
+  -o-transition: $property $duration ease-in-out;
+  -ms-transition: $property $duration ease-in-out;
+  transition: $property $duration ease-in-out;
+}
+
+
 body {
   background-color: #111;
   font-family: verdana, arial, sans-serif;

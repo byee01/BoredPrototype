@@ -2,26 +2,103 @@
  * Base styles for the events controller
  *
  *  Necessary isotope styles for animation
+ *= require base
  *= require isotope
+ *
+ * It's also necessary to import SCSS mixins and stuff.
  */
+@mixin transition($property, $duration, $delay:0) {
+  -webkit-transition: $property $duration $delay ease-in;
+  -moz-transition: $property $duration $delay ease-in;
+  -o-transition: $property $duration $delay ease-in;
+  -ms-transition: $property $duration $delay ease-in;
+  transition: $property $duration $delay ease-in;
+}
+
+$event_width: 180px;
+$event_height: 230px;
+
+$event_caption_offset: -27px;
+
+$event_expanded_zindex: 900;
+
+#events-container {
+  margin: 0 auto;
+}
+
+#events {
+  margin: 0 10px;
+}
+
 
 .event {
   background: #222;
-  width: 230px;
+  width: $event_width;
+  height: $event_height;
   color: #FFF;
   overflow: hidden;
+  margin: 5px;
+  cursor: pointer;
+
+  .caption {
+    background: rgba(34,34,34,0.8);
+    position: absolute;
+    bottom: $event_caption_offset;
+    left: 0;
+    width: $event_width - 6;
+    padding: 3px;
+    @include transition(all, 0.1s);
+  }
   
   h4 {
-    font-size: 2em;
-    line-height: 1em;
+    font-size: 1.5em;
+    line-height: 1.5em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-top: 3em;
   }
 
   .thumbnail {
     background-size: cover;
     background-position: center;
+    height: 100%;
+    width: 100%;
+    @include transition(opacity, 0.1s);
+  }
+
+  .event-info {
+    display: none;
+  }
+
+}
+
+/* EXPANDED VIEW */
+.event.expanded {
+  width: $event_width * 2; 
+  height: $event_height * 2; 
+  z-index: $event_expanded_zindex;
+
+  .event-info {
+    display: block;
+  }
+
+  .caption {
+    position: relative;
+    bottom: 0;
+  }
+
+  .thumbnail {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.event:hover {
+  .caption {
+    background: rgba(34,34,34,0.95);
+    bottom: 0;
   }
 }
