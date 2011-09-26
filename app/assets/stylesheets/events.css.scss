@@ -74,8 +74,8 @@ $event_expanded_zindex: 900;
 
 /* EXPANDED VIEW */
 .event.expanded {
-  width: $event_width * 2; 
-  height: $event_height * 2; 
+  width: $event_width * 2 + 10; 
+  height: $event_height * 2 + 10; 
   z-index: $event_expanded_zindex;
 
   .event-info {
