@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+/* TEMPORARILY REMOVE ISOTOPE
 //= require isotope
 var $container = $('#events');
 
@@ -17,3 +18,4 @@ $container.delegate('.event', 'click', function() {
   // This causes severe performance issues.
   $container.isotope('reLayout');
 });
+*/

@@ -15,8 +15,8 @@
   transition: $property $duration $delay ease-in;
 }
 
-$event_width: 180px;
-$event_height: 230px;
+$event_width: 150px;
+$event_height: 150px;
 
 $event_caption_offset: -27px;
 
@@ -30,24 +30,35 @@ $event_expanded_zindex: 900;
   margin: 0 10px;
 }
 
-
 .event {
   background: #222;
+  color: #FFF;
+  cursor: pointer;
+  float: left;
+  margin: 5px;
+  overflow: hidden;
+  position: relative;
+  
   width: $event_width;
   height: $event_height;
-  color: #FFF;
-  overflow: hidden;
-  margin: 5px;
-  cursor: pointer;
 
+  /** CATEGORY COLORS **/
   .caption {
-    background: rgba(34,34,34,0.8);
+    background: rgb(34,34,34);
     position: absolute;
     bottom: $event_caption_offset;
     left: 0;
     width: $event_width - 6;
     padding: 3px;
     @include transition(all, 0.1s);
+
+    .soon {
+      background: rgb(224, 27, 76);
+    }
+
+    .later {
+      background: rgb(27, 126, 224);
+    }
   }
   
   h4 {
@@ -63,13 +74,11 @@ $event_expanded_zindex: 900;
     background-position: center;
     height: 100%;
     width: 100%;
-    @include transition(opacity, 0.1s);
   }
 
   .event-info {
     display: none;
   }
-
 }
 
 /* EXPANDED VIEW */

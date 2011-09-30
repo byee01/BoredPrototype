@@ -2,18 +2,62 @@
  * Base styles for Teudu
  */
 
-@mixin transition($property, $duration) {
-  -webkit-transition: $property $duration ease-in-out;
-  -moz-transition: $property $duration ease-in-out;
-  -o-transition: $property $duration ease-in-out;
-  -ms-transition: $property $duration ease-in-out;
-  transition: $property $duration ease-in-out;
-}
-
+$animation_length: 0.5s;
 
 body {
   background-color: #111;
-  font-family: verdana, arial, sans-serif;
+  color: #EEE;  
+  font-family: 'Terminal Dosis', verdana, arial, sans-serif;
   font-size: 13px;
   line-height: 1em;
 }
+
+.header {
+  height: 120px;
+
+  h1 {
+    font-size: 3em;
+    line-height: 4em;
+    margin-left: 2em;
+
+    span {
+      font-size: 0.6em;
+    }
+  }
+}
+
+#a, #b, #c, #d, #e {
+  line-height: 2em;
+    -webkit-animation-name: reset, fade-in;
+    -webkit-animation-duration: $animation_length;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-iteration-count: 1;
+  
+}
+
+@-webkit-keyframes reset {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 0;
+}
+}
+ 
+@-webkit-keyframes fade-in {
+0% {
+    opacity: 0;
+}
+60% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+}
+}
+ 
+#a {-webkit-animation-delay: 0, 0;}
+#b {-webkit-animation-delay: 0, $animation_length*0.2;}
+#c {-webkit-animation-delay: 0, $animation_length*0.4;}
+#d {-webkit-animation-delay: 0, $animation_length*0.6;}
+#e {-webkit-animation-delay: 0, $animation_length*0.75;}

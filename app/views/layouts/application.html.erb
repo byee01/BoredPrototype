@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>Teudu</title>
-  <%= stylesheet_link_tag    "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Terminal+Dosis:200' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= render "shared/header" %>
 
 <%= yield %>
 

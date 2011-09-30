@@ -7,9 +7,13 @@ class Event < ActiveRecord::Base
   validates_format_of :name, :description, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
   validate :check_time_is_future
 
+
+  #### SCOPES ####
   scope :all, order("time ASC")
   scope :upcoming, where("time >= ?", Time.now)
 
+
+  #### PUBLIC METHODS ####
   def check_time_is_future
     self.errors.add :time, "must be in the future" unless !self.time.nil? and self.time.future?
   end
@@ -43,4 +47,21 @@ class Event < ActiveRecord::Base
       else return self.time.strftime("%A, %B %d, at %l:%M %P")
     end
   end
+
+  # Return a string depending how soon an event is.
+  # More will be added later (featured, etc.)
+  #
+  # @return [String] soon|later
+  def flag
+    distance_in_seconds = self.time - Time.now
+    
+    case distance_in_seconds
+      when 1..86399       then  return "soon"
+      when 86399..172800  then  return "later"
+      else return ""
+    end
+  end
+
+
+  # Internal methods
 end
