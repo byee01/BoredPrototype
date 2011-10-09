@@ -1,3 +1,5 @@
+// Events model
+
 var Event = Backbone.Model.extend({
   url : function() {
     var base = 'events';

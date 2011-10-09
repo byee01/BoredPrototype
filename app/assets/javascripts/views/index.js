@@ -1,3 +1,7 @@
+// Index view for events
+
+//= require backbone
+
 App.Views.Index = Backbone.View.extend({
   initialize: function() {
       this.events = this.options.events;

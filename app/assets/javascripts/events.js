@@ -19,18 +19,11 @@ $container.delegate('.event', 'click', function() {
 });
 */
 
-//= require backbone
-//= require controllers/events
 var App = {
   Views: {},
-  Controllers: {},
+  Routers: {},
   init: function() {
-    new App.Controllers.Events();
+    new App.Routers.Events();
     Backbone.history.start();
   }
 };
-
-
-$(function() {
-  App.init();
-});
