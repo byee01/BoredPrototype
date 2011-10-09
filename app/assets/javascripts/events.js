@@ -2,7 +2,6 @@
 // All this logic will automatically be available in application.js.
 
 /* TEMPORARILY REMOVE ISOTOPE
-//= require isotope
 var $container = $('#events');
 
 // Set up isotope on .event
@@ -19,3 +18,19 @@ $container.delegate('.event', 'click', function() {
   $container.isotope('reLayout');
 });
 */
+
+//= require backbone
+//= require controllers/events
+var App = {
+  Views: {},
+  Controllers: {},
+  init: function() {
+    new App.Controllers.Events();
+    Backbone.history.start();
+  }
+};
+
+
+$(function() {
+  App.init();
+});

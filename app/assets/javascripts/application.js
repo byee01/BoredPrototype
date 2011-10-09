@@ -6,4 +6,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+
+//  Underscore is a dependency for backbone.js
+//= require underscore-min
+//= require backbone
+
 //= require_tree .
