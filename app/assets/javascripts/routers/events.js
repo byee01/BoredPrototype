@@ -1,4 +1,4 @@
-// Events router
+// Events Router
 
 //= require backbone
 
@@ -9,7 +9,7 @@ App.Routers.Events = Backbone.Router.extend({
   },
 
   index: function() {
-    $.getJSON('/events', function(data) {
+    $.getJSON('/documents', function(data) {
       if(data) {
         var events = _(data).map(function(i) { return new Event(i); });
         new App.Views.Index({ events: events });

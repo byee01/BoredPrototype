@@ -18,6 +18,10 @@
 //= require underscore-min
 //= require backbone
 
+//  Require ICH and mustache for templating
+//= require icanhas.min
+//= require mustache
+
 //= require events
 
 //= require_tree .

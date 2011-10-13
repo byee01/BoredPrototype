@@ -4,12 +4,14 @@
 
 App.Views.Index = Backbone.View.extend({
   initialize: function() {
-      this.events = this.options.events;
-      this.render(); 
+    _.bindAll(this, 'render');
+    this.model.bind('change', this.render);
+    this.render(); 
   },
 
   render: function() {
     if(this.events.length > 0) {
+      console.log("Rendering events index");
       out = this.events;    
     } else {
       out = "<h3>No events.</h3>";
