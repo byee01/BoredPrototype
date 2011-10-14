@@ -1,21 +1,20 @@
 include ActionView::Helpers::DateHelper
 
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :description, :location, :time, :categories
+  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories
   validates_size_of :name, :maximum => 35
   validates_size_of :location, :maximum => 100
   validates_format_of :name, :description, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
-  validate :check_time_is_future
 
 
   #### SCOPES ####
-  scope :all, order("time ASC")
-  scope :upcoming, where("time >= ?", Time.now)
+  scope :all, order("start_time ASC")
+  scope :upcoming, where("start_time >= ?", Time.now)
 
 
   #### PUBLIC METHODS ####
   def check_time_is_future
-    self.errors.add :time, "must be in the future" unless !self.time.nil? and self.time.future?
+    self.errors.add :start_time, "must be in the future" unless !self.time.nil? and self.time.future?
   end
 
   # ** NOT YET WORKING LOL ** #
