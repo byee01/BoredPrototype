@@ -9,12 +9,13 @@ App.Routers.Events = Backbone.Router.extend({
   },
 
   index: function() {
-    $.getJSON('/events', function(data) {
-      if(data) {
-        var events = _(data).map(function(i) { return new Event(i); });
-        new App.Views.Index({ events: events });
-      } else {
-        new Error({ message: "Error loading events."});
+    var events = new EventStore();
+    events.fetch({
+      success: function() {
+        new App.Views.Index({collection: events}); 
+      },
+      error: function() {
+        new Error({message: "Error loading events."});
       }
     });
   }

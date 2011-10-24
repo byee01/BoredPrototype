@@ -5,7 +5,6 @@
 App.Views.Index = Backbone.View.extend({
   initialize: function() {
     _.bindAll(this, 'render');
-    this.model.bind('change', this.render);
     this.render(); 
   },
 
