@@ -1,5 +1,5 @@
 xml.events do
-  xml.categories('A,B,C')
+  xml.categories('Thursday, Friday, Saturday, Sunday')
   @events.each do |event_obj|
     xml.event(:id => event_obj.id) do
       xml.name(event_obj.name)
