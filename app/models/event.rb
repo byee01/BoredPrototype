@@ -2,7 +2,7 @@ include ActionView::Helpers::DateHelper
 
 class Event < ActiveRecord::Base
   validates_presence_of :name, :description, :location, :start_time, :end_time, :categories
-  validates_size_of :name, :maximum => 35
+  validates_size_of :name
   validates_size_of :location, :maximum => 100
   validates_format_of :name, :description, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
 
