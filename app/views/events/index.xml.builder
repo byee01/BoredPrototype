@@ -7,6 +7,7 @@ xml.events do
       xml.datetime(event_obj.start_time)
       xml.starttime(event_obj.start_time)
       xml.endtime(event_obj.end_time)
+      xml.location(event_obj.location)
       xml.image(event_obj.flyer)
       xml.categories(event_obj.categories)
     end
