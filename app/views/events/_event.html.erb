@@ -7,4 +7,5 @@
     <p class="desc"><%= event.description %></p>
   </div>
   <div style="background-image: url(<%= event.flyer %>);" class="thumbnail"></div>
+  <%= link_to 'Edit', edit_event_path(event) %>
 </div>
