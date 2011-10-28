@@ -1,6 +1,5 @@
 <div id="events-container">
   <% @events.each do |event| %>
     <%= render event %>
-    <%= link_to 'Edit', edit_event_path(event) %>
   <% end %>
 </div>
