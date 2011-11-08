@@ -7,25 +7,4 @@
 //= require jquery
 //= require jquery_ujs
 
-// Load order:
-// 1. jquery/underscore
-// 2. backbone
-// 3. Events to set up and initialize app
-// 4. Rest of tree (backbone model, view, controller)
-// 5. Initialize app
-
-//  Underscore is a dependency for backbone.js
-//= require underscore-min
-//= require backbone
-
-//  Require ICH and mustache for templating
-//= require icanhas.min
-//= require mustache
-
 //= require events
-
-//= require_tree .
-
-$(function() {
-  App.init();
-});

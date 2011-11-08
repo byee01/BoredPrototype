@@ -18,6 +18,7 @@ $container.delegate('.event', 'click', function() {
   $container.isotope('reLayout');
 });
 */
+/*
 
 var App = {
   Views: {},
@@ -27,3 +28,11 @@ var App = {
     Backbone.history.start();
   }
 };
+
+*/
+$('.field input').focus(function(){
+  $(this).parent().addClass('form-focus');
+});
+$('.field input').blur(function(){
+  $(this).parent().removeClass('form-focus');
+});
