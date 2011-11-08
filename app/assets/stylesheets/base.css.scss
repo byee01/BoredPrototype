@@ -5,9 +5,9 @@
 $animation_length: 0.5s;
 
 body {
-  background-color: #111;
-  color: #EEE;  
-  font-family: 'Terminal Dosis', verdana, arial, sans-serif;
+  background-color: #EEE;
+  color: #111;  
+  font-family: arial, sans-serif;
   font-size: 13px;
   line-height: 1em;
 }
@@ -61,3 +61,15 @@ body {
 #c {-webkit-animation-delay: 0, $animation_length*0.4;}
 #d {-webkit-animation-delay: 0, $animation_length*0.6;}
 #e {-webkit-animation-delay: 0, $animation_length*0.75;}
+
+
+/* FORMS */
+.field {
+  label {
+    display: inline-block;
+  }
+
+  input {
+    display: inline-block;
+  }
+}
