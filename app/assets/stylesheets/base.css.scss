@@ -67,6 +67,9 @@ body {
 .field {
   label {
     display: inline-block;
+    width: 13em;
+    text-align: right;
+    padding-right: 1em;
   }
 
   input {
