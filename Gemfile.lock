@@ -35,6 +35,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
+    cocaine (0.2.0)
     erubis (2.7.0)
     faker (1.0.1)
       i18n (~> 0.4)
@@ -50,6 +51,11 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.0.3)
+    paperclip (2.4.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.11.0)
     pg (0.11.0-x86-mingw32)
     polyglot (0.3.3)
@@ -109,6 +115,7 @@ PLATFORMS
 DEPENDENCIES
   faker
   jquery-rails
+  paperclip (~> 2.4)
   pg
   rails (= 3.1.0)
   sass-rails (~> 3.1.0)
