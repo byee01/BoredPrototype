@@ -1,4 +1,4 @@
-<%= form_for(@event), :url => event_path do |f| %>
+<%= form_for @event, :url => :event, do |f| %>
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>

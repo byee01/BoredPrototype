@@ -15,6 +15,7 @@ end
 
 # gem 'therubyracer', :require => 'v8'
 gem 'jquery-rails'
+gem 'paperclip', '~>2.4'
 
 # Deploy with to Heroku for testing
 # Use postgres for database as Heroku doesn't support sqlite3

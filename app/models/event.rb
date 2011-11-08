@@ -11,6 +11,9 @@ class Event < ActiveRecord::Base
   scope :upcoming, where("start_time >= ?", Time.now)
 
 
+  #### PAPERCLIP ####
+  has_attached_file :flyer
+
   #### PUBLIC METHODS ####
   def check_time_is_future
     self.errors.add :start_time, "must be in the future" unless !self.start_time.nil? and self.start_time.future?
