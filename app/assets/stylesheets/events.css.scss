@@ -113,20 +113,34 @@ $event_expanded_zindex: 900;
 }
 
 
+#new_event {
+  position: relative;
+}
 
 .event-form {
   fieldset.form-flyer {
-    display: inline-block;
-    width: 200px;
+    position: absolute;
+
+    .fake-input {
+      position: relative;
+      text-align: center;
+      background: #EDEDED;
+      width: 150px;
+      height: 200px;
+    }
 
     label {
-      display: none;
+      position: absolute;
+      text-align: center;
+      bottom: 3em;
     }
 
     input {
-      padding-top: 300px;
       cursor: pointer;
       opacity: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
     }
   }
 
@@ -141,5 +155,6 @@ $event_expanded_zindex: 900;
   fieldset.form-info {
     display: inline-block;
     width: 500px;
+    margin-left: 175px;
   }
 }
