@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string    :location,    :null => false
       t.string    :start_time,  :null => false
       t.string    :end_time,    :null => false
-      t.datetime  :event_start, :null => false
+      t.datetime  :event_start, :default => Time.now, :null => false
       t.string    :flyer
       t.integer   :pattern
       t.string    :categories

@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20110911205737) do
 
   create_table "events", :force => true do |t|
-    t.string   "name",                                :null => false
-    t.text     "description",                         :null => false
-    t.string   "location",                            :null => false
-    t.string   "start_time",                          :null => false
-    t.string   "end_time",                            :null => false
-    t.datetime "event_start",                         :null => false
+    t.string   "name",                                                  :null => false
+    t.text     "description",                                           :null => false
+    t.string   "location",                                              :null => false
+    t.string   "start_time",                                            :null => false
+    t.string   "end_time",                                              :null => false
+    t.datetime "event_start",        :default => '2011-11-09 02:44:27', :null => false
     t.string   "flyer"
     t.integer  "pattern"
     t.string   "categories"

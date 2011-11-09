@@ -1,5 +1,17 @@
 <%= form_for @event, do |f| %>
 
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <fieldset class="form-flyer">
   <div class="field">
     <%= f.label :flyer %>
@@ -21,11 +33,11 @@
   </div>
   <div class="field">
     <%= f.label :start_time %>
-    <%= select_tag :start_time, options_for_select(Event::EVENT_TIMES, closest_half_hour) %>
+    <%= f.select(:start_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(1))) %>
   </div>
   <div class="field">
     <%= f.label :end_time %>
-    <%= select_tag :end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(60)) %>
+    <%= f.select(:end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(3))) %>
   </div>
   <div class="field">
     <%= f.label :categories %>
