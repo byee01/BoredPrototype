@@ -43,6 +43,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
+    @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
 
     respond_to do |format|
       if @event.save

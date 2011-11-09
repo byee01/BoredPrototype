@@ -30,6 +30,10 @@ var App = {
 };
 
 */
+$(function() {
+  $('.datepicker').datepicker();
+});
+
 $('.field input').focus(function(){
   $(this).parent().addClass('form-focus');
 });
