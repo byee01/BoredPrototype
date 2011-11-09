@@ -43,14 +43,21 @@
     <%= text_field_tag 'end_time_date', nil, :class => 'datepicker' %>
     <%= f.select(:end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(3))) %>
   </div>
-  <div class="field">
-    <%= f.label :categories %>
-    <%= f.text_field :categories %>
+  <div class="field event-categories">
+        <%= f.label :categories %> (Choose up to 2)<br/>
+        <ul>
+        <% EventsHelper::all_categories.each do |c| %>
+          <% check_id = get_check_id(c[0]) %>
+          <li class="cat-radio">
+            <%= label_tag check_id, c[0], { :class => 'cat-button'} %>
+
+              <%= check_box_tag "event[categories]", c[1], false, {:class=>'cat-check', :id => check_id }%>
+          </li>
+        <% end %>
+        </ul>
   </div>
 </fieldset>
-<fieldset>
   <div class="actions">
     <%= f.submit %>
   </div>  
-</fieldset>
 <% end %>

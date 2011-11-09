@@ -124,9 +124,18 @@ $event_expanded_zindex: 900;
     }
 
     input {
-      padding-top: 200px;
+      padding-top: 300px;
       cursor: pointer;
+      opacity: 0;
     }
+  }
+
+  .cat-radio {
+    display: inline;
+  }
+
+  .cat-check {
+    // display: none;
   }
 
   fieldset.form-info {
