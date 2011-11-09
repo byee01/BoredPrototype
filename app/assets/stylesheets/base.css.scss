@@ -62,12 +62,11 @@ body {
 #d {-webkit-animation-delay: 0, $animation_length*0.6;}
 #e {-webkit-animation-delay: 0, $animation_length*0.75;}
 
-
 /* FORMS */
 .field {
   label {
     display: inline-block;
-    width: 13em;
+    width: 8em;
     text-align: right;
     padding-right: 1em;
   }

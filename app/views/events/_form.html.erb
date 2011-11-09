@@ -1,4 +1,12 @@
 <%= form_for @event, do |f| %>
+
+<fieldset class="form-flyer">
+  <div class="field">
+    <%= f.label :flyer %>
+    <%= f.file_field :flyer %>
+  </div>
+</fieldset>
+<fieldset class="form-info">
   <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -13,21 +21,20 @@
   </div>
   <div class="field">
     <%= f.label :start_time %>
-    <%= f.datetime_select :start_time %>
+    <%= select_tag :start_time, options_for_select(Event::EVENT_TIMES, closest_half_hour) %>
   </div>
   <div class="field">
     <%= f.label :end_time %>
-    <%= f.datetime_select :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :flyer %>
-    <%= f.file_field :flyer %>
+    <%= select_tag :end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(60)) %>
   </div>
   <div class="field">
     <%= f.label :categories %>
     <%= f.text_field :categories %>
   </div>
+</fieldset>
+<fieldset>
   <div class="actions">
     <%= f.submit %>
-  </div>
+  </div>  
+</fieldset>
 <% end %>

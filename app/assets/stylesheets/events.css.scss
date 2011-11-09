@@ -111,3 +111,26 @@ $event_expanded_zindex: 900;
     bottom: 0;
   }
 }
+
+
+
+.event-form {
+  fieldset.form-flyer {
+    display: inline-block;
+    width: 200px;
+
+    label {
+      display: none;
+    }
+
+    input {
+      padding-top: 200px;
+      cursor: pointer;
+    }
+  }
+
+  fieldset.form-info {
+    display: inline-block;
+    width: 500px;
+  }
+}
