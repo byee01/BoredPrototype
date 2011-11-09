@@ -15,7 +15,9 @@
 <fieldset class="form-flyer">
   <div class="field">
     <%= f.label :flyer %>
-    <%= f.file_field :flyer %>
+    <div class="fake-input">
+      <%= f.file_field :flyer %>
+    </div>
   </div>
 </fieldset>
 <fieldset class="form-info">
