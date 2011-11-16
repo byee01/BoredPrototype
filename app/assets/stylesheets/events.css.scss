@@ -58,7 +58,7 @@ $info_column_width: 300px;
   margin: 5px;
   overflow: hidden;
   position: relative;
-  borer:
+  border: 1px solid #666;
   
   width: $event_width;
   height: $event_height;
@@ -83,35 +83,8 @@ $info_column_width: 300px;
   }
 }
 
-/* EXPANDED VIEW */
-.event.expanded {
-  width: $event_width * 2 + 10; 
-  height: $event_height * 2 + 10; 
-  z-index: $event_expanded_zindex;
-
-  .event-info {
-    display: block;
-  }
-
-  .caption {
-    position: relative;
-    bottom: 0;
-  }
-
-  .thumbnail {
-    width: 50%;
-    height: 50%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-}
-
 .event:hover {
-  .caption {
-    background: rgba(34,34,34,0.95);
-    bottom: 0;
-  }
+  border: 1px solid #999;
 }
 
 
