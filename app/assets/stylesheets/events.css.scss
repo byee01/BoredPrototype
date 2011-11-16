@@ -15,19 +15,39 @@
   transition: $property $duration $delay ease-in;
 }
 
-$event_width: 150px;
-$event_height: 150px;
+$border_color: #CCC;
+
+$event_width: 200px;
+$event_height: 200px;
 
 $event_caption_offset: -27px;
 
 $event_expanded_zindex: 900;
 
+
+$info_column_width: 300px;
+
 #events-container {
   margin: 0 auto;
+  position: relative;
 }
 
 #events {
   margin: 0 10px;
+}
+
+.events-col-info {
+  width: $info_column_width;
+  background: rgba(0,0,0,0.25);
+  position: fixed;
+  height: 100%;
+  top: 0;
+  margin-left: 2px solid $border_color;
+}
+
+.events-col-main {
+  padding-left: 20px;
+  margin-left: $info_column_width;
 }
 
 .event {
@@ -38,28 +58,10 @@ $event_expanded_zindex: 900;
   margin: 5px;
   overflow: hidden;
   position: relative;
+  borer:
   
   width: $event_width;
   height: $event_height;
-
-  /** CATEGORY COLORS **/
-  .caption {
-    background: rgb(34,34,34);
-    position: absolute;
-    bottom: $event_caption_offset;
-    left: 0;
-    width: $event_width - 6;
-    padding: 3px;
-    @include transition(all, 0.1s);
-
-    .soon {
-      background: rgb(224, 27, 76);
-    }
-
-    .later {
-      background: rgb(27, 126, 224);
-    }
-  }
   
   h4 {
     font-size: 1.5em;

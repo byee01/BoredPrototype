@@ -3,6 +3,7 @@
  */
 
 $animation_length: 0.5s;
+$info_column_width: 300px;
 
 body {
   background-color: #EEE;
@@ -15,13 +16,22 @@ body {
 .header {
   height: 120px;
 
-  h1 {
-    font-size: 3em;
-    line-height: 4em;
-    margin-left: 2em;
+  .category-list {
+    margin-left: $info_column_width;
+    padding-left: 20px;
+    font-size: 2em;
+    font-weight: bold;
+    color: #CCC;
+    overflow: hidden;
+    line-height: 2;
+    height: 70px;
 
-    span {
-      font-size: 0.6em;
+    li {
+      display: inline; 
+    }
+
+    .active {
+      color: #111;
     }
   }
 }
