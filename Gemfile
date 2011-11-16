@@ -21,12 +21,12 @@ gem 'paperclip', '~>2.4'
 # Use postgres for database as Heroku doesn't support sqlite3
 group :production do
   gem 'pg'
-  gem 'faker'   # Temporary for seeding purposes(?)
+  # gem 'faker'   # Temporary for seeding purposes(?)
 end
 
 group :development do
   gem 'sqlite3'
-  gem 'faker'
+  # gem 'faker'
 end
 
 # To use debugger
