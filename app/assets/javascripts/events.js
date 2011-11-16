@@ -28,10 +28,22 @@ var App = {
     Backbone.history.start();
   }
 };
-
 */
+
+function updateInfo(node) {
+  var infoBar = $('.info-main');
+  $('#info-title', infoBar).html($('.event-title', node).html());
+  $('#info-desc', infoBar).html($('.event-desc', node).html());
+  $('#info-location', infoBar).html($('.event-location', node).html());
+  $('#info-date', infoBar).html($('.event-date', node).html());
+}
+
+
 $(function() {
   $('.datepicker').datepicker();
+  $('.event').click(function(){
+    updateInfo(this);
+  });
 });
 
 $('.field input').focus(function(){

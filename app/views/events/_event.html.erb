@@ -1,9 +1,9 @@
-<a href="<%= edit_event_path(event) %>">
 <div id="event-<%= event.id %>" class="event">
   <div class="event-info">
-    <h4><%= event.name %></h4>
-    <p class="location"><%= event.location %></p>
-    <p class="desc"><%= event.description %></p>
+    <h4 class="event-title"><%= event.name %></h4>
+    <p class="event-location"><%= event.location %></p>
+    <p class="event-desc"><%= event.description %></p>
   </div>
+  <a class="edit-link" href="<%= edit_event_path(event) %>">Edit</a>
   <div style="background-image: url(<%= event.flyer %>);" class="thumbnail"></div>
-</div></a>
+</div>

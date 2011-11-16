@@ -4,6 +4,7 @@
 
 $animation_length: 0.5s;
 $info_column_width: 300px;
+$header_height: 120px;
 
 body {
   background-color: #EEE;
@@ -14,7 +15,7 @@ body {
 }
 
 .header {
-  height: 120px;
+  height: $header_height;
 
   .category-list {
     margin-left: $info_column_width;

@@ -25,6 +25,8 @@ $event_caption_offset: -27px;
 $event_expanded_zindex: 900;
 
 
+$header_height: 120px;
+
 $info_column_width: 300px;
 
 #events-container {
@@ -43,6 +45,17 @@ $info_column_width: 300px;
   height: 100%;
   top: 0;
   margin-left: 2px solid $border_color;
+  .info-header {
+    margin-top: $header_height;
+  }
+
+  .info-main {
+    color: #FFF;
+
+    h2 {
+      font-size: 2em;
+    }
+  }
 }
 
 .events-col-main {
@@ -78,13 +91,19 @@ $info_column_width: 300px;
     width: 100%;
   }
 
-  .event-info {
+  .event-info, .edit-link {
     display: none;
   }
 }
 
 .event:hover {
   border: 1px solid #999;
+  margin-bottom: 8px;
+  margin-top: 2px;
+}
+
+.event:hover .edit-link {
+ /* display: block; */
 }
 
 
