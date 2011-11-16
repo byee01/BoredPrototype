@@ -51,9 +51,20 @@ $info_column_width: 300px;
 
   .info-main {
     color: #FFF;
+    line-height: 1.5;
+    padding: 0 1em;
 
     h2 {
       font-size: 2em;
+      margin-bottom: 1em;
+    }
+
+    #info-desc {
+      margin-bottom: 1em;
+    }
+
+    #info-date {
+      font-weight: bold;
     }
   }
 }
