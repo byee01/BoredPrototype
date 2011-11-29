@@ -1,14 +1,17 @@
 include ActionView::Helpers::DateHelper
 
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories
+  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories, :approval_rating
   validates_size_of :location, :maximum => 100
   ### validates_format_of :name, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
+
+
 
 
   #### SCOPES ####
   scope :all, order("start_time ASC")
   scope :upcoming, where("start_time >= ?", Time.now)
+  scope :approved_upcoming, where("start_time >= ?", Time.now).where("approval_rating = ?", 100)
 
 
   #### PAPERCLIP ####
@@ -28,9 +31,11 @@ class Event < ActiveRecord::Base
   # This is in 24-hour time, separated by a %
   # "year-month-day hour-minute%year-month-day hour-minute"
   def get_start_times
+    times = []
     self.start_time.split('%').each do |t|
-      DateTime.strptime(t, '%Y-%m-%d %H:%M')
+      times.push(DateTime.strptime(t, '%Y-%m-%d %H:%M'))
     end
+    times
   end
 
   def merge_times(date, time)
@@ -85,5 +90,12 @@ class Event < ActiveRecord::Base
   end
 
 
-  # Internal methods
+  # Approval
+  def approve_event
+    self.approval_rating = 100
+  end
+
+  def decline_event
+    self.approval_rating = 0
+  end
 end

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # GET /events.json
   # GET /events.xml
   def index
-    @events = Event.all
+    @events = Event.approved_upcoming
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,6 +80,26 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to events_url }
+      format.json { head :ok }
+    end
+  end
+
+  def approve
+    @event = Event.find(params[:id])
+    @event.approve_event
+    @event.save
+    respond_to do |format|
+      format.html { redirect_to approval_url }
+      format.json { head :ok }
+    end
+  end
+
+  def decline
+    @event = Event.find(params[:id])
+    @event.decline_event
+    @event.save
+    respond_to do |format|
+      format.html { redirect_to approval_url }
       format.json { head :ok }
     end
   end
