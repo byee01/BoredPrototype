@@ -1,6 +1,11 @@
 Teudu::Application.routes.draw do
+  get "approval/approve"
+
+  get "approval/decline"
+
   resources :events
 
+  match 'approval' => 'approval#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
