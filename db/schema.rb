@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(:version => 20110911205737) do
     t.string   "location",                                              :null => false
     t.string   "start_time",                                            :null => false
     t.string   "end_time",                                              :null => false
-    t.datetime "event_start",        :default => '2011-11-09 02:44:27', :null => false
+    t.datetime "event_start",        :default => '2011-12-01 23:23:04', :null => false
+    t.datetime "event_end",          :default => '2011-12-01 23:23:04', :null => false
     t.string   "flyer"
     t.integer  "pattern"
     t.string   "categories"

@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   # GET /events.json
   # GET /events.xml
   def index
-    @events = Event.approved_upcoming
+    @events = Event.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,6 +44,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
+    @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
 
     respond_to do |format|
       if @event.save
@@ -61,6 +62,8 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
+    @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
+    @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }

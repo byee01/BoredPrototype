@@ -1,11 +1,12 @@
 include ActionView::Helpers::DateHelper
 
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories, :approval_rating
+  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories, :approval_rating, :event_start, :event_end
   validates_size_of :location, :maximum => 100
   ### validates_format_of :name, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
 
-
+  before_save :add_event_times
+ 
 
 
   #### SCOPES ####
@@ -22,9 +23,6 @@ class Event < ActiveRecord::Base
   EVENT_CATEGORIES = %w(Arts Sports Professional Cultural Music Movies Academic Social Service)
 
   #### PUBLIC METHODS ####
-  def check_time_is_future
-    self.errors.add :start_time, "must be in the future" unless !self.start_time.nil? and self.start_time.future?
-  end
 
   # Parses an event's time and returns it as an array of Datetime objects
   # "year-month-day hour-minute"
@@ -38,55 +36,28 @@ class Event < ActiveRecord::Base
     times
   end
 
+  def get_end_times
+    times = []
+    self.end_time.split('%').each do |t|
+      times.push(DateTime.strptime(t, '%Y-%m-%d %H:%M'))
+    end
+    times
+  end
+
+  def get_datetime_from_time_string(str)
+    DateTime.strptime(str, '%Y-%m-%d %H:%M')
+  end
+
+
   def merge_times(date, time)
-    puts date
-    puts ",,"
-    puts time
     return "" + date.split('/').reverse.join('-') + " " + time
   end
 
-  # ** NOT YET WORKING LOL ** #
-  # Return differently formatted dates based on how far in advance it is.
-  # Say it's Monday - events would show up as:
-  # Today - Monday @ time
-  # Tomorrow - Tomorrow @ time
-  # Next 5 days - Day (Wednesday, Thursday) @ time
-  # > 5 days - Full date @ time
-  #
-  # @return [String] strftime'd date
-  def abbreviated_date
-    self.start_time.future? ? 'In ' + distance_of_time_in_words(Time.now, self.start_time) : time_ago_in_words(self.start_time) + ' ago' 
-  end
-
-
-  # This is a work in progress
-  def abbreviated_date_temp
-    distance_in_seconds = self.start_time - Time.now
-    
-    if distance_in_seconds < 0
-      return time_ago_in_words(self.start_time) + ' ago'
-    end
-
-    case distance_in_seconds
-      when 0..86399       then  return self.start_time.strftime("Today at %l:%M %P")
-      when 86400..172799  then  return self.start_time.strftime("Tomorrow at %l:%M %P")
-      when 172800..432000 then  return self.start_time.strftime("%A at %l:%M %P")
-      else return self.start_time.strftime("%A, %B %d, at %l:%M %P")
-    end
-  end
-
-  # Return a string depending how soon an event is.
-  # More will be added later (featured, etc.)
-  #
-  # @return [String] soon|later
-  def flag
-    distance_in_seconds = self.start_time - Time.now
-    
-    case distance_in_seconds
-      when 1..86399       then  return "soon"
-      when 86399..172800  then  return "later"
-      else return ""
-    end
+  def add_event_times
+    puts self.start_time
+    puts self.end_time
+    self.event_start = get_datetime_from_time_string(self.start_time)
+    self.event_end = get_datetime_from_time_string(self.end_time)
   end
 
 
