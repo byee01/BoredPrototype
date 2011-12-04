@@ -1,3 +1,15 @@
+<div class="container">
+  <ul class="category-list">
+    <li class="active">Hot Events</li>
+  <% EventsHelper::all_categories.each do |c| %>
+    <li><%= c[0] %></li>
+  <% end %>
+  </ul>
+  <!--
+  <h1>Teudu <span><%= Event.all.length %> events in the next 30 days!</span></h1>
+  -->
+</div>
+
 <div class="events-col-info">
   <div class="info-header"><!--<h1>Teudu</h1>--></div>
   <div class="info-main">

@@ -1,13 +1,11 @@
 <div class="header">
-  <div class="container">
-    <ul class="category-list">
-      <li class="active">Hot Events</li>
-    <% EventsHelper::all_categories.each do |c| %>
-      <li><%= c[0] %></li>
-    <% end %>
-    </ul>
-    <!--
-    <h1>Teudu <span><%= Event.all.length %> events in the next 30 days!</span></h1>
-    -->
-  </div>
+	<a href="/"><img src="/images/logo.png" alt="" /></a>
+	<ul id="hMenu">
+		<li><a href="/">Home</a></li>
+		<li><a href="/events/new">Create a New Event</a></li>
+		<li><a href="/approval/">Approve Events</a></li>
+		<li class="right">
+			Hi Brian, there are 9 events awaiting approval.
+		</li>
+	</ul>
 </div>

@@ -15,7 +15,42 @@ body {
 }
 
 .header {
-  height: $header_height;
+	padding: 19px 30px;
+	border-bottom: 1px dotted #888;
+	z-index: 5;
+	
+	#hMenu {
+		display: inline-block;
+		font-size: 12px;
+		background: #CCC;
+		padding: 0px 12px;
+		position: relative; top: -11px;
+		margin-left: 20px;
+		-webkit-border-radius: 6px;
+		box-shadow: inset 0px 1px 1px #333;
+			
+		li {
+			display: inline-block;
+			
+			a {
+				display: block;
+				font-weight: bold;
+				padding: 5px 8px;
+				color: #333;
+				text-decoration: none;
+				text-shadow: 0px 1px 1px #FFF;
+				&:hover {
+					color: #FFF;
+					background: #8C0F2E;
+					text-shadow: 0px 1px 1px #111; } }
+		}
+		
+		li.right {
+			background: #444; color: white;
+			padding: 5px 12px;
+			font-weight: bold;
+		}
+	}
 
   .category-list {
     margin-left: $info_column_width;
