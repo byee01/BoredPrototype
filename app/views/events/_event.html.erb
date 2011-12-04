@@ -1,7 +1,7 @@
 <div id="event-<%= event.id %>" class="event">
   <div class="event-info">
     <h4 class="event-title"><%= event.name %></h4>
-    <p class="event-date">Wednesday, November 16, 6:30PM</p>
+    <p class="event-date"><%= distance_of_time_in_words_to_now(event.event_start) %></p>
     <p class="event-location"><%= event.location %></p>
     <p class="event-desc"><%= event.description %></p>
   </div>

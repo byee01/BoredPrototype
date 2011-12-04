@@ -46,6 +46,7 @@ class EventsController < ApplicationController
     @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
     @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
 
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
