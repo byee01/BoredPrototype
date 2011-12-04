@@ -24,7 +24,7 @@ body {
 		font-size: 12px;
 		background: #CCC;
 		padding: 0px 12px;
-		position: relative; top: -11px;
+		position: relative; top: -9px;
 		margin-left: 20px;
 		-webkit-border-radius: 6px;
 		box-shadow: inset 0px 1px 1px #333;
@@ -51,25 +51,6 @@ body {
 			font-weight: bold;
 		}
 	}
-
-  .category-list {
-    margin-left: $info_column_width;
-    padding-left: 20px;
-    font-size: 2em;
-    font-weight: bold;
-    color: #CCC;
-    overflow: hidden;
-    line-height: 2;
-    height: 70px;
-
-    li {
-      display: inline; 
-    }
-
-    .active {
-      color: #111;
-    }
-  }
 }
 
 #a, #b, #c, #d, #e {
@@ -185,4 +166,9 @@ body {
 
 .cat-button:active {
   border-left: 4px solid darkred;
+}
+
+.container {
+	display: block;
+	padding: 25px 30px;
 }

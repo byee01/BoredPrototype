@@ -29,9 +29,39 @@ $header_height: 120px;
 
 $info_column_width: 300px;
 
+.category-list {
+	width: 280px;
+	background: #DDD;
+	font-size: 25px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	border: 1px solid #BBB;
+	height: 45px;
+	overflow: hidden;
+	z-index: 10;
+	
+	li {
+		width: 256px;
+		padding: 15px 12px;
+		border-bottom: 1px dotted #888;
+		&:hover {
+			background: #888;
+			color: white;
+			text-shadow: 0px 1px 1px #000;
+			cursor: pointer;
+			&:after {
+				content: '\0020\0020\2193'; } }
+  	}
+
+	&:active {
+		overflow: visible;
+	}
+}
+
 #events-container {
   margin: 0 auto;
   position: relative;
+float: right;
 }
 
 #events {
@@ -39,11 +69,9 @@ $info_column_width: 300px;
 }
 
 .events-col-info {
-  width: $info_column_width;
+	width: 282px;
   background: rgba(0,0,0,0.25);
-  position: fixed;
-  height: 100%;
-  top: 0;
+  position: absolute;
   margin-left: 2px solid $border_color;
   .info-header {
     margin-top: $header_height;
@@ -162,4 +190,39 @@ $info_column_width: 300px;
     width: 500px;
     margin-left: 175px;
   }
+}
+
+/* CREATE AN EVENT */
+
+.container#cEvent {
+	h1 {
+		font-size: 25px;
+		font-weight: bold;
+		border-bottom: 1px dotted #777;
+		width: 450px; padding: 10px 0px 18px 0px;
+		margin-bottom: 10px; }
+		
+	.form-info input {
+		font-size: 16px;
+		padding: 5px 10px;
+		border: 1px solid #DDD;
+		&:focus {
+			background: #D0D0D0
+		}
+	}
+	
+	.actions input {
+		&:enabled {
+			width: 150px;
+			height: 30px;
+			background: green;
+			font-family: 'Helvetica Neue', Arial, sans-serif;
+			color: white; font-size: 16px;
+			font-weight: bold;
+			float: right;
+			border: 0px;
+			-webkit-border-radius: 7px;
+			box-shadow: 0px 2px 0px #222; }
+	}
+	
 }
