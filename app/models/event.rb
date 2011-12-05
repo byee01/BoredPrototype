@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
   end
 
   def get_datetime_from_time_string(str)
-    DateTime.strptime(str, '%m-%d-%Y %H:%M')
+    DateTime.strptime(str, '%Y-%d-%m %H:%M')
   end
 
 
@@ -60,7 +60,6 @@ class Event < ActiveRecord::Base
     self.event_start = get_datetime_from_time_string(self.start_time)
     self.event_end = get_datetime_from_time_string(self.end_time)
   end
-
 
   # Approval
   def approve_event
