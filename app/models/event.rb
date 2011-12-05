@@ -28,6 +28,16 @@ class Event < ActiveRecord::Base
 
   #### PUBLIC METHODS ####
 
+  def approval_status
+    if self.approval_rating == 0
+      "needs_approval"
+    elsif self.approval_rating == -1
+      "declined"
+    else
+      "approved"
+    end
+  end
+
   # Parses an event's time and returns it as an array of Datetime objects
   # "year-month-day hour-minute"
   # This is in 24-hour time, separated by a %

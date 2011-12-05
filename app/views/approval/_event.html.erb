@@ -1,13 +1,13 @@
 <% @events.each do |event| %>
 	<li>
 		<img src="<%= event.flyer %>" alt="" />
-		<div class="leftBox">
+		<div class="leftBox <%= event.approval_status %>">
 			<h1><%= event.name %></h1>
 			<p><%= event.description %></p>
 			<h2><%= event.location %></h2>
 		</div>
 		<div class="rightBox">
-			<% if event.approval_rating == 0 %>
+			<% if event.approval_rating <= 0 %>
 		      <%= link_to 'Approve', :controller => "events", :action => "approve", :id => event.id %>
 		    <% else %>
 		      <%= link_to 'Decline', :controller => "events", :action => "decline", :id => event.id %>
