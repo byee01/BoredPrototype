@@ -214,6 +214,8 @@ $event_expanded_zindex: 900;
 	.event-categories {
 		float: left;
 		width: 300px;
+		ul {
+			margin-top: 25px; }
 		li {
 			list-style-type: none;
 			width: 200px;
