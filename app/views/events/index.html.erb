@@ -1,21 +1,24 @@
 <div class="container">
 	
-	<ul class="category-list">
-		<li class="active">Hot Events</li>
-		<% EventsHelper::all_categories.each do |c| %>
-	    	<li><%= c[0] %></li>
-	  	<% end %>
-	</ul>
-	
-	<div class="events-col-info">
-		<div class="info-header"></div>
-		<div class="info-main">
-	    <h2 id="info-title"></h2>
-	    <p id="info-desc"></p>
+	<div class="leftCol">
+		<ul class="category-list">
+			<li class="active">Hot Events</li>
+			<% EventsHelper::all_categories.each do |c| %>
+		    	<li><%= c[0] %></li>
+		  	<% end %>
+		</ul>
 
-	    <p id="info-date"></p>
-	    <p id="info-location"></p>
-	  </div>
+		<div class="events-col-info">
+			<h2>Click an event to see details &rarr;</h2>
+			<div class="info-main">
+		    	<h2 id="info-title"></h2>
+		
+		    	<p id="info-date"></p>
+		    	<p id="info-location"></p>
+		
+				<p id="info-desc"></p>
+		  	</div>
+		</div>
 	</div>
 	
 	<div id="events-container">

@@ -2,55 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-ul {
-	list-style-type: none;
-}
+div.container#approval {
 
-div#header {
-	text-align: center;
-	padding-bottom: 40px;
-	font-family: 'Futura', sans-serif;
+	width: 900px;
+	margin: 0 auto;
+	
+	> h1 {
+		font-size: 25px;
+		font-weight: bold; 
+		margin-bottom: 15px; }
+	
+	ul#events {
+		list-style-type: none;
+		width: 900px; 
+		margin: 0 auto;
+		line-height: 1.3em;
+		
+		li {
+			float: left; width: 430px;
+			padding: 20px 0px;
+			border-bottom: 1px dotted #888; 
+			&:nth-child(odd) { margin-right: 20px; }
+			img {
+				float: left;
+				max-height: 80px;
+				margin-right: 15px; }
+			div.leftBox { float: left; }
+			div.rightBox { float: right; width: 80px; }
+			
+			h1 {
+				font-weight: bold;
+				font-size: 16px;
+			}
+		}
+	}
 }
-
-div#header h1 {
-	letter-spacing: 8px;
-	text-transform: uppercase;
-	font-size: 21px;
-	margin-bottom: 8px;
-}
-
-ul#sorter {
-	width: 900px; margin: 0 auto;
-	padding-bottom: 20px;
-}
-
-ul#sorter li {
-	display: inline;
-	padding: 3px 10px;
-	background: #999;
-	color: white;
-}
-
-ul#sorter li:first-child {
-	background: none;
-	color: black;
-}
-
-ul#events {
-	width: 900px; margin: 0 auto;
-}
-
-ul#events li {
-	float: left; width: 100%;
-	padding: 20px 0px;
-	border-bottom: 1px dashed #888;
-}
-
-ul#events li img {
-	float: left;
-	max-height: 150px;
-	margin-right: 15px;
-}
-
-ul#events li div.leftBox { float: left; }
-ul#events li div.rightBox { float: right; width: 200px; }

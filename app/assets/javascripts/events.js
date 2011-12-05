@@ -44,6 +44,13 @@ $(function() {
   $('.event').click(function(){
     updateInfo(this);
   });
+
+	/* HAROLD'S CODE DO NOT INSULT */
+	$('ul.category-list').click(function(){
+		if ( $(this).css('overflow') == 'visible' )
+			$(this).css('overflow', 'hidden');
+		else $(this).css('overflow', 'visible');
+	})
 });
 
 $('.field input').focus(function(){
