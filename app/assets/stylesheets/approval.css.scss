@@ -4,7 +4,7 @@
 
 div.container#approval {
 
-	width: 900px;
+	width: 1000px;
 	margin: 0 auto;
 	
 	> h1 {
@@ -14,25 +14,32 @@ div.container#approval {
 	
 	ul#events {
 		list-style-type: none;
-		width: 900px; 
+		width: 1000px; 
 		margin: 0 auto;
 		line-height: 1.3em;
 		
 		li {
-			float: left; width: 430px;
+			float: left; width: 480px;
 			padding: 20px 0px;
 			border-bottom: 1px dotted #888; 
 			&:nth-child(odd) { margin-right: 20px; }
 			img {
 				float: left;
-				max-height: 80px;
-				margin-right: 15px; }
-			div.leftBox { float: left; }
+				max-width: 80px;
+				margin-right: 15px;
+				line-height: 0.97em; }
+			div.leftBox { 
+				float: left; 
+				p { 	
+					overflow: hidden; 
+					height: 100px; width: 290px; 
+					color: #777; font-size: 13px; }}
 			div.rightBox { float: right; width: 80px; }
 			
 			h1 {
 				font-weight: bold;
 				font-size: 16px;
+				margin-bottom: 5px;
 			}
 		}
 	}
