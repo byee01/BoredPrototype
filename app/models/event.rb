@@ -12,6 +12,7 @@ class Event < ActiveRecord::Base
   #### SCOPES ####
   scope :all, order("start_time ASC")
   scope :upcoming, where("start_time >= ?", Time.now)
+  scope :approved, where("approval_rating = ?", 100)
   scope :approved_upcoming, where("start_time >= ?", Time.now).where("approval_rating = ?", 100)
 
 
