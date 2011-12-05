@@ -1,9 +1,9 @@
 <div class="header">
 	<a href="/"><img src="/images/logo.png" alt="" /></a>
 	<ul id="hMenu">
-		<li><a href="/">Home</a></li>
-		<li><a href="/events/new">Create an Event</a></li>
-		<li><a href="/approval/">Approve Events</a></li>
+		<li><%= link_to "Home", root_url %></li>
+		<li><%= link_to "Create an event", new_event_path %></li>
+		<li><%= link_to "Approval", approval_path %></li>
     <li class="right">
     <% if Event.awaiting_approval.length > 0 %>
       <% if Event.awaiting_approval.length == 1 %>    Hi Brian, there is an event awaiting approval.
