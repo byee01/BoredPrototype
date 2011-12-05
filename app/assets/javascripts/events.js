@@ -46,10 +46,11 @@ $(function() {
   });
 
 	/* HAROLD'S CODE DO NOT INSULT */
-	$('ul.category-list').click(function(){
-		if ( $(this).css('overflow') == 'visible' )
-			$(this).css('overflow', 'hidden');
-		else $(this).css('overflow', 'visible');
+	$('ul.category-list').click(function(e){
+		$('li', this).css('top', 0);
+		console.log(e.target);
+		$(this).toggleClass('expanded');
+		$('.events-col-info').toggle();
 	});
 });
 

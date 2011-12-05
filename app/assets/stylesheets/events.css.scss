@@ -39,6 +39,7 @@ $event_expanded_zindex: 900;
 }
 
 .category-list {
+	position: relative;
 	list-style-type: none;
 	width: 100%; height: 45px;
 	font-size: 25px; font-weight: bold;
@@ -50,7 +51,7 @@ $event_expanded_zindex: 900;
 	box-sizing: border-box;
 	
 	li {
-		width: 100%;
+		position: relative; width: 100%;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
@@ -61,18 +62,27 @@ $event_expanded_zindex: 900;
 			background: #888;
 			color: white;
 			text-shadow: 0px 1px 1px #000;
-			cursor: pointer;
-			&:after {
-				content: '\0020\0020\2193'; } }
+			cursor: pointer; }
   	}
+
+	> img {
+		position: absolute;
+		right: 15px; top: 16px;
+		z-index: 10;
+	}
 
 	&:active {
 		overflow: visible; }
 }
 
+.category-list.expanded {
+	overflow: visible; height: auto;
+}
+
 .events-col-info {
+	position: relative;
 	font-family: 'News Cycle';
-	z-index: -1; padding: 15px;
+	padding: 15px;
 	background: rgba(0,0,0,0.65);
 	width: 100%;
 	-moz-box-sizing: border-box;
