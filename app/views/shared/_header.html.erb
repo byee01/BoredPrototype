@@ -4,8 +4,15 @@
 		<li><a href="/">Home</a></li>
 		<li><a href="/events/new">Create an Event</a></li>
 		<li><a href="/approval/">Approve Events</a></li>
-		<li class="right">
-			Hi Brian, there are 9 events awaiting approval.
+    <li class="right">
+    <% if Event.awaiting_approval.length > 0 %>
+      <% if Event.awaiting_approval.length == 1 %>    Hi Brian, there is an event awaiting approval.
+      <% else %>
+    Hi Brian, there are <%= Event.awaiting_approval.length %> events awaiting approval.
+      <% end %>
+    <% else %>
+      All events have been approved.
+    <% end %>
 		</li>
 	</ul>
 </div>

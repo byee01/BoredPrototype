@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   scope :all, order("start_time ASC")
   scope :upcoming, where("start_time >= ?", Time.now)
   scope :approved, where("approval_rating = ?", 100)
+  scope :awaiting_approval, where("approval_rating = ?", 0)
   scope :approved_upcoming, where("start_time >= ?", Time.now).where("approval_rating = ?", 100)
 
 
@@ -91,7 +92,7 @@ class Event < ActiveRecord::Base
   end
 
   def decline_event
-    self.approval_rating = 0
+    self.approval_rating = -1
   end
 
   private

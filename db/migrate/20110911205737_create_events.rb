@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.string    :flyer
       t.integer   :pattern
       t.string    :categories
-      t.integer   :approval_rating, :default => 100
+      t.integer   :approval_rating, :default => 0
       t.string    :approver_id
 
       t.string    :flyer_file_name

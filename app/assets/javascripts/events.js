@@ -50,7 +50,7 @@ $(function() {
 		if ( $(this).css('overflow') == 'visible' )
 			$(this).css('overflow', 'hidden');
 		else $(this).css('overflow', 'visible');
-	})
+	});
 });
 
 $('.field input').focus(function(){

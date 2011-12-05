@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(:version => 20111205012357) do
     t.string   "location",                                              :null => false
     t.string   "start_time",                                            :null => false
     t.string   "end_time",                                              :null => false
-    t.datetime "event_start",        :default => '2011-12-05 01:31:29', :null => false
-    t.datetime "event_end",          :default => '2011-12-05 01:31:29', :null => false
+    t.datetime "event_start",        :default => '2011-12-05 17:45:10', :null => false
+    t.datetime "event_end",          :default => '2011-12-05 17:45:10', :null => false
     t.string   "flyer"
     t.integer  "pattern"
     t.string   "categories"
-    t.integer  "approval_rating",    :default => 100
+    t.integer  "approval_rating",    :default => 0
     t.string   "approver_id"
     t.string   "flyer_file_name"
     t.string   "flyer_content_type"

@@ -1,7 +1,7 @@
 <div class="container">
 	
 	<div class="leftCol">
-		<ul class="category-list">
+		<ul id="category-list" class="category-list">
 			<li class="active">Hot Events</li>
 			<% EventsHelper::all_categories.each do |c| %>
 		    	<li><%= c[0] %></li>
