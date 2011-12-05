@@ -47,10 +47,16 @@ $(function() {
 
 	/* HAROLD'S CODE DO NOT INSULT */
 	$('ul.category-list').click(function(e){
-		$('li', this).css('top', 0);
-		console.log(e.target);
-		$(this).toggleClass('expanded');
-		$('.events-col-info').toggle();
+		if ( $(this).hasClass('expanded') ){
+			var liPosition = $(e.target).position();
+			$('li', this).css('top', -liPosition.top);
+			$('.events-col-info').toggle();
+			$(this).toggleClass('expanded');
+		} else {
+			$('li', this).css('top', 0);
+			$(this).toggleClass('expanded');
+			$('.events-col-info').toggle();
+		}
 	});
 });
 
