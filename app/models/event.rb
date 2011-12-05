@@ -1,7 +1,7 @@
 include ActionView::Helpers::DateHelper
 
 class Event < ActiveRecord::Base
-  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories, :approval_rating, :event_start, :event_end, :summary, :cancelled
+  validates_presence_of :name, :description, :location, :start_time, :end_time, :categories, :approval_rating, :event_start, :event_end
   validates_size_of :location, :maximum => 100
   ### validates_format_of :name, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
 
@@ -48,7 +48,7 @@ class Event < ActiveRecord::Base
   end
 
   def get_datetime_from_time_string(str)
-    DateTime.strptime(str, '%Y-%d-%m %H:%M')
+    DateTime.strptime(str, '%Y-%d-%m %H:%M') rescue Time.now
   end
 
 
@@ -61,6 +61,28 @@ class Event < ActiveRecord::Base
     puts self.end_time
     self.event_start = get_datetime_from_time_string(self.start_time)
     self.event_end = get_datetime_from_time_string(self.end_time)
+  end
+
+  def edit_start_date
+    if self.start_time.nil?
+      return Time.now.strftime('%m/%d/%Y')
+    else
+      puts "AHHHHHHHHHHHHHHHHH"
+      puts self.start_time
+      old_date = DateTime.strptime(self.start_time, '%Y-%d-%m %H:%M') rescue Time.now
+      old_date.strftime('%m/%d/%Y')
+    end
+  end
+
+  def edit_end_date
+    if self.end_time.nil?
+      return Time.now.strftime('%m/%d/%Y')
+    else
+      puts "AHHHHHHHHHHHHHHHHH"
+      puts self.end_time
+      old_date = DateTime.strptime(self.end_time, '%Y-%d-%m %H:%M') rescue Time.now
+      old_date.strftime('%m/%d/%Y')
+    end
   end
 
   # Approval

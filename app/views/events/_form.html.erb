@@ -40,13 +40,13 @@
 
   		<div class="field">
     		<%= f.label :start_time %>
-    		<%= text_field_tag 'start_time_date', nil, :class => 'datepicker' %>
+    		<%= text_field_tag 'start_time_date', @event.edit_start_date, :class => 'datepicker' %>
     		<%= f.select(:start_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(1))) %>
   		</div>
 
   		<div class="field">
     		<%= f.label :end_time %>
-    		<%= text_field_tag 'end_time_date', nil, :class => 'datepicker' %>
+    		<%= text_field_tag 'end_time_date', @event.edit_end_date, :class => 'datepicker' %>
     		<%= f.select(:end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(3))) %>
   		</div>
 

@@ -76,7 +76,7 @@ class EventsController < ApplicationController
       @event.errors.add :start_time, "You need to input a date"
     else
       @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
-      @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
+      @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])      
     end
 
     respond_to do |format|
