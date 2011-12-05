@@ -11,15 +11,6 @@
       </ul>
     </div>
   <% end %>
-
-	<fieldset class="form-flyer">
-  		<div class="field">
-    		<div class="fake-input">
-      			<%= label_tag :flyer, 'Upload a flyer' %>
-      			<%= f.file_field :flyer %>
-    		</div>
-  		</div>
-	</fieldset>
 	
 	<fieldset class="form-info">
 		
@@ -38,6 +29,11 @@
     		<%= f.text_field :location %>
   		</div>
 
+		<div class="field">
+  			<%= label_tag :flyer, 'Upload a flyer' %>
+  			<%= f.file_field :flyer %>
+		</div>
+
   		<div class="field">
     		<%= f.label :start_time %>
     		<%= text_field_tag 'start_time_date', @event.edit_start_date, :class => 'datepicker' %>
@@ -50,19 +46,20 @@
     		<%= f.select(:end_time, options_for_select(Event::EVENT_TIMES, closest_half_hour(3))) %>
   		</div>
 
-  		<div class="field event-categories">
-        	<%= f.label :categories %> (Choose up to 2)<br/>
-        	<ul>
-        		<% EventsHelper::all_categories.each do |c| %>
-          			<% check_id = get_check_id(c[0]) %>
-          			<li class="cat-radio">
-            			<%= label_tag check_id, c[0], { :class => 'cat-button'} %>
-						<%= check_box_tag "event[categories]", c[1], false, {:class=>'cat-check', :id => check_id }%>
-          			</li>
-        		<% end %>
-        	</ul>
-  		</div>
 </fieldset>
+
+<div class="field event-categories">
+	<%= f.label :categories %> (Choose up to 2)<br/>
+	<ul>
+		<% EventsHelper::all_categories.each do |c| %>
+  			<% check_id = get_check_id(c[0]) %>
+  			<li class="cat-radio">
+    			<%= label_tag check_id, c[0], { :class => 'cat-button'} %>
+				<%= check_box_tag "event[categories]", c[1], false, {:class=>'cat-check', :id => check_id }%>
+  			</li>
+		<% end %>
+	</ul>
+</div>
 
 <div class="actions">
 	<%= f.submit %>
