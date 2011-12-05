@@ -230,7 +230,6 @@ $event_expanded_zindex: 900;
 			list-style-type: none;
 			width: 200px;
 			float: left;
-			margin-bottom: 20px;
 		}
 	}
 	
@@ -238,13 +237,14 @@ $event_expanded_zindex: 900;
 
 /*** BUTTON STYLES ***/
 .cat-button {
+	display: inline-block;
   text-shadow: 0px 1px 0px #FFF;
   padding: 8px 12px;
-  width: 110px;
+  width: 90px;
   font-weight: bold;
   margin-bottom: 5px;
   border-left: 4px solid red;
-  font-size: 12px;
+  font-size: 13px;
   border-bottom: 1px solid #CCC;
   
   background-image: linear-gradient(bottom, rgb(240,240,240) 48%, rgb(247,244,247) 85%);
