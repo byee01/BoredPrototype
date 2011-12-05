@@ -108,6 +108,7 @@ $event_expanded_zindex: 900;
 	cursor: pointer; float: left;
 	margin: 5px; overflow: hidden;
 	position: relative;
+	border: 1px solid #555;
 	box-shadow: 4px 4px 0px #888;
   
   width: $event_width;
@@ -244,12 +245,13 @@ $event_expanded_zindex: 900;
   input {
     display: inline-block;
   }
+
+	textarea {
+		height: 180px;
+	}
 }
 
 .form-focus {
-  label {
-    background: red;
-  }
 
   .flag {
     width: 0;
@@ -273,24 +275,12 @@ $event_expanded_zindex: 900;
     .fake-input {
       position: relative;
       text-align: center;
-      background: #EDEDED;
+      background: #CCC;
       width: 150px;
       height: 200px;
     }
 
-    label {
-      position: absolute;
-      text-align: center;
-      bottom: 3em;
-    }
 
-    input {
-      cursor: pointer;
-      opacity: 0;
-      height: 100%;
-      width: 100%;
-      position: absolute;
-    }
   }
 
   .cat-radio {
