@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
   ### validates_format_of :name, :location, :with => /^[a-zA-Z0-9 !.,#\*<>@&:"$\-\\\/']*$/
 
   before_save :add_event_times
+
+  before_validation :check_empty_dates
  
 
 
@@ -68,5 +70,17 @@ class Event < ActiveRecord::Base
 
   def decline_event
     self.approval_rating = 0
+  end
+
+  private
+
+  def check_empty_dates
+    if :start_time_date.empty? or :end_time_date.empty?
+      flash[:error] = 'You must give a date'
+      errors.add :start_time, :message => "You need to input a date"
+      return false
+    else
+      return true
+    end
   end
 end

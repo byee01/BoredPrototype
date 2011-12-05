@@ -43,12 +43,20 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(params[:event])
-    @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
-    @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
+
+
+    if params[:start_time_date].empty? or params[:end_time_date].empty?
+      flash[:error] = 'You must give a date'
+      @event.errors.add :start_time, "You need to input a date"
+    else
+      @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
+      @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])      
+    end
+
 
 
     respond_to do |format|
-      if @event.save
+      if @event.errors.empty? and @event.save 
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
@@ -63,10 +71,16 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
 
-    @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
-    @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
+    if params[:start_time_date].empty? or params[:end_time_date].empty?
+      flash[:error] = 'You must give a date'
+      @event.errors.add :start_time, "You need to input a date"
+    else
+      @event.start_time = @event.merge_times(params['start_time_date'], params[:event][:start_time])
+      @event.end_time = @event.merge_times(params['end_time_date'], params[:event][:end_time])
+    end
+
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.errors.empty? and @event.update_attributes(params[:event])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :ok }
       else
