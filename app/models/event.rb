@@ -31,7 +31,7 @@ class Event < ActiveRecord::Base
   def get_start_times
     times = []
     self.start_time.split('%').each do |t|
-      times.push(DateTime.strptime(t, '%Y-%m-%d %H:%M'))
+      times.push(DateTime.strptime(t, '%m-%d-%Y %H:%M'))
     end
     times
   end
@@ -39,13 +39,13 @@ class Event < ActiveRecord::Base
   def get_end_times
     times = []
     self.end_time.split('%').each do |t|
-      times.push(DateTime.strptime(t, '%Y-%m-%d %H:%M'))
+      times.push(DateTime.strptime(t, '%m-%d-%Y %H:%M'))
     end
     times
   end
 
   def get_datetime_from_time_string(str)
-    DateTime.strptime(str, '%Y-%m-%d %H:%M')
+    DateTime.strptime(str, '%m-%d-%Y %H:%M')
   end
 
 
