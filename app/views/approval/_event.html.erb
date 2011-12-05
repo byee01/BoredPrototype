@@ -2,16 +2,19 @@
 	<li>
 		<img src="<%= event.flyer %>" alt="" />
 		<div class="leftBox <%= event.approval_status %>">
-			<h1><%= event.name %></h1>
+			<h1 title="<%= event.name %>"><%= truncate(event.name, :length => 39) %></h1>
 			<p><%= event.description %></p>
-			<h2><%= event.location %></h2>
+			<h2 title="<%= event.location %>"><%= truncate(event.location, :length => 55) %></h2>
 		</div>
 		<div class="rightBox">
-			<% if event.approval_rating <= 0 %>
-		      <%= link_to 'Approve', :controller => "events", :action => "approve", :id => event.id %>
-		    <% else %>
-		      <%= link_to 'Decline', :controller => "events", :action => "decline", :id => event.id %>
-		    <% end %>
+			<% if event.approval_rating == -1 %>
+		    <%= link_to 'Approve', :controller => "events", :action => "approve", :id => event.id %>
+		  <% elsif event.approval_rating == 0 %>
+		    <%= link_to 'Approve', :controller => "events", :action => "approve", :id => event.id %>
+		    <%= link_to 'Decline', :controller => "events", :action => "decline", :id => event.id %>
+		  <% else %>
+		    <%= link_to 'Decline', :controller => "events", :action => "decline", :id => event.id %>
+		  <% end %>
 			<!-- <button>Approve</button>
 			<button>Decline</button>
 			<textarea></textarea> -->
