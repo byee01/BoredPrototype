@@ -1,5 +1,9 @@
-<div class="event-form">
-  <%= render 'form' %>
+<div class="container" id="cEvent">
+	<h1>Edit an Event</h1>
+	<div class="event-form">
+	  <%= render 'form' %>
+	</div>
+	
+	<%= link_to 'Show', @event %> |
+	<%= link_to 'Back', events_path %>
 </div>
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>

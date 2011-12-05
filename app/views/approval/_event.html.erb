@@ -4,7 +4,8 @@
 		<div class="leftBox <%= event.approval_status %>">
 			<h1 title="<%= event.name %>"><%= truncate(event.name, :length => 39) %></h1>
 			<p><%= event.description %></p>
-			<h2 title="<%= event.location %>"><%= truncate(event.location, :length => 39) %></h2>
+			<h2 title="<%= event.location %>"><%= truncate(event.location, :length => 39) %>
+				<a class="edit-link" href="<%= edit_event_path(event) %>">Edit</a></h2>
 		</div>
 		<div class="rightBox">
 			<% if event.approval_rating == -1 %>
