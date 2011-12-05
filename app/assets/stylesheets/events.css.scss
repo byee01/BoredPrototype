@@ -153,17 +153,18 @@ $event_expanded_zindex: 900;
 		width: 450px; padding: 10px 0px 18px 0px;
 		margin-bottom: 10px; }
 		
-	.form-info input {
+	.form-info input, .form-info textarea {
 		font-size: 16px;
 		padding: 5px 10px;
 		border: 1px solid #CCC;
+		width: 250px;
 		&:focus {
 			background: #F0F0F0;
 		}
 	}
 	
 	.actions input {
-    cursor: pointer;
+    	cursor: pointer;
 		&:enabled {
 			width: 150px;
 			height: 30px;
