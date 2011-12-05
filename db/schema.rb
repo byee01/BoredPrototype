@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911205737) do
+ActiveRecord::Schema.define(:version => 20111205012357) do
 
   create_table "events", :force => true do |t|
     t.string   "name",                                                  :null => false
@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20110911205737) do
     t.string   "location",                                              :null => false
     t.string   "start_time",                                            :null => false
     t.string   "end_time",                                              :null => false
-    t.datetime "event_start",        :default => '2011-12-05 00:36:29', :null => false
-    t.datetime "event_end",          :default => '2011-12-05 00:36:29', :null => false
+    t.datetime "event_start",        :default => '2011-12-05 01:31:29', :null => false
+    t.datetime "event_end",          :default => '2011-12-05 01:31:29', :null => false
     t.string   "flyer"
     t.integer  "pattern"
     t.string   "categories"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110911205737) do
     t.datetime "flyer_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "summary"
+    t.boolean  "cancelled",          :default => false
   end
 
 end
