@@ -98,7 +98,7 @@ $event_expanded_zindex: 900;
 	
 	.info-main {
     	color: #FFF;
-		line-height: 1.2em;
+		line-height: 1.42em;
 
 		h2 {
 			font-size: 2em;
@@ -152,7 +152,7 @@ $event_expanded_zindex: 900;
 
 /* CREATE AN EVENT */
 
-.container#cEvent {
+.container#cEvent, .event-form {
 	
 	width: 850px;
 	margin: 0 auto;
@@ -161,14 +161,14 @@ $event_expanded_zindex: 900;
 		font-size: 25px;
 		font-weight: bold;
 		border-bottom: 1px dotted #777;
-		width: 450px; padding: 10px 0px 18px 0px;
+		width: 590px; padding: 10px 0px 18px 0px;
 		margin-bottom: 25px; }
 		
 	.form-info input, .form-info textarea {
-		font-size: 16px;
+		font-size: 14px;
 		padding: 5px 10px;
 		border: 1px solid #CCC;
-		width: 250px;
+		width: 330px;
 		display: inline-block;
 		&:focus {
 			background: #F0F0F0;
@@ -176,7 +176,7 @@ $event_expanded_zindex: 900;
 	}
 	
 	.form-info {
-		width: 490px;
+		width: 550px;
 		float: left;
 		label {
 			display: inline-block; width: 110px;
@@ -186,7 +186,7 @@ $event_expanded_zindex: 900;
 			height: 150px; }
 
 		input.datepicker {
-			width: 160px; }
+			width: 230px; }
 	}
 
 	div.actions {
